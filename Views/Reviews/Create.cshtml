@@ -1,0 +1,22 @@
+@model MapYourMeal.Models.Review
+<form method="post">
+    <div>
+        <label for="Dish">Dish</label>
+        <input type="text" id="Dish" name="Dish" required />
+    </div>
+    <div>
+        <label for="Note">Note</label>
+        <input type="text" id="Note" name="Note" required />
+    </div>
+    <div>
+        <label for="Rating">Rating</label>
+        <input type="number" id="Rating" name="Rating" min="1" max="5" required />
+    </div>
+    <div>
+        <label for="IsGlutenFree">Is Gluten Free?</label>
+        <input type="checkbox" id="IsGlutenFree" name="IsGlutenFree" />
+    </div>
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+</form>
