@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MapYourMeal.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241012172126_AddReviewTable")]
-    partial class AddReviewTable
+    [Migration("20241012175921_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
