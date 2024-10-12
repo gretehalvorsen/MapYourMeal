@@ -1,0 +1,51 @@
+@model IEnumerable<MapYourMeal.Models.User>
+
+<h3 class="my-5">
+    Users
+</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>User Name</th>
+            <th>Email</th>
+            <th>Reviews</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.UserName</td>
+                <td>@user.Email</td>
+                <td>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Note</th>
+                                <th>Rating</th>
+                                <th>Dish</th>
+                                <th>Is Gluten Free</th>
+                                <th>Is Vegan</th>
+                                <th>Is Dairy Free</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var review in user.Reviews)
+                            {
+                                <tr>
+                                    <td>@review.Note</td>
+                                    <td>@review.Rating</td>
+                                    <td>@review.Dish</td>
+                                    <td>@(review.IsGlutenFree ? "Yes" : "No")</td>
+                                    <td>@(review.IsVegan ? "Yes" : "No")</td>
+                                    <td>@(review.IsDairyFree ? "Yes" : "No")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

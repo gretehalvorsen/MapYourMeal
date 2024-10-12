@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+
 namespace MapYourMeal.Models
 {
     public class Review
@@ -10,15 +12,17 @@ namespace MapYourMeal.Models
 
         public string Dish { get; set; }
 
-        // recuerments
+        // requirements
         public bool IsGlutenFree { get; set; }
+        public bool IsVegan { get; set; }
+        public bool IsDairyFree { get; set; }
 
         // Foreign keys
         public int UserId { get; set; }
         public int RestaurantId { get; set; }
 
         // Navigation properties
-        public User User { get; set; }
-        public Restaurant Restaurant { get; set; }
+        public virtual User User { get; set; }
+        public virtual Restaurant Restaurant { get; set; }
     }
 }

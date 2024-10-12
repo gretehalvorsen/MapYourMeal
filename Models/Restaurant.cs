@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+
 namespace MapYourMeal.Models
 {
     public class Restaurant
@@ -7,6 +9,6 @@ namespace MapYourMeal.Models
         public string RestaurantName { get; set; }
         public double Longitude { get; set; }
         public double Latitude { get; set; }
-        public List<Review> Reviews { get; set; }
+        public List<Review> Reviews { get; set; } = new List<Review>();
     }
 }
