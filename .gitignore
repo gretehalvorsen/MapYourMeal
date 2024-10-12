@@ -1,0 +1,12 @@
+# Build Folders
+obj/
+bin/
+
+# NuGet
+project.nuget.cache
+*.nuget.g.*
+
+# Visual Studio specific
+*.user
+*.suo
+*.cache
