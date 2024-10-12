@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MapYourMealN")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+025006846959e60ef7806780271cc5cc5d2c8b81")]
 [assembly: System.Reflection.AssemblyProductAttribute("MapYourMealN")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MapYourMealN")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
