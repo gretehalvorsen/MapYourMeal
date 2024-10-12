@@ -1,5 +1,4 @@
-using System.Collections.Generic;
-
+using System;
 namespace MapYourMeal.Models
 {
     public class User

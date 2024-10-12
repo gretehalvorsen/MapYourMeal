@@ -1,3 +1,4 @@
+using System;
 namespace MapYourMeal.Models
 {
     public class Restaurant

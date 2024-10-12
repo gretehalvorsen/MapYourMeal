@@ -1,20 +1,19 @@
 using Microsoft.AspNetCore.Mvc;
-using MapYourMeal.Models;
-using Microsoft.EntityFrameworkCore;
-using System.Linq;
 
-public class HomeController : Controller
+namespace MapYourMeal.Controllers
 {
-    private readonly AppDbContext _context;
-
-    public HomeController(AppDbContext context)
+    public class HomeController : Controller
     {
-        _context = context;
-    }
+        // GET: /<controller>/
+        public IActionResult Index()
+        {
+            return View();
+        }
 
-    public IActionResult Index()
-    {
-        var restaurants = _context.Restaurants.Include(r => r.Reviews).ToList();
-        return View(restaurants);
+        // GET: /Home/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
     }
 }

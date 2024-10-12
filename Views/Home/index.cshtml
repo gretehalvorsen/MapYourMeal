@@ -1,45 +1,9 @@
-@model IEnumerable<MapYourMeal.Models.Restaurant>
-@using System.Linq
+@{
+    ViewData["Title"] = "Home Page";
+}
 
-<div class="accordion" id="restaurantAccordion">
-    @foreach (var restaurant in Model)
-    {
-        <div class="card">
-            <div class="card-header" id="heading-@restaurant.RestaurantId">
-                <h2 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse"
-                        data-target="#collapse-@restaurant.RestaurantId" aria-expanded="false"
-                        aria-controls="collapse-@restaurant.RestaurantId">
-                        @restaurant.RestaurantName
-                    </button>
-                </h2>
-            </div>
-
-            <div id="collapse-@restaurant.RestaurantId" class="collapse" aria-labelledby="heading-@restaurant.RestaurantId"
-                data-parent="#restaurantAccordion">
-                <div class="card-body">
-                    <p>Longitude: @restaurant.Longitude</p>
-                    <p>Latitude: @restaurant.Latitude</p>
-
-                    @if (restaurant.Reviews != null && restaurant.Reviews.Any()) // Check if there are any reviews
-                    {
-                        <h3>Reviews:</h3>
-                        foreach (var review in restaurant.Reviews)
-                        {
-                            <div>
-                                <h4>@(review.User != null ? review.User.UserName : "Unknown user") wrote:</h4>
-                                <p>@review.Note</p>
-                                <p>Rating: @review.Rating</p>
-                                <p>Is gluten free: @review.IsGlutenFree</p>
-                            </div>
-                        }
-                    }
-                    else
-                    {
-                        <p>No reviews yet.</p>
-                    }
-                </div>
-            </div>
-        </div>
-    }
+<div class="text-center">
+    <h1 class="display-4">Welcome to My Shop</h1>
 </div>
+
+<partial name="_Carousel" />
