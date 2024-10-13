@@ -5,7 +5,7 @@
 namespace MapYourMeal.Migrations
 {
     /// <inheritdoc />
-    public partial class CreateUserTable : Migration
+    public partial class Fixed : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -52,8 +52,8 @@ namespace MapYourMeal.Migrations
                     IsGlutenFree = table.Column<bool>(type: "INTEGER", nullable: false),
                     IsVegan = table.Column<bool>(type: "INTEGER", nullable: false),
                     IsDairyFree = table.Column<bool>(type: "INTEGER", nullable: false),
-                    UserId = table.Column<int>(type: "INTEGER", nullable: false),
-                    RestaurantId = table.Column<int>(type: "INTEGER", nullable: false)
+                    UserId = table.Column<int>(type: "INTEGER", nullable: true),
+                    RestaurantId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -62,14 +62,12 @@ namespace MapYourMeal.Migrations
                         name: "FK_Reviews_Restaurants_RestaurantId",
                         column: x => x.RestaurantId,
                         principalTable: "Restaurants",
-                        principalColumn: "RestaurantId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "RestaurantId");
                     table.ForeignKey(
                         name: "FK_Reviews_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
-                        principalColumn: "UserId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "UserId");
                 });
 
             migrationBuilder.CreateIndex(

@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using MapYourMeal.Models;
-using MapYourMeal.ViewModels;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace MapYourMeal.Controllers
 {
@@ -16,7 +17,9 @@ namespace MapYourMeal.Controllers
 
         public IActionResult Index()
         {
-            List<Restaurant> restaurants = _context.Restaurants.ToList();
+            List<Restaurant> restaurants = _context.Restaurants
+                .Include(r => r.Reviews)
+                .ToList();
             return View(restaurants);
         }
     }
