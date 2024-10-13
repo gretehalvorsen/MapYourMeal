@@ -11,13 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MapYourMeal.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-<<<<<<<< HEAD:Migrations/20241013104253_Fixed.Designer.cs
-    [Migration("20241013104253_Fixed")]
-    partial class Fixed
-========
-    [Migration("20241012175921_InitialCreate")]
-    partial class InitialCreate
->>>>>>>> 12286114c5e449bbf4feb14927e116fea63a3ec5:Migrations/20241012175921_InitialCreate.Designer.cs
+    [Migration("20241012180533_MakeUserAndRestaurantNullableInReview")]
+    partial class MakeUserAndRestaurantNullableInReview
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
