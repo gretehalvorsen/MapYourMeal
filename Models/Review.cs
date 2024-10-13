@@ -18,10 +18,9 @@ namespace MapYourMeal.Models
         public bool IsDairyFree { get; set; }
 
         // Foreign keys
-        public int UserId { get; set; }
-        public int RestaurantId { get; set; }
+        public int? UserId { get; set; } // Why need to be ?
+        public int? RestaurantId { get; set; } // Why need to be ? 
 
-        // Navigation properties
         public virtual User User { get; set; }
         public virtual Restaurant Restaurant { get; set; }
     }

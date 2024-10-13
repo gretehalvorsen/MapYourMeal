@@ -5,7 +5,7 @@
 namespace MapYourMeal.Migrations
 {
     /// <inheritdoc />
-    public partial class MakeUserAndRestaurantNullableInReview : Migration
+    public partial class FixReview : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
