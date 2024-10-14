@@ -1,14 +1,10 @@
-using System;
-using System.Collections.Generic;
-
-namespace MapYourMeal.Models
+namespace MapYourMeal.Models;
+public class Restaurant
 {
-    public class Restaurant
-    {
-        public int RestaurantId { get; set; }
-        public string RestaurantName { get; set; }
-        public double Longitude { get; set; }
-        public double Latitude { get; set; }
-        public List<Review> Reviews { get; set; } = new List<Review>();
-    }
+    public int RestaurantId { get; set; }
+    public string RestaurantName { get; set; } = string.Empty;
+    public double Longitude { get; set; }
+    public double Latitude { get; set; }
+    // navigation property
+    public virtual List<Review>? Reviews { get; set; }
 }
