@@ -1,4 +1,3 @@
-
 using Microsoft.EntityFrameworkCore;
 namespace MapYourMeal.Models;
 public class ApplicationDbContext : DbContext

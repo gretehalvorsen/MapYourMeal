@@ -1,19 +1,15 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace MapYourMeal.Controllers
+namespace MapYourMeal.Controllers;
+public class HomeController : Controller
 {
-    public class HomeController : Controller
+    public IActionResult Index()
     {
-        // GET: /<controller>/
-        public IActionResult Index()
-        {
-            return View();
-        }
+        return View();
+    }
 
-        // GET: /Home/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
+    public IActionResult Create()
+    {
+        return View();
     }
 }
