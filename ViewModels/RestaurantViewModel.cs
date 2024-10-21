@@ -3,14 +3,14 @@ using System.Collections.Generic;
 
 namespace MapYourMeal.ViewModels
 {
-    public class UserViewModel
+    public class RestaurantViewModel
     {
-        public IEnumerable<User> Users { get; set; }
-        public string? CurrentViewName { get; set; }
+        public IEnumerable<Restaurant> Restaurants;
+        public string? CurrentViewName;
 
-        public UserViewModel(IEnumerable<User> users, string? currentViewName)
+        public RestaurantViewModel(IEnumerable<Restaurant> restaurants, string? currentViewName)
         {
-            Users = users;
+            Restaurants = restaurants;
             CurrentViewName = currentViewName;
         }
     }
