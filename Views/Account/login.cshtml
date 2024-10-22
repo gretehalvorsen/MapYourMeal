@@ -1,0 +1,26 @@
+@{
+    ViewData["Title"] = "Login Page";
+}
+
+<!-- Login Form Section -->
+    <div class="container d-flex justify-content-center align-items-center" style="height: 80vh;">
+        <div class="col-md-4">
+            <h3 class="text-center mb-4">Log in to MapYourMeal</h3>
+            <form>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password">
+                </div>
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-success">Log in</button>
+                </div>
+            </form>
+            <div class="text-center mt-3">
+                <p>Don't have an account? <a href="#">Sign up</a></p>
+            </div>
+        </div>
+    </div>
