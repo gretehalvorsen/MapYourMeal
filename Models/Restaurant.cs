@@ -1,10 +1,16 @@
 namespace MapYourMeal.Models;
+
 public class Restaurant
 {
     public int RestaurantId { get; set; }
     public string RestaurantName { get; set; } = string.Empty;
-    public double Longitude { get; set; }
-    public double Latitude { get; set; }
-    // navigation property
-    public virtual List<Review>? Reviews { get; set; }
+    public decimal Longitude { get; set; }
+    public decimal Latitude { get; set; }
+    public double AverageRating { get; set;}
+    public string? ImageUrl { get; set; }
+    public string? Address { get; set; } = string.Empty;
+    public string? City { get; set; } = string.Empty;
+
+    // Navigation property for reviews
+    public ICollection<Review> Reviews { get; set; }
 }
