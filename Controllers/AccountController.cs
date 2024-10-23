@@ -5,10 +5,16 @@ namespace MapYourMeal.Controllers
 {
     public class AccountController : Controller
     {
-        // GET: Login
+        // GET: Account/Login
         public ActionResult Login()
         {
             return View();
+        }
+
+         // GET: Account/SignUp
+        public IActionResult SignUp()
+        {
+            return View(new User());
         }
 
 
