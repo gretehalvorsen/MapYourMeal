@@ -7,14 +7,17 @@ public class Review
     public int Rating { get; set; }
     public string? ImageUrl { get; set; }
     public string Dish { get; set; } = string.Empty;
+
     // requirements
     public bool IsGlutenFree { get; set; }
     public bool IsVegan { get; set; }
     public bool IsDairyFree { get; set; }
+
     // Foreign keys
     public int? UserId { get; set; }
     public int? RestaurantId { get; set; }
+    
     // navigation properties
-    /*public virtual User User { get; set; } = default!;
-    public virtual Restaurant Restaurant { get; set; } = default!;*/
+    public virtual User? User { get; set; }
+    public virtual Restaurant? Restaurant { get; set; }
 }
