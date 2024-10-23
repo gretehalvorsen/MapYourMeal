@@ -6,5 +6,5 @@ public class Restaurant
     public double Longitude { get; set; }
     public double Latitude { get; set; }
     // navigation property
-    public virtual List<Review>? Reviews { get; set; }
+    public virtual List<Review> Reviews { get; set; } = default!; // Later change to "= new List<Review>(); ???
 }
