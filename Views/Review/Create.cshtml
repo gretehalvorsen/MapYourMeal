@@ -1,10 +1,10 @@
-@model MapYourMeal.Models.Review;
+@model MapYourMeal.Models.Review
 
 <h2>Create New Review</h2>
 
 <!--<a href="/"> Eksempel form, ikke ferdig </a> -->
 
-<form asp-action="Create" method="post">
+<form asp-action="Create">
     <div class="form-group">
         <label asp-for="Note">Note</label>
         <input asp-for="Note" class="form-control" />
@@ -16,40 +16,40 @@
         <span asp-validation-for="Rating" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="ImageUrl">IMG</label>
+        <label asp-for="ImageUrl">Image</label>
         <input asp-for="ImageUrl" class="form-control" />
         <span asp-validation-for="ImageUrl" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Dish">Dish</label>
+        <label asp-for="Dish">Dish type</label><span class="text-danger">*</span>
         <input asp-for="Dish" class="form-control" />
         <span asp-validation-for="Dish" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="IsGlutenFree">IsGlutenFree</label>
+        <label asp-for="IsGlutenFree">Is Glutenfree</label>
         <input asp-for="IsGlutenFree" class="form-control" />
         <span asp-validation-for="IsGlutenFree" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="IsVegan">IsVegan</label>
+        <label asp-for="IsVegan">Is Vegan</label>
         <input asp-for="IsVegan" class="form-control" />
         <span asp-validation-for="IsVegan" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="IsDairyFree">IsDairyFree</label>
+        <label asp-for="IsDairyFree">Is Dairyfree</label>
         <input asp-for="IsDairyFree" class="form-control" />
         <span asp-validation-for="IsDairyFree" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="UserId">UserId</label>
+        <label asp-for="UserId">User Id</label>
         <input asp-for="UserId" class="form-control" />
         <span asp-validation-for="UserId" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="RestaurantId">RestaurantId</label>
+        <label asp-for="RestaurantId">Restaurant Id</label>
         <input asp-for="RestaurantId" class="form-control" />
         <span asp-validation-for="RestaurantId" class="text-danger"></span>
     </div>
     <button type="submit" class="btn btn-primary">Create</button>
-    <a asp-action="Table" class="btn btn-secondary">Back to Table View</a>
+    <!--<a asp-action="Table" class="btn btn-secondary">Back to Table View</a>-->
 </form>
