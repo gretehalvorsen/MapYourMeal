@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using MapYourMeal.Models;
 using MapYourMeal.ViewModels;
 
-namespace MapYourMeal.Models;
+namespace MapYourMeal.Controllers;
 public class ReviewController : Controller
 {
     private readonly ApplicationDbContext _context;
@@ -14,6 +14,7 @@ public class ReviewController : Controller
     }
 
     // GET: Reviews/Create
+    [HttpGet]
     public IActionResult Create()
     {
         return View();
@@ -23,12 +24,13 @@ public class ReviewController : Controller
     [HttpPost]
     public IActionResult Create(Review review)
     {
-        Console.WriteLine(review);
+        Console.WriteLine("Before if-statement");
         if (ModelState.IsValid)
         {
-            _context.Add(review);
+            Console.WriteLine("Inside if-statement with review: " + review);
+            _context.Reviews.Add(review);
             _context.SaveChanges();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction(nameof(Create));
         }
         return View(review);
     }
