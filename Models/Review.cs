@@ -1,3 +1,4 @@
+using System;
 namespace MapYourMeal.Models;
 public class Review
 {
@@ -14,6 +15,6 @@ public class Review
     public int? UserId { get; set; }
     public int? RestaurantId { get; set; }
     // navigation properties
-    public virtual User User { get; set; }
-    public virtual Restaurant Restaurant { get; set; }
+    /*public virtual User User { get; set; } = default!;
+    public virtual Restaurant Restaurant { get; set; } = default!;*/
 }
