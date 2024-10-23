@@ -37,7 +37,10 @@
 
                     <!-- Save Button -->
                     <div class="col-3 text-end">
-                        <button class="btn btn-secondary" style="background-color: #2a5b80;">Lagre</button>
+                        <a href="@Url.Action("Index", "Restaurant", new { restaurantId = restaurant.RestaurantId })" class="btn btn-secondary" style="background-color: #2a5b80;">
+    Vis mer
+</a>
+
                     </div>
                 </div>
                 index++;

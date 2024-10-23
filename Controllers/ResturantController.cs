@@ -5,32 +5,30 @@ using System.Linq;
 using System.Collections.Generic;
 
 namespace MapYourMeal.Controllers;
-public class RestaurantController : Controller
-{
-    private readonly ApplicationDbContext _context;
 
-    public RestaurantController(ApplicationDbContext context)
+
+    public class RestaurantController : Controller
     {
-        _context = context;
-    }
+        private readonly ApplicationDbContext _context;
 
- 
-    public IActionResult Index()
-{
-    List<Restaurant> restaurants = _context.Restaurants.Include(r => r.Reviews).ToList();
-
-    foreach (var restaurant in restaurants)
-    {
-        if (restaurant.Reviews != null && restaurant.Reviews.Any())
+        public RestaurantController(ApplicationDbContext context)
         {
-            restaurant.AverageRating = restaurant.Reviews.Average(r => r.Rating);
+            _context = context;
         }
-        else
+
+        // This action fetches a specific restaurant by its ID
+        public IActionResult Index(int restaurantId)
         {
-            restaurant.AverageRating = 0; // Default value when no reviews are present
+            // Fetch the restaurant along with its reviews
+            var restaurant = _context.Restaurants
+                .Include(r => r.Reviews)  // Include reviews if necessary
+                .FirstOrDefault(r => r.RestaurantId == restaurantId);  // Get the restaurant with the given ID
+
+            if (restaurant == null)
+            {
+                return NotFound();  // If no restaurant is found, return 404
+            }
+
+            return View(restaurant);  // Pass the single restaurant object to the view
         }
     }
-
-    return View(restaurants);
-}
-}
