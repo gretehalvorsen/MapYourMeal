@@ -14,11 +14,9 @@ public class RestaurantController : Controller
         _context = context;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        List<Restaurant> restaurants = _context.Restaurants
-            .Include(r => r.Reviews)
-            .ToList();
+        List<Restaurant> restaurants = await _context.Restaurants.Include(r => r.Reviews).ToListAsync();
         return View(restaurants);
     }
 }

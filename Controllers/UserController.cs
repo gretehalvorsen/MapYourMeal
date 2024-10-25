@@ -14,11 +14,9 @@ public class UserController : Controller
         _context = context;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        List<User> users = _context.Users
-            .Include(u => u.Reviews)
-            .ToList();
+        List<User> users = await _context.Users.Include(u => u.Reviews).ToListAsync();
         return View(users);
     }
 }

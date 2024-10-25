@@ -22,14 +22,14 @@ public class ReviewController : Controller
 
     // POST: Reviews/Create
     [HttpPost]
-    public IActionResult Create(Review review)
+    public async Task<IActionResult> Create(Review review)
     {
         Console.WriteLine("Before if-statement");
         if (ModelState.IsValid)
         {
             Console.WriteLine("Inside if-statement with review: " + review);
             _context.Reviews.Add(review);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Create));
         }
         return View(review);
