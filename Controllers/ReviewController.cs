@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MapYourMeal.Models;
+using MapYourMeal.DAL;
 using MapYourMeal.ViewModels;
 
 namespace MapYourMeal.Controllers;
