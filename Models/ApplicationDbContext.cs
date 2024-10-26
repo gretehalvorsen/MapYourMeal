@@ -1,7 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using MapYourMeal.Models;
 
-namespace MapYourMeal.DAL;
+namespace MapYourMeal.Models;
+
 public class ApplicationDbContext : DbContext
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) // Constructor

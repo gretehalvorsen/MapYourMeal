@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using MapYourMeal.Models;
 
-namespace MapYourMeal.DAL;
+namespace MapYourMeal.Models;
 
 public static class DBInit
 {

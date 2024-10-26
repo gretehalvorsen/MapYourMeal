@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MapYourMeal.Models;
-using Microsoft.EntityFrameworkCore;
 using MapYourMeal.DAL;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Collections.Generic;
 
