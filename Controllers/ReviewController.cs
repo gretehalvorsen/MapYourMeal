@@ -1,17 +1,17 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using MapYourMeal.Models;
 using MapYourMeal.DAL;
+using Microsoft.EntityFrameworkCore;
 using MapYourMeal.ViewModels;
 
 namespace MapYourMeal.Controllers;
 public class ReviewController : Controller
 {
-    private readonly ApplicationDbContext _context;
+    private readonly IReviewRepository _reviewRepository;
 
-    public ReviewController(ApplicationDbContext context)
+    public ReviewController(IReviewRepository reviewRepository)
     {
-        _context = context;
+        _reviewRepository = reviewRepository;
     }
 
     // GET: Reviews/Create
@@ -25,12 +25,9 @@ public class ReviewController : Controller
     [HttpPost]
     public async Task<IActionResult> Create(Review review)
     {
-        Console.WriteLine("Before if-statement");
         if (ModelState.IsValid)
         {
-            Console.WriteLine("Inside if-statement with review: " + review);
-            _context.Reviews.Add(review);
-            await _context.SaveChangesAsync();
+            await _reviewRepository.Create(review);
             return RedirectToAction(nameof(Create));
         }
         return View(review);

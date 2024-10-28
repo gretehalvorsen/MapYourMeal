@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using MapYourMeal.Models;
 
-namespace MapYourMeal.Models;
+namespace MapYourMeal.DAL;
 
 public class ApplicationDbContext : DbContext
 {
