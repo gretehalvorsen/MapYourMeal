@@ -1,10 +1,11 @@
 @model MapYourMeal.Models.Review
 
-<h2>Create New Review</h2>
+<h2>Update Review</h2>
 
 <!--<a href="/"> Eksempel form, ikke ferdig </a> -->
 
-<form asp-action="Create">
+<form asp-action="Update">
+    <input type="hidden" asp-for="ReviewId" />
     <div class="form-group">
         <label asp-for="Note">Note</label>
         <input asp-for="Note" class="form-control" />
@@ -50,6 +51,6 @@
         <input asp-for="RestaurantId" class="form-control" />
         <span asp-validation-for="RestaurantId" class="text-danger"></span>
     </div>
-    <button type="submit" class="btn btn-primary">Create</button>
-    <a asp-action="Table" class="btn btn-secondary">Back to Table View</a>
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+    <a asp-action="Table" class="btn btn-secondary">Cancel</a>
 </form>
