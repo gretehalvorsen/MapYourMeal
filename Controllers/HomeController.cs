@@ -12,4 +12,9 @@ public class HomeController : Controller
     {
         return View();
     }
+
+    public IActionResult Delete()
+    {
+        return View();
+    }
 }

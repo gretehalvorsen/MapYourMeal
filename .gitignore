@@ -10,3 +10,10 @@ project.nuget.cache
 *.user
 *.suo
 *.cache
+
+*.sln
+
+/node_modules*
+
+# Ignore SQLite database files
+Application.db*

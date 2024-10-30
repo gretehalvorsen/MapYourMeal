@@ -1,0 +1,43 @@
+@model IEnumerable<MapYourMeal.Models.Review>
+
+<div class="container">
+     @*outputs a h1 header with the value of ViewBag.CurrentViewName which is a Razor syntax 
+    to embed server-side code in the view. ViewBag is a dynamic object used to pass data from the controller to the view.*@
+    <table class='table table-striped'> @*Creates a table element with stripe styling*@
+        <tr>
+            <th>Id</th>
+            <th>Dish</th>
+            <th>Rating</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Actions</th>
+            </tr> @*Creating a table row with table headers*@
+        @foreach (var review in Model) @*Starts a razor foreach loop, iterating over each item in the Model (passed to the view
+        from the controller) and creates a new table row*@
+        {
+            <tr>
+                <td>@review.ReviewId</td> @*Creates a table cell and displays the ItemId property of the current item*@
+                <td>
+                    <a asp-controller="Review"
+                    asp-action="Table"
+                    asp-route-ReviewId="@review.ReviewId">@review.Dish</a>
+                </td>
+                <td>@review.Rating</td>
+                <td>@review.Note</td>
+                <td>
+                    <img src="@review.ImageUrl" alt="Review Image" style="max-width: 80px; max-height: 80px;" />
+                </td>
+                <td>
+                    <a asp-action="Update" asp-route-ReviewId="@review.ReviewId">Update</a>
+                    <a asp-action="Delete" asp-route-ReviewId="@review.ReviewId">Delete</a>
+                    
+                </td>
+            </tr>
+        }
+    </table>
+    <p>
+        <a class="btn btn-secondary"
+        asp-controller="Review"
+        asp-action="Create">Create New Review</a>
+        </p>
+</div>
