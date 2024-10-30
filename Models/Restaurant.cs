@@ -18,6 +18,6 @@ namespace MapYourMeal.Models
         public string? City { get; set; } = string.Empty;
 
         // Navigation property for reviews
-        public ICollection<Review> Reviews { get; set; }
+        public ICollection<Review> Reviews { get; set; } = default!;
     }
 }
