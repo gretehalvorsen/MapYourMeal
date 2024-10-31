@@ -12,7 +12,7 @@ function initMap(){
     var map = L.map('map');
 
     //Setting the location for the first view. 
-    map.setView([59.9139, 10.7522], 12);
+    map.setView([59.9139, 10.7522], 13);
 
     //Adding the actual map that is shown.
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -29,7 +29,7 @@ function initMap(){
         const accuracy = pos.coords.accuracy;
 
         var marker = L.marker([lat, lng]).addTo(map);
-        L.circle([lat, lng], { radius: accuracy }).addTo(map);
+        //L.circle([lat, lng], { radius: accuracy }).addTo(map);
 
         //Can add basic HTML info in the bindPopup that will be displayed. 
         marker.bindPopup("<b>This is your location!</b>").openPopup();
@@ -49,13 +49,12 @@ function initMap(){
     };
 
     //This is searching by rectangle. rect:lon1,lat1,lon2,lat2
-    //Should include the frame chosen by the user as the rect parameters. 
+    //Should include the frame chosen by the user as the rect parameters.
     const apiResult = fetch("https://api.geoapify.com/v2/places?categories=catering&filter=rect:10.673365854787836,59.95383348582628,10.821658384284472,59.88587849035447&limit=20&apiKey=49a8fcc8e98649019ce05155b75301be")
         .then(response => response.json())
         .then((result) => {
             console.log(result.features);
             for (const restaurant of result.features) {
-                console.log(restaurant.properties.name);
                 const lon = restaurant.properties.lon;
                 const lat = restaurant.properties.lat;
                 var marker = L.marker([lat, lon]).addTo(map);
