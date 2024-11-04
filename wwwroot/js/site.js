@@ -21,7 +21,7 @@ function initMap(){
     }).addTo(map);
 
     //Code for adding the user location, using the two functions defined below:
-    navigator.geolocation.watchPosition(positionSuccess, positionError);
+    //navigator.geolocation.watchPosition(positionSuccess, positionError);
 
     function positionSuccess(pos) {
         const lat = pos.coords.latitude;

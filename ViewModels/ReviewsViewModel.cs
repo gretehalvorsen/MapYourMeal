@@ -1,6 +1,5 @@
 using MapYourMeal.Models;
 
-
 namespace MapYourMeal.ViewModels
 {
     public class ReviewsViewModel
