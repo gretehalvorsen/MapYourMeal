@@ -15,5 +15,9 @@ project.nuget.cache
 
 /node_modules*
 
+# Log files
+Logs/
+*.log
+
 # Ignore SQLite database files
 Application.db*
