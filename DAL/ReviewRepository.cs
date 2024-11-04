@@ -48,15 +48,15 @@ public class ReviewRepository : IReviewRepository
     }
 
     public async Task<Review?> Delete(int ReviewId)
-{
-    var review = await _db.Reviews.FindAsync(ReviewId);
-    if (review == null)
     {
-        return null;
-    }
+        var review = await _db.Reviews.FindAsync(ReviewId);
+        if (review == null)
+        {
+            return null;
+        }
 
-    _db.Reviews.Remove(review);
-    await _db.SaveChangesAsync();
-    return review;
-}
+        _db.Reviews.Remove(review);
+        await _db.SaveChangesAsync();
+        return review;
+    }
 }

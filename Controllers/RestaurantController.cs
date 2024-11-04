@@ -1,32 +1,95 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using MapYourMeal.DAL;
+using MapYourMeal.ViewModels;
+using MapYourMeal.Models;
 
 namespace MapYourMeal.Controllers;
 
 
-    public class RestaurantController : Controller
+public class RestaurantController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IRestaurantRepository _restaurantRepository;
 
-        public RestaurantController(ApplicationDbContext context)
+        public RestaurantController(IRestaurantRepository restaurantRepository)
         {
-            _context = context;
+            _restaurantRepository = restaurantRepository;
         }
 
-        // This action fetches a specific restaurant by its ID
-        public IActionResult Index(int restaurantId)
+        public async Task<IActionResult> Table()
         {
-            // Fetch the restaurant along with its reviews
-            var restaurant = _context.Restaurants
-                .Include(r => r.Reviews)  // Include reviews if necessary
-                .FirstOrDefault(r => r.RestaurantId == restaurantId);  // Get the restaurant with the given ID
-
-            if (restaurant == null)
+            var restaurants = await _restaurantRepository.GetAll();
+            if(restaurants == null)
             {
-                return NotFound();  // If no restaurant is found, return 404
+                return NotFound("Restaurant list not found");
             }
+            var restaurantViewModel = new RestaurantViewModel(restaurants, "Table");
+            return View(restaurantViewModel);
+        }
 
-            return View(restaurant);  // Pass the single restaurant object to the view
+        // GET: Restaurant/Create
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Restaurant/Create
+        [HttpPost]
+        public async Task<IActionResult> Create(Restaurant restaurant)
+        {
+            if (ModelState.IsValid)
+            {
+                await _restaurantRepository.Create(restaurant);
+                return RedirectToAction(nameof(Table));
+            }
+            return View(restaurant);
+        }
+
+        [HttpGet]
+        //[Route("Restaurant/Update/{RestaurantId}")]
+        public async Task<IActionResult> Update(int RestaurantId) {
+            Console.WriteLine($"Received RestaurantId: {RestaurantId}");
+            var restaurant = await _restaurantRepository.GetItemById(RestaurantId);
+            if(restaurant == null)
+            {
+                Console.WriteLine($"Received RestaurantId: {RestaurantId}");
+                return BadRequest("Restaurant not found for the RestaurantId");
+            }
+            return View(restaurant);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(Restaurant restaurant)
+        {
+            Console.WriteLine("POST Update method called");
+            if (ModelState.IsValid)
+            {
+                await _restaurantRepository.Update(restaurant);
+                return RedirectToAction(nameof(Table));
+            }
+            return View(restaurant);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int RestaurantId)
+        {
+            var restaurant = await _restaurantRepository.GetItemById(RestaurantId);
+            if(restaurant== null)
+            {
+                return BadRequest("Restaurant not found for the RestaurantId");
+            }
+            return View(restaurant);
+        }
+
+        // POST: Restaurant/Delete
+        [HttpPost]
+        public async Task<IActionResult> DeleteConfirmed(int RestaurantId)
+        {
+            var restaurant = await _restaurantRepository.Delete(RestaurantId);
+            if(restaurant == null)
+            {
+                return BadRequest("Restaurant deletion failed");
+            }
+            return RedirectToAction(nameof(Table));
         }
     }

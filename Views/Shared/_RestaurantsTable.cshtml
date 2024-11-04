@@ -1,0 +1,36 @@
+@model IEnumerable<MapYourMeal.Models.Restaurant>
+
+<div class="container">
+    <table class='table table-striped'>
+        <tr>
+            <th>Id</th>
+            <th>Restaurant name</th>
+            <th>AverageRating</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>Webpage</th>
+            <th>Actions</th>
+        </tr>
+
+        @foreach (var restaurant in Model)
+        {
+            <tr>
+                <td>@restaurant.RestaurantId</td>
+                <td>@restaurant.RestaurantName</td>
+                <td>@restaurant.AverageRating</td>
+                <td>@restaurant.Address</td>
+                <td>@restaurant.City</td>
+                <td><a href="@restaurant.Webpage">Visit the webpage</a></td>
+                <td>
+                    <a asp-action="Update" asp-route-RestaurantId="@restaurant.RestaurantId">Update</a>
+                    <a asp-action="Delete" asp-route-RestaurantId="@restaurant.RestaurantId">Delete</a>
+                </td>
+            </tr>
+        }
+    </table>
+    <p>
+        <a class="btn btn-secondary"
+        asp-controller="Restaurant"
+        asp-action="Create">Create New Restaurant</a>
+        </p>
+</div>
