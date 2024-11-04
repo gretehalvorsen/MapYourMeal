@@ -19,12 +19,10 @@ public class ReviewController : Controller
 
     public async Task<IActionResult> Table()
     {
-        _logger.LogInformation("This is an information message");
-        _logger.LogWarning("This is a warning message");
-        _logger.LogError("This is an error message");
         var reviews = await _reviewRepository.GetAll();
         if(reviews == null)
         {
+            _logger.LogError("[ReviewRepository] review list not found while executing _reviewRepository.GetAll()");
             return NotFound("Review list not found");
         }
         var reviewsViewModel = new ReviewsViewModel(reviews, "Table");
@@ -44,20 +42,22 @@ public class ReviewController : Controller
     {
         if (ModelState.IsValid)
         {
-            await _reviewRepository.Create(review);
-            return RedirectToAction(nameof(Table));
+            bool returnOk = await _reviewRepository.Create(review);
+            if (returnOk)
+                return RedirectToAction(nameof(Table));
         }
+        _logger.LogWarning("[ReviewController] Review creation failed {@review}", review);
         return View(review);
     }
 
     [HttpGet]
     //[Route("Review/Update/{ReviewId}")]
     public async Task<IActionResult> Update(int ReviewId) {
-        Console.WriteLine($"Received ReviewId: {ReviewId}");
+        //Console.WriteLine($"Received ReviewId: {ReviewId}");
         var review = await _reviewRepository.GetItemById(ReviewId);
         if(review == null)
         {
-            Console.WriteLine($"Received ReviewId: {ReviewId}");
+            _logger.LogError("[ReviewController] Review not found when updating the ReviewId {ReviewId:0000}", ReviewId);
             return BadRequest("Review not found for the ReviewId");
         }
         return View(review);
@@ -66,13 +66,14 @@ public class ReviewController : Controller
     [HttpPost]
     public async Task<IActionResult> Update(Review review)
     {
-        Console.WriteLine("POST Update method called");
+        //Console.WriteLine("POST Update method called");
         if (ModelState.IsValid)
         {
-            await _reviewRepository.Update(review);
-            return RedirectToAction(nameof(Table));
+            bool returnOk = await _reviewRepository.Update(review);
+            if(returnOk)
+                return RedirectToAction(nameof(Table));
         }
-        
+        _logger.LogWarning("[ReviewController] Review update failed {@review}", review);
         return View(review);
     }
 
@@ -82,6 +83,7 @@ public class ReviewController : Controller
         var review = await _reviewRepository.GetItemById(ReviewId);
         if(review== null)
         {
+            _logger.LogError("[ReviewController] Review not found for the ReviewId {ReviewId:0000}", ReviewId);
             return BadRequest("Review not found for the ReviewId");
         }
         return View(review);
@@ -91,9 +93,10 @@ public class ReviewController : Controller
     [HttpPost]
     public async Task<IActionResult> DeleteConfirmed(int ReviewId)
     {
-        var review = await _reviewRepository.Delete(ReviewId);
-        if(review == null)
+        bool returnOk = await _reviewRepository.Delete(ReviewId);
+        if(!returnOk)
         {
+            _logger.LogError("[ReviewController] Review deletion failed for the ReviewId {ReviewId:0000}", ReviewId);
             return BadRequest("Review deletion failed");
         }
         

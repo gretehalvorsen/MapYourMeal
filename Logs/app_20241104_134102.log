@@ -1,0 +1,329 @@
+2024-11-04 13:41:03.762 +01:00 [INF] User profile is available. Using 'C:\Users\47408\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-11-04 13:41:03.893 +01:00 [INF] Now listening on: https://localhost:7200
+2024-11-04 13:41:03.895 +01:00 [INF] Now listening on: http://localhost:5252
+2024-11-04 13:41:03.901 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-11-04 13:41:03.903 +01:00 [INF] Hosting environment: Development
+2024-11-04 13:41:03.905 +01:00 [INF] Content root path: C:\Users\47408\Map Your Meal\MapYourMeal-Logger2\MapYourMeal
+2024-11-04 13:41:04.057 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/ - null null
+2024-11-04 13:41:04.085 +01:00 [INF] Executing endpoint 'MapYourMeal.Controllers.HomeController.Index (MapYourMeal)'
+2024-11-04 13:41:04.100 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MapYourMeal.Controllers.HomeController (MapYourMeal).
+2024-11-04 13:41:04.112 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-04 13:41:04.229 +01:00 [INF] Executed ViewResult - view Index executed in 120.464ms.
+2024-11-04 13:41:04.232 +01:00 [INF] Executed action MapYourMeal.Controllers.HomeController.Index (MapYourMeal) in 131.3992ms
+2024-11-04 13:41:04.232 +01:00 [INF] Executed endpoint 'MapYourMeal.Controllers.HomeController.Index (MapYourMeal)'
+2024-11-04 13:41:04.235 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/ - 200 null text/html; charset=utf-8 179.777ms
+2024-11-04 13:41:04.281 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/images/vegan.png - null null
+2024-11-04 13:41:04.281 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/images/gluten_free.png - null null
+2024-11-04 13:41:04.281 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/css/site.css - null null
+2024-11-04 13:41:04.281 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.css - null null
+2024-11-04 13:41:04.281 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css - null null
+2024-11-04 13:41:04.289 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css - 404 0 null 9.5041ms
+2024-11-04 13:41:04.291 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css, Response status code: 404
+2024-11-04 13:41:04.294 +01:00 [INF] The file /css/site.css was not modified
+2024-11-04 13:41:04.294 +01:00 [INF] The file /images/vegan.png was not modified
+2024-11-04 13:41:04.294 +01:00 [INF] The file /images/gluten_free.png was not modified
+2024-11-04 13:41:04.294 +01:00 [INF] The file /lib/leaflet/dist/leaflet.css was not modified
+2024-11-04 13:41:04.295 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/css/site.css - 304 null text/css 15.1592ms
+2024-11-04 13:41:04.295 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/images/gluten_free.png - 304 null image/png 15.1401ms
+2024-11-04 13:41:04.295 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/images/vegan.png - 304 null image/png 15.205ms
+2024-11-04 13:41:04.295 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.css - 304 null text/css 15.1758ms
+2024-11-04 13:41:04.377 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/images/dairy_free.png - null null
+2024-11-04 13:41:04.377 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/css - null null
+2024-11-04 13:41:04.378 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.js - null null
+2024-11-04 13:41:04.378 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js - null null
+2024-11-04 13:41:04.378 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/js/site.js - null null
+2024-11-04 13:41:04.379 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/css - 404 0 null 1.7766ms
+2024-11-04 13:41:04.379 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/css, Response status code: 404
+2024-11-04 13:41:04.379 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js - 404 0 null 0.8415ms
+2024-11-04 13:41:04.379 +01:00 [INF] The file /lib/leaflet/dist/leaflet.js was not modified
+2024-11-04 13:41:04.379 +01:00 [INF] The file /js/site.js was not modified
+2024-11-04 13:41:04.379 +01:00 [INF] The file /images/dairy_free.png was not modified
+2024-11-04 13:41:04.379 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.js - 304 null text/javascript 1.3021ms
+2024-11-04 13:41:04.379 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/js/site.js - 304 null text/javascript 1.1296ms
+2024-11-04 13:41:04.379 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/images/dairy_free.png - 304 null image/png 2.3234ms
+2024-11-04 13:41:04.379 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js, Response status code: 404
+2024-11-04 13:41:07.152 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/images/marker-icon.png - null null
+2024-11-04 13:41:07.153 +01:00 [INF] The file /lib/leaflet/dist/images/marker-icon.png was not modified
+2024-11-04 13:41:07.153 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/images/marker-icon.png - 304 null image/png 0.5603ms
+2024-11-04 13:41:07.155 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/images/marker-shadow.png - null null
+2024-11-04 13:41:07.155 +01:00 [INF] The file /lib/leaflet/dist/images/marker-shadow.png was not modified
+2024-11-04 13:41:07.155 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/images/marker-shadow.png - 304 null image/png 0.6005ms
+2024-11-04 13:41:10.812 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/Review/Table - null null
+2024-11-04 13:41:10.813 +01:00 [INF] Executing endpoint 'MapYourMeal.Controllers.ReviewController.Table (MapYourMeal)'
+2024-11-04 13:41:10.820 +01:00 [INF] Route matched with {action = "Table", controller = "Review"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Table() on controller MapYourMeal.Controllers.ReviewController (MapYourMeal).
+2024-11-04 13:41:10.891 +01:00 [INF] Executing ViewResult, running view Table.
+2024-11-04 13:41:10.904 +01:00 [INF] Executed ViewResult - view Table executed in 14.3916ms.
+2024-11-04 13:41:10.905 +01:00 [INF] Executed action MapYourMeal.Controllers.ReviewController.Table (MapYourMeal) in 84.4523ms
+2024-11-04 13:41:10.905 +01:00 [INF] Executed endpoint 'MapYourMeal.Controllers.ReviewController.Table (MapYourMeal)'
+2024-11-04 13:41:10.907 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/Review/Table - 200 null text/html; charset=utf-8 95.1535ms
+2024-11-04 13:41:10.915 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css - null null
+2024-11-04 13:41:10.915 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/css - null null
+2024-11-04 13:41:10.915 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/css - 404 0 null 0.3307ms
+2024-11-04 13:41:10.915 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/css, Response status code: 404
+2024-11-04 13:41:10.915 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css - 404 0 null 0.5261ms
+2024-11-04 13:41:10.915 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css, Response status code: 404
+2024-11-04 13:41:11.047 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js - null null
+2024-11-04 13:41:11.048 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js - 404 0 null 0.513ms
+2024-11-04 13:41:11.048 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js, Response status code: 404
+2024-11-04 13:41:15.174 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/Review/Create - null null
+2024-11-04 13:41:15.175 +01:00 [INF] Executing endpoint 'MapYourMeal.Controllers.ReviewController.Create (MapYourMeal)'
+2024-11-04 13:41:15.177 +01:00 [INF] Route matched with {action = "Create", controller = "Review"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Create() on controller MapYourMeal.Controllers.ReviewController (MapYourMeal).
+2024-11-04 13:41:15.179 +01:00 [INF] Executing ViewResult, running view Create.
+2024-11-04 13:41:15.224 +01:00 [INF] Executed ViewResult - view Create executed in 46.4074ms.
+2024-11-04 13:41:15.224 +01:00 [INF] Executed action MapYourMeal.Controllers.ReviewController.Create (MapYourMeal) in 47.642ms
+2024-11-04 13:41:15.224 +01:00 [INF] Executed endpoint 'MapYourMeal.Controllers.ReviewController.Create (MapYourMeal)'
+2024-11-04 13:41:15.224 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/Review/Create - 200 null text/html; charset=utf-8 50.2799ms
+2024-11-04 13:41:15.237 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css - null null
+2024-11-04 13:41:15.237 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/css - null null
+2024-11-04 13:41:15.237 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js - null null
+2024-11-04 13:41:15.238 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/css - 404 0 null 0.1837ms
+2024-11-04 13:41:15.238 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/css, Response status code: 404
+2024-11-04 13:41:15.238 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js - 404 0 null 0.308ms
+2024-11-04 13:41:15.238 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css - 404 0 null 0.4566ms
+2024-11-04 13:41:15.238 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js, Response status code: 404
+2024-11-04 13:41:15.238 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css, Response status code: 404
+2024-11-04 13:41:35.658 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5252/Review/Create - application/x-www-form-urlencoded 399
+2024-11-04 13:41:35.659 +01:00 [INF] Executing endpoint 'MapYourMeal.Controllers.ReviewController.Create (MapYourMeal)'
+2024-11-04 13:41:35.669 +01:00 [INF] Route matched with {action = "Create", controller = "Review"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(MapYourMeal.Models.Review) on controller MapYourMeal.Controllers.ReviewController (MapYourMeal).
+2024-11-04 13:41:35.699 +01:00 [WRN] [ReviewController] Review creation failed {"ReviewId":0,"Note":"FAntastic","Rating":7,"ImageUrl":"/images/pizza.jpg","Dish":null,"IsGlutenFree":true,"IsVegan":false,"IsDairyFree":false,"UserId":1,"RestaurantId":1,"User":null,"Restaurant":null,"$type":"Review"}
+2024-11-04 13:41:35.700 +01:00 [INF] Executing ViewResult, running view Create.
+2024-11-04 13:41:35.749 +01:00 [INF] Executed ViewResult - view Create executed in 49.4837ms.
+2024-11-04 13:41:35.750 +01:00 [INF] Executed action MapYourMeal.Controllers.ReviewController.Create (MapYourMeal) in 80.3477ms
+2024-11-04 13:41:35.750 +01:00 [INF] Executed endpoint 'MapYourMeal.Controllers.ReviewController.Create (MapYourMeal)'
+2024-11-04 13:41:35.750 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5252/Review/Create - 200 null text/html; charset=utf-8 91.7809ms
+2024-11-04 13:41:35.784 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css - null null
+2024-11-04 13:41:35.785 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css - 404 0 null 0.7425ms
+2024-11-04 13:41:35.785 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css, Response status code: 404
+2024-11-04 13:41:35.786 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/css - null null
+2024-11-04 13:41:35.786 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js - null null
+2024-11-04 13:41:35.788 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/css - 404 0 null 0.6905ms
+2024-11-04 13:41:35.791 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/css, Response status code: 404
+2024-11-04 13:41:35.791 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js - 404 0 null 5.3541ms
+2024-11-04 13:41:35.791 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js, Response status code: 404
+2024-11-04 13:41:43.350 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5252/Review/Create - application/x-www-form-urlencoded 404
+2024-11-04 13:41:43.350 +01:00 [INF] Executing endpoint 'MapYourMeal.Controllers.ReviewController.Create (MapYourMeal)'
+2024-11-04 13:41:43.350 +01:00 [INF] Route matched with {action = "Create", controller = "Review"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(MapYourMeal.Models.Review) on controller MapYourMeal.Controllers.ReviewController (MapYourMeal).
+2024-11-04 13:41:43.405 +01:00 [INF] Executing RedirectResult, redirecting to /Review/Table.
+2024-11-04 13:41:43.406 +01:00 [INF] Executed action MapYourMeal.Controllers.ReviewController.Create (MapYourMeal) in 55.0537ms
+2024-11-04 13:41:43.406 +01:00 [INF] Executed endpoint 'MapYourMeal.Controllers.ReviewController.Create (MapYourMeal)'
+2024-11-04 13:41:43.406 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5252/Review/Create - 302 0 null 56.0966ms
+2024-11-04 13:41:43.408 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/Review/Table - null null
+2024-11-04 13:41:43.409 +01:00 [INF] Executing endpoint 'MapYourMeal.Controllers.ReviewController.Table (MapYourMeal)'
+2024-11-04 13:41:43.409 +01:00 [INF] Route matched with {action = "Table", controller = "Review"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Table() on controller MapYourMeal.Controllers.ReviewController (MapYourMeal).
+2024-11-04 13:41:43.411 +01:00 [INF] Executing ViewResult, running view Table.
+2024-11-04 13:41:43.412 +01:00 [INF] Executed ViewResult - view Table executed in 1.3186ms.
+2024-11-04 13:41:43.412 +01:00 [INF] Executed action MapYourMeal.Controllers.ReviewController.Table (MapYourMeal) in 3.6096ms
+2024-11-04 13:41:43.412 +01:00 [INF] Executed endpoint 'MapYourMeal.Controllers.ReviewController.Table (MapYourMeal)'
+2024-11-04 13:41:43.412 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/Review/Table - 200 null text/html; charset=utf-8 4.0586ms
+2024-11-04 13:41:43.427 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css - null null
+2024-11-04 13:41:43.427 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/images/pizza.jpg - null null
+2024-11-04 13:41:43.427 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/css - null null
+2024-11-04 13:41:43.427 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/css - 404 0 null 0.2927ms
+2024-11-04 13:41:43.427 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/css, Response status code: 404
+2024-11-04 13:41:43.427 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/images/pizza.jpg - 404 0 null 0.5587ms
+2024-11-04 13:41:43.428 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css - 404 0 null 0.6189ms
+2024-11-04 13:41:43.428 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/images/pizza.jpg, Response status code: 404
+2024-11-04 13:41:43.428 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css, Response status code: 404
+2024-11-04 13:41:43.461 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js - null null
+2024-11-04 13:41:43.461 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js - 404 0 null 0.3627ms
+2024-11-04 13:41:43.461 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js, Response status code: 404
+2024-11-04 13:41:46.543 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/Review/Update?ReviewId=4 - null null
+2024-11-04 13:41:46.543 +01:00 [INF] Executing endpoint 'MapYourMeal.Controllers.ReviewController.Update (MapYourMeal)'
+2024-11-04 13:41:46.545 +01:00 [INF] Route matched with {action = "Update", controller = "Review"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(Int32) on controller MapYourMeal.Controllers.ReviewController (MapYourMeal).
+2024-11-04 13:41:46.586 +01:00 [INF] Executing ViewResult, running view Update.
+2024-11-04 13:41:46.604 +01:00 [INF] Executed ViewResult - view Update executed in 18.0104ms.
+2024-11-04 13:41:46.604 +01:00 [INF] Executed action MapYourMeal.Controllers.ReviewController.Update (MapYourMeal) in 58.3533ms
+2024-11-04 13:41:46.604 +01:00 [INF] Executed endpoint 'MapYourMeal.Controllers.ReviewController.Update (MapYourMeal)'
+2024-11-04 13:41:46.604 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/Review/Update?ReviewId=4 - 200 null text/html; charset=utf-8 61.1564ms
+2024-11-04 13:41:46.620 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css - null null
+2024-11-04 13:41:46.621 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/css - null null
+2024-11-04 13:41:46.621 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js - null null
+2024-11-04 13:41:46.621 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/css - 404 0 null 0.1548ms
+2024-11-04 13:41:46.621 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/css, Response status code: 404
+2024-11-04 13:41:46.621 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css - 404 0 null 0.557ms
+2024-11-04 13:41:46.621 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css, Response status code: 404
+2024-11-04 13:41:46.621 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js - 404 0 null 0.2867ms
+2024-11-04 13:41:46.621 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js, Response status code: 404
+2024-11-04 13:41:48.359 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5252/Review/Update - application/x-www-form-urlencoded 415
+2024-11-04 13:41:48.359 +01:00 [INF] Executing endpoint 'MapYourMeal.Controllers.ReviewController.Update (MapYourMeal)'
+2024-11-04 13:41:48.361 +01:00 [INF] Route matched with {action = "Update", controller = "Review"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(MapYourMeal.Models.Review) on controller MapYourMeal.Controllers.ReviewController (MapYourMeal).
+2024-11-04 13:41:48.372 +01:00 [INF] Executing RedirectResult, redirecting to /Review/Table.
+2024-11-04 13:41:48.372 +01:00 [INF] Executed action MapYourMeal.Controllers.ReviewController.Update (MapYourMeal) in 11.1274ms
+2024-11-04 13:41:48.373 +01:00 [INF] Executed endpoint 'MapYourMeal.Controllers.ReviewController.Update (MapYourMeal)'
+2024-11-04 13:41:48.373 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5252/Review/Update - 302 0 null 14.2169ms
+2024-11-04 13:41:48.376 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/Review/Table - null null
+2024-11-04 13:41:48.376 +01:00 [INF] Executing endpoint 'MapYourMeal.Controllers.ReviewController.Table (MapYourMeal)'
+2024-11-04 13:41:48.376 +01:00 [INF] Route matched with {action = "Table", controller = "Review"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Table() on controller MapYourMeal.Controllers.ReviewController (MapYourMeal).
+2024-11-04 13:41:48.378 +01:00 [INF] Executing ViewResult, running view Table.
+2024-11-04 13:41:48.379 +01:00 [INF] Executed ViewResult - view Table executed in 1.0349ms.
+2024-11-04 13:41:48.379 +01:00 [INF] Executed action MapYourMeal.Controllers.ReviewController.Table (MapYourMeal) in 3.0024ms
+2024-11-04 13:41:48.379 +01:00 [INF] Executed endpoint 'MapYourMeal.Controllers.ReviewController.Table (MapYourMeal)'
+2024-11-04 13:41:48.379 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/Review/Table - 200 null text/html; charset=utf-8 3.3526ms
+2024-11-04 13:41:48.395 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css - null null
+2024-11-04 13:41:48.395 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/images/pizza.jpg - null null
+2024-11-04 13:41:48.395 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/css - null null
+2024-11-04 13:41:48.396 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/images/pizza.jpg - 404 0 null 1.0869ms
+2024-11-04 13:41:48.396 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css - 404 0 null 0.6285ms
+2024-11-04 13:41:48.396 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/css - 404 0 null 0.1355ms
+2024-11-04 13:41:48.396 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/images/pizza.jpg, Response status code: 404
+2024-11-04 13:41:48.396 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css, Response status code: 404
+2024-11-04 13:41:48.398 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/css, Response status code: 404
+2024-11-04 13:41:48.426 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js - null null
+2024-11-04 13:41:48.426 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js - 404 0 null 0.3313ms
+2024-11-04 13:41:48.426 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js, Response status code: 404
+2024-11-04 13:41:50.191 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/Review/Delete?ReviewId=4 - null null
+2024-11-04 13:41:50.191 +01:00 [INF] Executing endpoint 'MapYourMeal.Controllers.ReviewController.Delete (MapYourMeal)'
+2024-11-04 13:41:50.193 +01:00 [INF] Route matched with {action = "Delete", controller = "Review"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Delete(Int32) on controller MapYourMeal.Controllers.ReviewController (MapYourMeal).
+2024-11-04 13:41:50.200 +01:00 [INF] Executing ViewResult, running view Delete.
+2024-11-04 13:41:50.203 +01:00 [INF] Executed ViewResult - view Delete executed in 3.3446ms.
+2024-11-04 13:41:50.203 +01:00 [INF] Executed action MapYourMeal.Controllers.ReviewController.Delete (MapYourMeal) in 9.7515ms
+2024-11-04 13:41:50.203 +01:00 [INF] Executed endpoint 'MapYourMeal.Controllers.ReviewController.Delete (MapYourMeal)'
+2024-11-04 13:41:50.203 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/Review/Delete?ReviewId=4 - 200 null text/html; charset=utf-8 12.4732ms
+2024-11-04 13:41:50.217 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css - null null
+2024-11-04 13:41:50.218 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/css - null null
+2024-11-04 13:41:50.218 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/css - 404 0 null 0.2158ms
+2024-11-04 13:41:50.218 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/css, Response status code: 404
+2024-11-04 13:41:50.218 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js - null null
+2024-11-04 13:41:50.257 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js - 404 0 null 39.1489ms
+2024-11-04 13:41:50.257 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css - 404 0 null 39.6614ms
+2024-11-04 13:41:50.257 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css, Response status code: 404
+2024-11-04 13:41:50.257 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js, Response status code: 404
+2024-11-04 13:41:55.038 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5252/Review/DeleteConfirmed?ReviewId=4 - application/x-www-form-urlencoded 182
+2024-11-04 13:41:55.038 +01:00 [INF] Executing endpoint 'MapYourMeal.Controllers.ReviewController.DeleteConfirmed (MapYourMeal)'
+2024-11-04 13:41:55.041 +01:00 [INF] Route matched with {action = "DeleteConfirmed", controller = "Review"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteConfirmed(Int32) on controller MapYourMeal.Controllers.ReviewController (MapYourMeal).
+2024-11-04 13:41:55.054 +01:00 [INF] Executing RedirectResult, redirecting to /Review/Table.
+2024-11-04 13:41:55.054 +01:00 [INF] Executed action MapYourMeal.Controllers.ReviewController.DeleteConfirmed (MapYourMeal) in 12.8676ms
+2024-11-04 13:41:55.054 +01:00 [INF] Executed endpoint 'MapYourMeal.Controllers.ReviewController.DeleteConfirmed (MapYourMeal)'
+2024-11-04 13:41:55.054 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5252/Review/DeleteConfirmed?ReviewId=4 - 302 0 null 16.6025ms
+2024-11-04 13:41:55.058 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/Review/Table - null null
+2024-11-04 13:41:55.058 +01:00 [INF] Executing endpoint 'MapYourMeal.Controllers.ReviewController.Table (MapYourMeal)'
+2024-11-04 13:41:55.058 +01:00 [INF] Route matched with {action = "Table", controller = "Review"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Table() on controller MapYourMeal.Controllers.ReviewController (MapYourMeal).
+2024-11-04 13:41:55.060 +01:00 [INF] Executing ViewResult, running view Table.
+2024-11-04 13:41:55.061 +01:00 [INF] Executed ViewResult - view Table executed in 0.4485ms.
+2024-11-04 13:41:55.061 +01:00 [INF] Executed action MapYourMeal.Controllers.ReviewController.Table (MapYourMeal) in 2.3531ms
+2024-11-04 13:41:55.061 +01:00 [INF] Executed endpoint 'MapYourMeal.Controllers.ReviewController.Table (MapYourMeal)'
+2024-11-04 13:41:55.061 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/Review/Table - 200 null text/html; charset=utf-8 2.6556ms
+2024-11-04 13:41:55.076 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css - null null
+2024-11-04 13:41:55.076 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css - 404 0 null 0.3245ms
+2024-11-04 13:41:55.076 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css, Response status code: 404
+2024-11-04 13:41:55.076 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js - null null
+2024-11-04 13:41:55.076 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/css - null null
+2024-11-04 13:41:55.077 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/css - 404 0 null 0.1807ms
+2024-11-04 13:41:55.077 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/css, Response status code: 404
+2024-11-04 13:41:55.077 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js - 404 0 null 0.6374ms
+2024-11-04 13:41:55.077 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js, Response status code: 404
+2024-11-04 13:42:17.265 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/Review/Create - null null
+2024-11-04 13:42:17.267 +01:00 [INF] Executing endpoint 'MapYourMeal.Controllers.ReviewController.Create (MapYourMeal)'
+2024-11-04 13:42:17.268 +01:00 [INF] Route matched with {action = "Create", controller = "Review"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Create() on controller MapYourMeal.Controllers.ReviewController (MapYourMeal).
+2024-11-04 13:42:17.269 +01:00 [INF] Executing ViewResult, running view Create.
+2024-11-04 13:42:17.275 +01:00 [INF] Executed ViewResult - view Create executed in 6.1811ms.
+2024-11-04 13:42:17.275 +01:00 [INF] Executed action MapYourMeal.Controllers.ReviewController.Create (MapYourMeal) in 6.5802ms
+2024-11-04 13:42:17.275 +01:00 [INF] Executed endpoint 'MapYourMeal.Controllers.ReviewController.Create (MapYourMeal)'
+2024-11-04 13:42:17.275 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/Review/Create - 200 null text/html; charset=utf-8 10.8161ms
+2024-11-04 13:42:17.294 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css - null null
+2024-11-04 13:42:17.295 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css - 404 0 null 0.3672ms
+2024-11-04 13:42:17.295 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/css - null null
+2024-11-04 13:42:17.295 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css, Response status code: 404
+2024-11-04 13:42:17.295 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/css - 404 0 null 0.3767ms
+2024-11-04 13:42:17.295 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/css, Response status code: 404
+2024-11-04 13:42:17.295 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js - null null
+2024-11-04 13:42:17.300 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js - 404 0 null 4.4124ms
+2024-11-04 13:42:17.302 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js, Response status code: 404
+2024-11-04 13:42:20.374 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5252/Review/Create - application/x-www-form-urlencoded 348
+2024-11-04 13:42:20.375 +01:00 [INF] Executing endpoint 'MapYourMeal.Controllers.ReviewController.Create (MapYourMeal)'
+2024-11-04 13:42:20.375 +01:00 [INF] Route matched with {action = "Create", controller = "Review"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(MapYourMeal.Models.Review) on controller MapYourMeal.Controllers.ReviewController (MapYourMeal).
+2024-11-04 13:42:20.380 +01:00 [WRN] [ReviewController] Review creation failed {"ReviewId":0,"Note":null,"Rating":0,"ImageUrl":null,"Dish":null,"IsGlutenFree":false,"IsVegan":false,"IsDairyFree":false,"UserId":null,"RestaurantId":null,"User":null,"Restaurant":null,"$type":"Review"}
+2024-11-04 13:42:20.380 +01:00 [INF] Executing ViewResult, running view Create.
+2024-11-04 13:42:20.381 +01:00 [INF] Executed ViewResult - view Create executed in 1.543ms.
+2024-11-04 13:42:20.382 +01:00 [INF] Executed action MapYourMeal.Controllers.ReviewController.Create (MapYourMeal) in 6.802ms
+2024-11-04 13:42:20.382 +01:00 [INF] Executed endpoint 'MapYourMeal.Controllers.ReviewController.Create (MapYourMeal)'
+2024-11-04 13:42:20.382 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5252/Review/Create - 200 null text/html; charset=utf-8 7.229ms
+2024-11-04 13:42:20.398 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/css - null null
+2024-11-04 13:42:20.398 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css - null null
+2024-11-04 13:42:20.398 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js - null null
+2024-11-04 13:42:20.398 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/css - 404 0 null 0.1627ms
+2024-11-04 13:42:20.398 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/css, Response status code: 404
+2024-11-04 13:42:20.398 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css - 404 0 null 0.3398ms
+2024-11-04 13:42:20.398 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js - 404 0 null 0.217ms
+2024-11-04 13:42:20.398 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css, Response status code: 404
+2024-11-04 13:42:20.398 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js, Response status code: 404
+2024-11-04 13:42:24.598 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5252/Review/Create - application/x-www-form-urlencoded 348
+2024-11-04 13:42:24.598 +01:00 [INF] Executing endpoint 'MapYourMeal.Controllers.ReviewController.Create (MapYourMeal)'
+2024-11-04 13:42:24.598 +01:00 [INF] Route matched with {action = "Create", controller = "Review"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(MapYourMeal.Models.Review) on controller MapYourMeal.Controllers.ReviewController (MapYourMeal).
+2024-11-04 13:42:24.601 +01:00 [WRN] [ReviewController] Review creation failed {"ReviewId":0,"Note":null,"Rating":0,"ImageUrl":null,"Dish":null,"IsGlutenFree":false,"IsVegan":false,"IsDairyFree":false,"UserId":null,"RestaurantId":null,"User":null,"Restaurant":null,"$type":"Review"}
+2024-11-04 13:42:24.601 +01:00 [INF] Executing ViewResult, running view Create.
+2024-11-04 13:42:24.602 +01:00 [INF] Executed ViewResult - view Create executed in 1.0287ms.
+2024-11-04 13:42:24.602 +01:00 [INF] Executed action MapYourMeal.Controllers.ReviewController.Create (MapYourMeal) in 3.8156ms
+2024-11-04 13:42:24.602 +01:00 [INF] Executed endpoint 'MapYourMeal.Controllers.ReviewController.Create (MapYourMeal)'
+2024-11-04 13:42:24.602 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5252/Review/Create - 200 null text/html; charset=utf-8 4.2627ms
+2024-11-04 13:42:24.619 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css - null null
+2024-11-04 13:42:24.619 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/css - null null
+2024-11-04 13:42:24.619 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/css - 404 0 null 0.1967ms
+2024-11-04 13:42:24.619 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js - null null
+2024-11-04 13:42:24.619 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/css, Response status code: 404
+2024-11-04 13:42:24.619 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css - 404 0 null 0.3984ms
+2024-11-04 13:42:24.619 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css, Response status code: 404
+2024-11-04 13:42:24.619 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js - 404 0 null 0.2864ms
+2024-11-04 13:42:24.619 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js, Response status code: 404
+2024-11-04 13:42:52.437 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5252/Review/Create - application/x-www-form-urlencoded 405
+2024-11-04 13:42:52.439 +01:00 [INF] Executing endpoint 'MapYourMeal.Controllers.ReviewController.Create (MapYourMeal)'
+2024-11-04 13:42:52.441 +01:00 [INF] Route matched with {action = "Create", controller = "Review"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(MapYourMeal.Models.Review) on controller MapYourMeal.Controllers.ReviewController (MapYourMeal).
+2024-11-04 13:42:52.451 +01:00 [INF] Executing RedirectResult, redirecting to /Review/Table.
+2024-11-04 13:42:52.451 +01:00 [INF] Executed action MapYourMeal.Controllers.ReviewController.Create (MapYourMeal) in 10.3086ms
+2024-11-04 13:42:52.451 +01:00 [INF] Executed endpoint 'MapYourMeal.Controllers.ReviewController.Create (MapYourMeal)'
+2024-11-04 13:42:52.452 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5252/Review/Create - 302 0 null 14.6748ms
+2024-11-04 13:42:52.454 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/Review/Table - null null
+2024-11-04 13:42:52.455 +01:00 [INF] Executing endpoint 'MapYourMeal.Controllers.ReviewController.Table (MapYourMeal)'
+2024-11-04 13:42:52.455 +01:00 [INF] Route matched with {action = "Table", controller = "Review"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Table() on controller MapYourMeal.Controllers.ReviewController (MapYourMeal).
+2024-11-04 13:42:52.457 +01:00 [INF] Executing ViewResult, running view Table.
+2024-11-04 13:42:52.458 +01:00 [INF] Executed ViewResult - view Table executed in 0.5021ms.
+2024-11-04 13:42:52.458 +01:00 [INF] Executed action MapYourMeal.Controllers.ReviewController.Table (MapYourMeal) in 3.129ms
+2024-11-04 13:42:52.458 +01:00 [INF] Executed endpoint 'MapYourMeal.Controllers.ReviewController.Table (MapYourMeal)'
+2024-11-04 13:42:52.458 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/Review/Table - 200 null text/html; charset=utf-8 3.5611ms
+2024-11-04 13:42:52.473 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css - null null
+2024-11-04 13:42:52.474 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/images/pizza.jpg - null null
+2024-11-04 13:42:52.474 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css - 404 0 null 0.4952ms
+2024-11-04 13:42:52.474 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/images/pizza.jpg - 404 0 null 0.3079ms
+2024-11-04 13:42:52.474 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css, Response status code: 404
+2024-11-04 13:42:52.474 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/images/pizza.jpg, Response status code: 404
+2024-11-04 13:42:52.475 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/css - null null
+2024-11-04 13:42:52.475 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/css - 404 0 null 0.1094ms
+2024-11-04 13:42:52.475 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/css, Response status code: 404
+2024-11-04 13:42:52.508 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js - null null
+2024-11-04 13:42:52.508 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js - 404 0 null 0.3223ms
+2024-11-04 13:42:52.509 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js, Response status code: 404
+2024-11-04 13:42:57.042 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/Review/Update?ReviewId=5 - null null
+2024-11-04 13:42:57.042 +01:00 [INF] Executing endpoint 'MapYourMeal.Controllers.ReviewController.Update (MapYourMeal)'
+2024-11-04 13:42:57.042 +01:00 [INF] Route matched with {action = "Update", controller = "Review"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(Int32) on controller MapYourMeal.Controllers.ReviewController (MapYourMeal).
+2024-11-04 13:42:57.045 +01:00 [INF] Executing ViewResult, running view Update.
+2024-11-04 13:42:57.047 +01:00 [INF] Executed ViewResult - view Update executed in 1.4034ms.
+2024-11-04 13:42:57.047 +01:00 [INF] Executed action MapYourMeal.Controllers.ReviewController.Update (MapYourMeal) in 4.844ms
+2024-11-04 13:42:57.047 +01:00 [INF] Executed endpoint 'MapYourMeal.Controllers.ReviewController.Update (MapYourMeal)'
+2024-11-04 13:42:57.047 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/Review/Update?ReviewId=5 - 200 null text/html; charset=utf-8 5.2736ms
+2024-11-04 13:42:57.064 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css - null null
+2024-11-04 13:42:57.064 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/css - null null
+2024-11-04 13:42:57.064 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css - 404 0 null 0.3046ms
+2024-11-04 13:42:57.065 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js - null null
+2024-11-04 13:42:57.065 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css, Response status code: 404
+2024-11-04 13:42:57.065 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/css - 404 0 null 0.2153ms
+2024-11-04 13:42:57.065 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/css, Response status code: 404
+2024-11-04 13:42:57.065 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js - 404 0 null 0.3442ms
+2024-11-04 13:42:57.065 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js, Response status code: 404
+2024-11-04 13:43:03.068 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5252/Review/Update - application/x-www-form-urlencoded 415
+2024-11-04 13:43:03.068 +01:00 [INF] Executing endpoint 'MapYourMeal.Controllers.ReviewController.Update (MapYourMeal)'
+2024-11-04 13:43:03.068 +01:00 [INF] Route matched with {action = "Update", controller = "Review"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(MapYourMeal.Models.Review) on controller MapYourMeal.Controllers.ReviewController (MapYourMeal).
+2024-11-04 13:43:03.071 +01:00 [WRN] [ReviewController] Review update failed {"ReviewId":5,"Note":"FAntastic pizza","Rating":0,"ImageUrl":"/images/pizza.jpg","Dish":"Pizza","IsGlutenFree":false,"IsVegan":true,"IsDairyFree":false,"UserId":1,"RestaurantId":1,"User":null,"Restaurant":null,"$type":"Review"}
+2024-11-04 13:43:03.071 +01:00 [INF] Executing ViewResult, running view Update.
+2024-11-04 13:43:03.072 +01:00 [INF] Executed ViewResult - view Update executed in 1.376ms.
+2024-11-04 13:43:03.072 +01:00 [INF] Executed action MapYourMeal.Controllers.ReviewController.Update (MapYourMeal) in 4.0176ms
+2024-11-04 13:43:03.072 +01:00 [INF] Executed endpoint 'MapYourMeal.Controllers.ReviewController.Update (MapYourMeal)'
+2024-11-04 13:43:03.072 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5252/Review/Update - 200 null text/html; charset=utf-8 4.6113ms
+2024-11-04 13:43:03.093 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css - null null
+2024-11-04 13:43:03.093 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js - null null
+2024-11-04 13:43:03.093 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/css - null null
+2024-11-04 13:43:03.093 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css - 404 0 null 0.7393ms
+2024-11-04 13:43:03.093 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css, Response status code: 404
+2024-11-04 13:43:03.093 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/css - 404 0 null 0.1985ms
+2024-11-04 13:43:03.093 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/css, Response status code: 404
+2024-11-04 13:43:03.093 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js - 404 0 null 0.3303ms
+2024-11-04 13:43:03.093 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js, Response status code: 404

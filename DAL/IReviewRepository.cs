@@ -4,9 +4,9 @@ namespace MapYourMeal.DAL;
 
 public interface IReviewRepository
 {
-    Task<IEnumerable<Review>> GetAll();
+    Task<IEnumerable<Review>?> GetAll();
     Task<Review?> GetItemById(int ReviewId);
-    Task Create(Review review);
-    Task Update(Review review);
-    Task<Review?> Delete(int ReviewId);
+    Task<bool> Create(Review review);
+    Task<bool> Update(Review review);
+    Task<bool> Delete(int ReviewId);
 }
