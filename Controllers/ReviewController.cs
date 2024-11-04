@@ -9,14 +9,19 @@ namespace MapYourMeal.Controllers;
 public class ReviewController : Controller
 {
     private readonly IReviewRepository _reviewRepository;
+    private readonly ILogger<ReviewController> _logger;
 
-    public ReviewController(IReviewRepository reviewRepository)
+    public ReviewController(IReviewRepository reviewRepository, ILogger<ReviewController> logger)
     {
         _reviewRepository = reviewRepository;
+        _logger = logger;
     }
 
     public async Task<IActionResult> Table()
     {
+        _logger.LogInformation("This is an information message");
+        _logger.LogWarning("This is a warning message");
+        _logger.LogError("This is an error message");
         var reviews = await _reviewRepository.GetAll();
         if(reviews == null)
         {

@@ -1,0 +1,70 @@
+2024-11-04 10:53:00.122 +01:00 [INF] User profile is available. Using 'C:\Users\47408\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-11-04 10:53:00.266 +01:00 [INF] Now listening on: https://localhost:7200
+2024-11-04 10:53:00.267 +01:00 [INF] Now listening on: http://localhost:5252
+2024-11-04 10:53:00.273 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-11-04 10:53:00.275 +01:00 [INF] Hosting environment: Development
+2024-11-04 10:53:00.276 +01:00 [INF] Content root path: C:\Users\47408\Map Your Meal\MapYourMeal-Logger2\MapYourMeal
+2024-11-04 10:53:00.419 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/ - null null
+2024-11-04 10:53:00.442 +01:00 [INF] Executing endpoint 'MapYourMeal.Controllers.HomeController.Index (MapYourMeal)'
+2024-11-04 10:53:00.459 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MapYourMeal.Controllers.HomeController (MapYourMeal).
+2024-11-04 10:53:00.473 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-04 10:53:00.582 +01:00 [INF] Executed ViewResult - view Index executed in 111.518ms.
+2024-11-04 10:53:00.585 +01:00 [INF] Executed action MapYourMeal.Controllers.HomeController.Index (MapYourMeal) in 125.7841ms
+2024-11-04 10:53:00.586 +01:00 [INF] Executed endpoint 'MapYourMeal.Controllers.HomeController.Index (MapYourMeal)'
+2024-11-04 10:53:00.589 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/ - 200 null text/html; charset=utf-8 172.3592ms
+2024-11-04 10:53:00.596 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/css/site.css - null null
+2024-11-04 10:53:00.598 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css - null null
+2024-11-04 10:53:00.598 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.css - null null
+2024-11-04 10:53:00.599 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/images/gluten_free.png - null null
+2024-11-04 10:53:00.603 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/images/vegan.png - null null
+2024-11-04 10:53:00.617 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css - 404 0 null 18.3051ms
+2024-11-04 10:53:00.618 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css, Response status code: 404
+2024-11-04 10:53:00.621 +01:00 [INF] The file /images/vegan.png was not modified
+2024-11-04 10:53:00.621 +01:00 [INF] The file /lib/leaflet/dist/leaflet.css was not modified
+2024-11-04 10:53:00.621 +01:00 [INF] The file /images/gluten_free.png was not modified
+2024-11-04 10:53:00.621 +01:00 [INF] The file /css/site.css was not modified
+2024-11-04 10:53:00.621 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.css - 304 null text/css 23.0763ms
+2024-11-04 10:53:00.621 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/css/site.css - 304 null text/css 25.3304ms
+2024-11-04 10:53:00.621 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/images/gluten_free.png - 304 null image/png 22.3566ms
+2024-11-04 10:53:00.621 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/images/vegan.png - 304 null image/png 18.0129ms
+2024-11-04 10:53:00.722 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/images/dairy_free.png - null null
+2024-11-04 10:53:00.722 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/css - null null
+2024-11-04 10:53:00.723 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/js/site.js - null null
+2024-11-04 10:53:00.723 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.js - null null
+2024-11-04 10:53:00.723 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js - null null
+2024-11-04 10:53:00.725 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/css - 404 0 null 3.1031ms
+2024-11-04 10:53:00.726 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js - 404 0 null 2.5802ms
+2024-11-04 10:53:00.726 +01:00 [INF] The file /js/site.js was not modified
+2024-11-04 10:53:00.725 +01:00 [INF] The file /images/dairy_free.png was not modified
+2024-11-04 10:53:00.726 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js, Response status code: 404
+2024-11-04 10:53:00.726 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/css, Response status code: 404
+2024-11-04 10:53:00.726 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/js/site.js - 304 null text/javascript 2.6893ms
+2024-11-04 10:53:00.726 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/images/dairy_free.png - 304 null image/png 3.7933ms
+2024-11-04 10:53:00.726 +01:00 [INF] The file /lib/leaflet/dist/leaflet.js was not modified
+2024-11-04 10:53:00.726 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.js - 304 null text/javascript 2.9231ms
+2024-11-04 10:53:03.355 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/images/marker-icon.png - null null
+2024-11-04 10:53:03.356 +01:00 [INF] The file /lib/leaflet/dist/images/marker-icon.png was not modified
+2024-11-04 10:53:03.356 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/images/marker-icon.png - 304 null image/png 1.8134ms
+2024-11-04 10:53:03.365 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/images/marker-shadow.png - null null
+2024-11-04 10:53:03.365 +01:00 [INF] The file /lib/leaflet/dist/images/marker-shadow.png was not modified
+2024-11-04 10:53:03.366 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/images/marker-shadow.png - 304 null image/png 0.9365ms
+2024-11-04 10:53:05.518 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/Review/Table - null null
+2024-11-04 10:53:05.518 +01:00 [INF] Executing endpoint 'MapYourMeal.Controllers.ReviewController.Table (MapYourMeal)'
+2024-11-04 10:53:05.523 +01:00 [INF] Route matched with {action = "Table", controller = "Review"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Table() on controller MapYourMeal.Controllers.ReviewController (MapYourMeal).
+2024-11-04 10:53:05.527 +01:00 [INF] This is an information message
+2024-11-04 10:53:05.534 +01:00 [WRN] This is a warning message
+2024-11-04 10:53:05.538 +01:00 [ERR] This is an error message
+2024-11-04 10:53:05.604 +01:00 [INF] Executing ViewResult, running view Table.
+2024-11-04 10:53:05.620 +01:00 [INF] Executed ViewResult - view Table executed in 16.1997ms.
+2024-11-04 10:53:05.620 +01:00 [INF] Executed action MapYourMeal.Controllers.ReviewController.Table (MapYourMeal) in 96.9844ms
+2024-11-04 10:53:05.620 +01:00 [INF] Executed endpoint 'MapYourMeal.Controllers.ReviewController.Table (MapYourMeal)'
+2024-11-04 10:53:05.622 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/Review/Table - 200 null text/html; charset=utf-8 104.7939ms
+2024-11-04 10:53:05.631 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css - null null
+2024-11-04 10:53:05.631 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css - 404 0 null 0.6292ms
+2024-11-04 10:53:05.631 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/css - null null
+2024-11-04 10:53:05.631 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css, Response status code: 404
+2024-11-04 10:53:05.632 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/css - 404 0 null 0.2046ms
+2024-11-04 10:53:05.632 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/css, Response status code: 404
+2024-11-04 10:53:05.758 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js - null null
+2024-11-04 10:53:05.759 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js - 404 0 null 0.5039ms
+2024-11-04 10:53:05.759 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js, Response status code: 404

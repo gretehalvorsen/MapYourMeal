@@ -1,0 +1,133 @@
+2024-11-04 10:45:24.306 +01:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA journal_mode = 'wal';
+2024-11-04 10:45:24.384 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Restaurants" (
+    "RestaurantId" INTEGER NOT NULL CONSTRAINT "PK_Restaurants" PRIMARY KEY AUTOINCREMENT,
+    "RestaurantName" TEXT NOT NULL,
+    "Longitude" REAL NOT NULL,
+    "Latitude" REAL NOT NULL,
+    "AverageRating" REAL NOT NULL,
+    "ImageUrl" TEXT NULL,
+    "Images" TEXT NULL,
+    "Address" TEXT NULL,
+    "City" TEXT NULL
+);
+2024-11-04 10:45:24.386 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Users" (
+    "UserId" INTEGER NOT NULL CONSTRAINT "PK_Users" PRIMARY KEY AUTOINCREMENT,
+    "UserName" TEXT NOT NULL,
+    "Email" TEXT NOT NULL
+);
+2024-11-04 10:45:24.388 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Reviews" (
+    "ReviewId" INTEGER NOT NULL CONSTRAINT "PK_Reviews" PRIMARY KEY AUTOINCREMENT,
+    "Note" TEXT NULL,
+    "Rating" INTEGER NOT NULL,
+    "ImageUrl" TEXT NULL,
+    "Dish" TEXT NOT NULL,
+    "IsGlutenFree" INTEGER NOT NULL,
+    "IsVegan" INTEGER NOT NULL,
+    "IsDairyFree" INTEGER NOT NULL,
+    "UserId" INTEGER NULL,
+    "RestaurantId" INTEGER NULL,
+    CONSTRAINT "FK_Reviews_Restaurants_RestaurantId" FOREIGN KEY ("RestaurantId") REFERENCES "Restaurants" ("RestaurantId"),
+    CONSTRAINT "FK_Reviews_Users_UserId" FOREIGN KEY ("UserId") REFERENCES "Users" ("UserId")
+);
+2024-11-04 10:45:24.390 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_Reviews_RestaurantId" ON "Reviews" ("RestaurantId");
+2024-11-04 10:45:24.391 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_Reviews_UserId" ON "Reviews" ("UserId");
+2024-11-04 10:45:24.519 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Restaurants" AS "r")
+2024-11-04 10:45:24.634 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?', @p1='?' (DbType = Double), @p2='?', @p3='?', @p4='?' (Size = 2), @p5='?' (DbType = Double), @p6='?' (DbType = Double), @p7='?' (Size = 7)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Restaurants" ("Address", "AverageRating", "City", "ImageUrl", "Images", "Latitude", "Longitude", "RestaurantName")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7)
+RETURNING "RestaurantId";
+2024-11-04 10:45:24.646 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?', @p1='?' (DbType = Double), @p2='?', @p3='?', @p4='?' (Size = 2), @p5='?' (DbType = Double), @p6='?' (DbType = Double), @p7='?' (Size = 4)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Restaurants" ("Address", "AverageRating", "City", "ImageUrl", "Images", "Latitude", "Longitude", "RestaurantName")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7)
+RETURNING "RestaurantId";
+2024-11-04 10:45:24.648 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?', @p1='?' (DbType = Double), @p2='?', @p3='?', @p4='?' (Size = 2), @p5='?' (DbType = Double), @p6='?' (DbType = Double), @p7='?' (Size = 7)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Restaurants" ("Address", "AverageRating", "City", "ImageUrl", "Images", "Latitude", "Longitude", "RestaurantName")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7)
+RETURNING "RestaurantId";
+2024-11-04 10:45:24.662 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Users" AS "u")
+2024-11-04 10:45:24.675 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 11), @p1='?' (Size = 3)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Users" ("Email", "UserName")
+VALUES (@p0, @p1)
+RETURNING "UserId";
+2024-11-04 10:45:24.677 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 12), @p1='?' (Size = 4)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Users" ("Email", "UserName")
+VALUES (@p0, @p1)
+RETURNING "UserId";
+2024-11-04 10:45:24.681 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Reviews" AS "r")
+2024-11-04 10:45:24.716 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 5), @p1='?', @p2='?' (DbType = Boolean), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (Size = 12), @p6='?' (DbType = Int32), @p7='?' (DbType = Int32), @p8='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Reviews" ("Dish", "ImageUrl", "IsDairyFree", "IsGlutenFree", "IsVegan", "Note", "Rating", "RestaurantId", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8)
+RETURNING "ReviewId";
+2024-11-04 10:45:24.719 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 5), @p1='?', @p2='?' (DbType = Boolean), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (Size = 4), @p6='?' (DbType = Int32), @p7='?' (DbType = Int32), @p8='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Reviews" ("Dish", "ImageUrl", "IsDairyFree", "IsGlutenFree", "IsVegan", "Note", "Rating", "RestaurantId", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8)
+RETURNING "ReviewId";
+2024-11-04 10:45:24.721 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 9), @p1='?', @p2='?' (DbType = Boolean), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (Size = 3), @p6='?' (DbType = Int32), @p7='?' (DbType = Int32), @p8='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Reviews" ("Dish", "ImageUrl", "IsDairyFree", "IsGlutenFree", "IsVegan", "Note", "Rating", "RestaurantId", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8)
+RETURNING "ReviewId";
+2024-11-04 10:45:24.863 +01:00 [INF] User profile is available. Using 'C:\Users\47408\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-11-04 10:45:24.981 +01:00 [INF] Now listening on: https://localhost:7200
+2024-11-04 10:45:24.982 +01:00 [INF] Now listening on: http://localhost:5252
+2024-11-04 10:45:24.987 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-11-04 10:45:24.990 +01:00 [INF] Hosting environment: Development
+2024-11-04 10:45:24.991 +01:00 [INF] Content root path: C:\Users\47408\Map Your Meal\MapYourMeal-Logger2\MapYourMeal
+2024-11-04 10:45:25.148 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/ - null null
+2024-11-04 10:45:25.181 +01:00 [INF] Executing endpoint 'MapYourMeal.Controllers.HomeController.Index (MapYourMeal)'
+2024-11-04 10:45:25.200 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MapYourMeal.Controllers.HomeController (MapYourMeal).
+2024-11-04 10:45:25.214 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-04 10:45:25.318 +01:00 [INF] Executed ViewResult - view Index executed in 106.6671ms.
+2024-11-04 10:45:25.322 +01:00 [INF] Executed action MapYourMeal.Controllers.HomeController.Index (MapYourMeal) in 120.9677ms
+2024-11-04 10:45:25.322 +01:00 [INF] Executed endpoint 'MapYourMeal.Controllers.HomeController.Index (MapYourMeal)'
+2024-11-04 10:45:25.326 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/ - 200 null text/html; charset=utf-8 179.715ms
+2024-11-04 10:45:25.333 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.css - null null
+2024-11-04 10:45:25.333 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/css/site.css - null null
+2024-11-04 10:45:25.333 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css - null null
+2024-11-04 10:45:25.333 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/images/gluten_free.png - null null
+2024-11-04 10:45:25.337 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/images/vegan.png - null null
+2024-11-04 10:45:25.354 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css - 404 0 null 20.3789ms
+2024-11-04 10:45:25.355 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/lib/leaflet/dist/leaflet.min.css, Response status code: 404
+2024-11-04 10:45:25.358 +01:00 [INF] The file /images/vegan.png was not modified
+2024-11-04 10:45:25.358 +01:00 [INF] The file /images/gluten_free.png was not modified
+2024-11-04 10:45:25.358 +01:00 [INF] The file /css/site.css was not modified
+2024-11-04 10:45:25.358 +01:00 [INF] The file /lib/leaflet/dist/leaflet.css was not modified
+2024-11-04 10:45:25.359 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/images/vegan.png - 304 null image/png 24.9161ms
+2024-11-04 10:45:25.359 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/images/gluten_free.png - 304 null image/png 25.0121ms
+2024-11-04 10:45:25.359 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.css - 304 null text/css 25.2429ms
+2024-11-04 10:45:25.359 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/css/site.css - 304 null text/css 25.0316ms
+2024-11-04 10:45:25.457 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/images/dairy_free.png - null null
+2024-11-04 10:45:25.457 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/css - null null
+2024-11-04 10:45:25.458 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.js - null null
+2024-11-04 10:45:25.458 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js - null null
+2024-11-04 10:45:25.458 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/js/site.js - null null
+2024-11-04 10:45:25.459 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/css - 404 0 null 1.9725ms
+2024-11-04 10:45:25.459 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js - 404 0 null 1.37ms
+2024-11-04 10:45:25.460 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/lib/leaflet/dist/leaflet.min.js, Response status code: 404
+2024-11-04 10:45:25.459 +01:00 [INF] The file /images/dairy_free.png was not modified
+2024-11-04 10:45:25.460 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5252/css, Response status code: 404
+2024-11-04 10:45:25.460 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/images/dairy_free.png - 304 null image/png 2.6168ms
+2024-11-04 10:45:25.460 +01:00 [INF] The file /js/site.js was not modified
+2024-11-04 10:45:25.460 +01:00 [INF] The file /lib/leaflet/dist/leaflet.js was not modified
+2024-11-04 10:45:25.460 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/js/site.js - 304 null text/javascript 1.8601ms
+2024-11-04 10:45:25.460 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/leaflet.js - 304 null text/javascript 2.0977ms
+2024-11-04 10:45:28.230 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/images/marker-icon.png - null null
+2024-11-04 10:45:28.230 +01:00 [INF] The file /lib/leaflet/dist/images/marker-icon.png was not modified
+2024-11-04 10:45:28.230 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/images/marker-icon.png - 304 null image/png 0.6518ms
+2024-11-04 10:45:28.232 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/images/marker-shadow.png - null null
+2024-11-04 10:45:28.233 +01:00 [INF] The file /lib/leaflet/dist/images/marker-shadow.png was not modified
+2024-11-04 10:45:28.233 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/lib/leaflet/dist/images/marker-shadow.png - 304 null image/png 0.5125ms
