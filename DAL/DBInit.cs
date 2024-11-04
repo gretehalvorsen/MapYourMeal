@@ -17,38 +17,11 @@ public static class DBInit
         {
             var jsonData = System.IO.File.ReadAllText("DAL/infoRestaurants.json");
             var restaurants = JsonSerializer.Deserialize<List<Restaurant>>(jsonData);
-            context.AddRange(restaurants);
-            context.SaveChanges();
+            if (restaurants!=null){
+                context.AddRange(restaurants);
+                context.SaveChanges();
+            }
         }
-
-        /*if(!context.Restaurants.Any())
-        {
-            var restaurants = new List<Restaurant>
-            {
-                new Restaurant
-                {
-                    RestaurantName = "La Luna",
-                    Longitude = 12.0,
-                    Latitude = 12.0
-                },
-
-                new Restaurant
-                {
-                    RestaurantName = "Egon",
-                    Longitude = 47.0,
-                    Latitude = 74.0
-                },
-
-                new Restaurant
-                {
-                    RestaurantName = "La Luna",
-                    Longitude = 78.0,
-                    Latitude = 45.0
-                }
-            };
-            context.AddRange(restaurants);
-            context.SaveChanges();
-        }*/
 
         if(!context.Users.Any())
         {
