@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MapYourMeal.Models;
+using System.Text.Json;
 
 namespace MapYourMeal.DAL;
 
@@ -13,6 +14,14 @@ public static class DBInit
         context.Database.EnsureCreated();
 
         if(!context.Restaurants.Any())
+        {
+            var jsonData = System.IO.File.ReadAllText("DAL/infoRestaurants.json");
+            var restaurants = JsonSerializer.Deserialize<List<Restaurant>>(jsonData);
+            context.AddRange(restaurants);
+            context.SaveChanges();
+        }
+
+        /*if(!context.Restaurants.Any())
         {
             var restaurants = new List<Restaurant>
             {
@@ -39,7 +48,7 @@ public static class DBInit
             };
             context.AddRange(restaurants);
             context.SaveChanges();
-        }
+        }*/
 
         if(!context.Users.Any())
         {
