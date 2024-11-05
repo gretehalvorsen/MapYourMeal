@@ -17,9 +17,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 });
 
 // Add this in the brackets if you want to RequireconfirmAccount options => options.SignIn.RequireConfirmedAccount = true
-builder.Services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddDefaultIdentity<User>().AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
+builder.Services.AddScoped<IRestaurantRepository, RestaurantRepository>();
 
 builder.Services.AddRazorPages();
 builder.Services.AddSession();
