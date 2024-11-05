@@ -7,9 +7,11 @@ $(function(){
     initMap();
 })
 
+var map;
+
 function initMap(){
     //Initialize the Leaflet map
-    var map = L.map('map');
+    map = L.map('map');
 
     //Setting the location for the first view. 
     map.setView([59.9139, 10.7522], 13);
@@ -19,9 +21,11 @@ function initMap(){
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
+}
 
+function addUserPosition(){
     //Code for adding the user location, using the two functions defined below:
-    //navigator.geolocation.watchPosition(positionSuccess, positionError);
+    navigator.geolocation.watchPosition(positionSuccess, positionError);
 
     function positionSuccess(pos) {
         const lat = pos.coords.latitude;
@@ -43,7 +47,9 @@ function initMap(){
             alert("Cannot get current location");
         }
     }
+}
 
+function loadRestaurantsFromAPI(){
     var requestOptions = {
         method: 'GET',
     };
@@ -68,4 +74,13 @@ function initMap(){
         .catch((error) => {
             console.log('error', error);
         });
+}
+
+function addRestaurantToMap(lat, lon, name, mapid){
+    var marker = L.marker([lat, lon]).addTo(mapid);
+    marker.bindPopup(
+        "<address><strong>Name: " + name + 
+        "</strong><br>Latitude: " + lat + 
+        "<br>Longitude: " + lon + 
+        "</address>");
 }
