@@ -1,10 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using MapYourMeal.DAL;
-//using MapYourMeal.Models;
+using MapYourMeal.Models;
 using Serilog;
 using Serilog.Events;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("ApplicationDbContextConnection") ?? throw new InvalidOperationException("Connection string 'ApplicationDbContextConnection' not found.");
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -14,7 +16,13 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration["ConnectionStrings:ApplicationDbContextConnection"]);
 });
 
+// Add this in the brackets if you want to RequireconfirmAccount options => options.SignIn.RequireConfirmedAccount = true
+builder.Services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<ApplicationDbContext>();
+
 builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
+
+builder.Services.AddRazorPages();
+builder.Services.AddSession();
 
 var loggerConfiguration = new LoggerConfiguration()
     .MinimumLevel.Information() //levels: Trace < Information < Warning < Error < Fatal
@@ -37,7 +45,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseStaticFiles();
-
+app.UseSession();
+app.UseAuthentication();
+app.UseAuthorization();
 app.MapDefaultControllerRoute();
-
+app.MapRazorPages();
 app.Run();
