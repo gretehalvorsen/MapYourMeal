@@ -17,13 +17,48 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 });
 
 // Add this in the brackets if you want to RequireconfirmAccount options => options.SignIn.RequireConfirmedAccount = true
-builder.Services.AddDefaultIdentity<User>().AddEntityFrameworkStores<ApplicationDbContext>();
+//builder.Services.AddDefaultIdentity<User>().AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddIdentity<User, IdentityRole>(options =>
+{
+    //Password settings
+    options.Password.RequireDigit = true;
+    options.Password.RequiredLength = 8;
+    options.Password.RequireNonAlphanumeric = true;
+    options.Password.RequireUppercase = true;
+    options.Password.RequireLowercase = true;
+    options.Password.RequiredUniqueChars = 6;
 
+//Lockout settings
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(60);
+    options.Lockout.MaxFailedAccessAttempts = 5;
+    options.Lockout.AllowedForNewUsers = true;
+
+    //User settings
+    options.User.RequireUniqueEmail = true;
+
+    //Sign-in settings
+    options.SignIn.RequireConfirmedAccount = false; // set to true if you want email confirmation
+})
+.AddEntityFrameworkStores<ApplicationDbContext>()
+.AddDefaultTokenProviders();
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/Identity/Account/Login"; // Ensure this path is valid
+}
+);
 builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
 builder.Services.AddScoped<IRestaurantRepository, RestaurantRepository>();
 
 builder.Services.AddRazorPages();
-builder.Services.AddSession();
+//builder.Services.AddSession();
+builder.Services.AddSession(options =>
+{
+    options.Cookie.Name = ".AdventureWorks.Session";
+    options.IdleTimeout = TimeSpan.FromSeconds(1800); // 30  mins
+    options.Cookie.IsEssential = true;
+}
+);
 
 var loggerConfiguration = new LoggerConfiguration()
     .MinimumLevel.Information() //levels: Trace < Information < Warning < Error < Fatal
