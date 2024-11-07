@@ -7,6 +7,7 @@ public class Review
     public int Rating { get; set; }
     public string? ImageUrl { get; set; }
     public string Dish { get; set; } = string.Empty;
+    public DateTime CreatedDate { get; set; } = DateTime.Now;
 
     // requirements
     public bool IsGlutenFree { get; set; }

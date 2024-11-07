@@ -10,6 +10,7 @@
             <th>Rating</th>
             <th>Description</th>
             <th>Image</th>
+            <th>Created</th>
             <th>Actions</th>
             </tr> @*Creating a table row with table headers*@
         @foreach (var review in Model) @*Starts a razor foreach loop, iterating over each item in the Model (passed to the view
@@ -27,6 +28,7 @@
                 <td>
                     <img src="@review.ImageUrl" alt="Review Image" style="max-width: 80px; max-height: 80px;" />
                 </td>
+                <td>@review.CreatedDate</td>
                 <td>
                     <a asp-action="Update" asp-route-ReviewId="@review.ReviewId">Update</a>
                     <a asp-action="Delete" asp-route-ReviewId="@review.ReviewId">Delete</a>
