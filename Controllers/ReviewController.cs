@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MapYourMeal.Models;
 using MapYourMeal.DAL;
@@ -31,6 +32,7 @@ public class ReviewController : Controller
 
     // GET: Reviews/Create
     [HttpGet]
+    [Authorize]
     public IActionResult Create()
     {
         return View();
@@ -38,6 +40,7 @@ public class ReviewController : Controller
 
     // POST: Reviews/Create
     [HttpPost]
+    [Authorize]
     public async Task<IActionResult> Create(Review review)
     {
         if (ModelState.IsValid)
@@ -51,6 +54,7 @@ public class ReviewController : Controller
     }
 
     [HttpGet]
+    [Authorize]
     //[Route("Review/Update/{ReviewId}")]
     public async Task<IActionResult> Update(int ReviewId) {
         //Console.WriteLine($"Received ReviewId: {ReviewId}");
@@ -64,6 +68,7 @@ public class ReviewController : Controller
     }
 
     [HttpPost]
+    [Authorize]
     public async Task<IActionResult> Update(Review review)
     {
         //Console.WriteLine("POST Update method called");
@@ -78,6 +83,7 @@ public class ReviewController : Controller
     }
 
     [HttpGet]
+    [Authorize]
     public async Task<IActionResult> Delete(int ReviewId)
     {
         var review = await _reviewRepository.GetItemById(ReviewId);
@@ -91,6 +97,7 @@ public class ReviewController : Controller
 
     // POST: Reviews/Delete
     [HttpPost]
+    [Authorize]
     public async Task<IActionResult> DeleteConfirmed(int ReviewId)
     {
         bool returnOk = await _reviewRepository.Delete(ReviewId);

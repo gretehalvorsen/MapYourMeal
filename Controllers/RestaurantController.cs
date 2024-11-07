@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MapYourMeal.DAL;
 using MapYourMeal.ViewModels;
@@ -28,6 +29,7 @@ public class RestaurantController : Controller
 
         // GET: Restaurant/Create
         [HttpGet]
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -35,6 +37,7 @@ public class RestaurantController : Controller
 
         // POST: Restaurant/Create
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Create(Restaurant restaurant)
         {
             if (ModelState.IsValid)
@@ -46,6 +49,7 @@ public class RestaurantController : Controller
         }
 
         [HttpGet]
+        [Authorize]
         //[Route("Restaurant/Update/{RestaurantId}")]
         public async Task<IActionResult> Update(int RestaurantId) {
             Console.WriteLine($"Received RestaurantId: {RestaurantId}");
@@ -59,6 +63,7 @@ public class RestaurantController : Controller
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Update(Restaurant restaurant)
         {
             Console.WriteLine("POST Update method called");
@@ -71,6 +76,7 @@ public class RestaurantController : Controller
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Delete(int RestaurantId)
         {
             var restaurant = await _restaurantRepository.GetItemById(RestaurantId);
@@ -83,6 +89,7 @@ public class RestaurantController : Controller
 
         // POST: Restaurant/Delete
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int RestaurantId)
         {
             var restaurant = await _restaurantRepository.Delete(RestaurantId);
