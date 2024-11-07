@@ -48,6 +48,15 @@ public class RestaurantController : Controller
             return View(restaurant);
         }
 
+        [HttpPost]
+        //Restaurant/SavePinPoint
+        public async Task<ActionResult> SavePinPoint([FromBody] Restaurant restaurant)
+        {
+            Console.WriteLine("Navn: " + restaurant.RestaurantName);
+            await _restaurantRepository.Create(restaurant);
+            return RedirectToAction(nameof(Table));
+        }
+
         [HttpGet]
         [Authorize]
         //[Route("Restaurant/Update/{RestaurantId}")]

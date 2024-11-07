@@ -7,11 +7,9 @@ $(function(){
     initMap();
 })
 
-var map;
-
 function initMap(){
     //Initialize the Leaflet map
-    map = L.map('map');
+    var map = L.map('map');
 
     //Setting the location for the first view. 
     map.setView([59.9139, 10.7522], 13);
@@ -21,6 +19,24 @@ function initMap(){
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
+
+    map.on('click', function(e) {
+        var lat = e.latlng.lat;
+        var lng = e.latlng.lng;
+        var marker = L.marker([lat, lng]).addTo(map);
+
+
+        fetch('/Restaurant/SavePinPoint', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ RestaurantName: "name test", 
+                Longitude: lng, 
+                Latitude: lat,
+                AverageRating: 0.0 }),
+        })
+    });
 }
 
 function addUserPosition(){
@@ -29,10 +45,10 @@ function addUserPosition(){
 
     function positionSuccess(pos) {
         const lat = pos.coords.latitude;
-        const lng = pos.coords.longitude;
+        const lon = pos.coords.longitude;
         const accuracy = pos.coords.accuracy;
 
-        var marker = L.marker([lat, lng]).addTo(map);
+        var marker = L.marker([lat, lon]).addTo(map);
         //L.circle([lat, lng], { radius: accuracy }).addTo(map);
 
         //Can add basic HTML info in the bindPopup that will be displayed. 
@@ -75,7 +91,7 @@ function loadRestaurantsFromAPI(){
             console.log('error', error);
         });
 }
-
+/*
 function addRestaurantToMap(lat, lon, name, mapid){
     var marker = L.marker([lat, lon]).addTo(mapid);
     marker.bindPopup(
@@ -83,4 +99,4 @@ function addRestaurantToMap(lat, lon, name, mapid){
         "</strong><br>Latitude: " + lat + 
         "<br>Longitude: " + lon + 
         "</address>");
-}
+}*/
