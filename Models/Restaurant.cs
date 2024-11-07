@@ -7,6 +7,7 @@ namespace MapYourMeal.Models
         public double Longitude { get; set; }
         public double Latitude { get; set; }
         public double AverageRating { get; set; }
+        public DateTime CreatedDate { get; set; } = DateTime.Now;
 
         // Single image URL for use in search results, summaries, etc.
         public string? ImageUrl { get; set; }
