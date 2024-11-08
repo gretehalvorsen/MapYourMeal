@@ -33,15 +33,39 @@ function initCreateMap(){
     });
 }
 
-function initMap(){
+async function initMap(){
     var map = L.map('map');
     map.setView([59.91, 10.75], 13);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
+
+    var restaurants = await fetchRestaurants();
+    console.log(restaurants);
+    restaurants.forEach(restaurant => {
+        L.marker([restaurant.latitude, restaurant.longitude])
+            .addTo(map)
+            .bindPopup(`<b>${restaurant.restaurantName}</b><br>${restaurant.city}`);
+    });
 }
 
+async function fetchRestaurants() {
+    try{
+        const response = await fetch('/Restaurant/GetAllRestaurants');
+        if (!response.ok) {
+            throw new Error('HTTP error! status ${response.status}');
+        }
+        const data = await response.json();
+        return data.result;
+    }
+    catch (error) {
+        console.error('An error occurred while fetching the restaurants:', error);
+        return []; 
+    }
+
+}
+/*
 function addUserPosition(){
     navigator.geolocation.watchPosition(positionSuccess, positionError);
     function positionSuccess(pos) {
@@ -59,9 +83,9 @@ function addUserPosition(){
             alert("Cannot get current location");
         }
     }
-}
+}*/
 
-function loadRestaurantsFromAPI(){
+/*function loadRestaurantsFromAPI(){
     var requestOptions = {
         method: 'GET',
     };
@@ -84,13 +108,4 @@ function loadRestaurantsFromAPI(){
         .catch((error) => {
             console.log('error', error);
         });
-}
-/*
-function addRestaurantToMap(lat, lon, name, mapid){
-    var marker = L.marker([lat, lon]).addTo(mapid);
-    marker.bindPopup(
-        "<address><strong>Name: " + name + 
-        "</strong><br>Latitude: " + lat + 
-        "<br>Longitude: " + lon + 
-        "</address>");
 }*/

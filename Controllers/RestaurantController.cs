@@ -16,6 +16,13 @@ public class RestaurantController : Controller
             _restaurantRepository = restaurantRepository;
         }
 
+        [HttpGet]
+        public IActionResult GetAllRestaurants()
+        {
+            var restaurants = _restaurantRepository.GetAll();
+            return Ok(restaurants);
+        }
+
         // GET: Restaurant/Table
         [HttpGet]
         public async Task<IActionResult> Table()
