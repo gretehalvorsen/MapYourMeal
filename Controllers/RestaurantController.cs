@@ -29,6 +29,16 @@ public class RestaurantController : Controller
             return View(restaurantViewModel);
         }
 
+        public async Task<IActionResult> Index(int restaurantId)
+        {
+            var restaurant = await _restaurantRepository.GetItemById(restaurantId);
+            if (restaurant == null)
+            {
+                return NotFound();
+            }
+            return View(restaurant);
+        }
+
         // GET: Restaurant/Create
         [HttpGet]
         [Authorize]
