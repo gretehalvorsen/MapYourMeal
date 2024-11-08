@@ -16,6 +16,8 @@ public class RestaurantController : Controller
             _restaurantRepository = restaurantRepository;
         }
 
+        // GET: Restaurant/Table
+        [HttpGet]
         public async Task<IActionResult> Table()
         {
             var restaurants = await _restaurantRepository.GetAll();
@@ -42,19 +44,11 @@ public class RestaurantController : Controller
         {
             if (ModelState.IsValid)
             {
-                await _restaurantRepository.Create(restaurant);
-                return RedirectToAction(nameof(Table));
+                bool returnOk = await _restaurantRepository.Create(restaurant);
+                if (returnOk)
+                    return RedirectToAction("Index", "SearchResult");
             }
             return View(restaurant);
-        }
-
-        [HttpPost]
-        //Restaurant/SavePinPoint
-        public async Task<ActionResult> SavePinPoint([FromBody] Restaurant restaurant)
-        {
-            Console.WriteLine("Navn: " + restaurant.RestaurantName);
-            await _restaurantRepository.Create(restaurant);
-            return RedirectToAction(nameof(Table));
         }
 
         [HttpGet]
@@ -71,11 +65,11 @@ public class RestaurantController : Controller
             return View(restaurant);
         }
 
-        [HttpPost]
+        [HttpPut]
         [Authorize]
         public async Task<IActionResult> Update(Restaurant restaurant)
         {
-            Console.WriteLine("POST Update method called");
+            Console.WriteLine("PUT Update method called");
             if (ModelState.IsValid)
             {
                 await _restaurantRepository.Update(restaurant);

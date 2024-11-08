@@ -15,12 +15,12 @@ namespace MapYourMeal.Models
         // List of images for use in detailed views
         public List<string>? Images { get; set; } = new List<string>();
 
-        public string Address { get; set; } = string.Empty;
-        public string City { get; set; } = string.Empty;
-        public string Webpage { get; set; } = string.Empty;
+        public string? Address { get; set; } = string.Empty;
+        public string? City { get; set; } = string.Empty;
+        public string? Webpage { get; set; } = string.Empty;
         public string? Phone { get; set; } = string.Empty;
 
         // Navigation property for reviews
-        public virtual List<Review> Reviews{ get; set;} = default!;
+        public virtual List<Review> Reviews{ get; set;} = new List<Review>();
     }
 }
