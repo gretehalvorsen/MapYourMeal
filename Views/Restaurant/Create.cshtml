@@ -1,0 +1,63 @@
+@model MapYourMeal.Models.Restaurant
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Create new Restaurant</h2>
+            <form asp-action="Create">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="RestaurantName">Restaurant Name</label><span class="text-danger">*</span>
+                    <input asp-for="RestaurantName" class="form-control" />
+                    <span asp-validation-for="RestaurantName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Longitude">Longitude</label><span class="text-danger">*</span>
+                    <input asp-for="Longitude" class="form-control" />
+                    <span asp-validation-for="Longitude" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Latitude">Latitude</label><span class="text-danger">*</span>
+                    <input asp-for="Latitude" class="form-control" />
+                    <span asp-validation-for="Latitude" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Address">Address</label>
+                    <input asp-for="Address" class="form-control" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="City">City</label>
+                    <input asp-for="City" class="form-control" />
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Webpage">Webpage</label>
+                    <input asp-for="Webpage" class="form-control" />
+                    <span asp-validation-for="Webpage" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Phone">Phone</label>
+                    <input asp-for="Phone" class="form-control" />
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-success btn-lg">Create</button>
+
+            </form>
+
+            <div>
+                <a href="@Url.Action("Index", "SearchResult")" class="btn btn-success btn-lg">View Restaurants</a>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="map-placeholder" id="createRestaurantMap">
+            </div>
+        </div>
+    </div>
+</div>
+

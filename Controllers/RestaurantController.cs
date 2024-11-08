@@ -16,6 +16,15 @@ public class RestaurantController : Controller
             _restaurantRepository = restaurantRepository;
         }
 
+        [HttpGet]
+        public IActionResult GetAllRestaurants()
+        {
+            var restaurants = _restaurantRepository.GetAll();
+            return Ok(restaurants);
+        }
+
+        // GET: Restaurant/Table
+        [HttpGet]
         public async Task<IActionResult> Table()
         {
             var restaurants = await _restaurantRepository.GetAll();
@@ -25,6 +34,16 @@ public class RestaurantController : Controller
             }
             var restaurantViewModel = new RestaurantViewModel(restaurants, "Table");
             return View(restaurantViewModel);
+        }
+
+        public async Task<IActionResult> Index(int restaurantId)
+        {
+            var restaurant = await _restaurantRepository.GetItemById(restaurantId);
+            if (restaurant == null)
+            {
+                return NotFound();
+            }
+            return View(restaurant);
         }
 
         // GET: Restaurant/Create
@@ -42,8 +61,9 @@ public class RestaurantController : Controller
         {
             if (ModelState.IsValid)
             {
-                await _restaurantRepository.Create(restaurant);
-                return RedirectToAction(nameof(Table));
+                bool returnOk = await _restaurantRepository.Create(restaurant);
+                if (returnOk)
+                    return RedirectToAction("Index", "SearchResult");
             }
             return View(restaurant);
         }
@@ -62,11 +82,11 @@ public class RestaurantController : Controller
             return View(restaurant);
         }
 
-        [HttpPost]
+        [HttpPut]
         [Authorize]
         public async Task<IActionResult> Update(Restaurant restaurant)
         {
-            Console.WriteLine("POST Update method called");
+            Console.WriteLine("PUT Update method called");
             if (ModelState.IsValid)
             {
                 await _restaurantRepository.Update(restaurant);

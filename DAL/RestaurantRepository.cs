@@ -21,10 +21,18 @@ public class RestaurantRepository : IRestaurantRepository
         return await _db.Restaurants.FindAsync(RestaurantId); // Kontroller at id eksisterer i databasen
     }
 
-    public async Task Create(Restaurant restaurant)
+    public async Task<bool> Create(Restaurant restaurant)
     {
-        _db.Restaurants.Add(restaurant);
-        await _db.SaveChangesAsync();
+        try{
+            _db.Restaurants.Add(restaurant);
+            await _db.SaveChangesAsync();
+            return true;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Exception: " + e);
+            return false;
+        }
     }
     
     public async Task Update(Restaurant restaurant)
