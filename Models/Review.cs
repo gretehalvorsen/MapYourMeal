@@ -15,7 +15,7 @@ public class Review
     public bool IsDairyFree { get; set; }
 
     // Foreign keys
-    public int? UserId { get; set; }
+    public string? UserId { get; set; }
     public int? RestaurantId { get; set; }
     
     // navigation properties

@@ -6,6 +6,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using MapYourMeal.DAL;
 using MapYourMeal.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -17,13 +18,18 @@ namespace MapYourMeal.Areas.Identity.Pages.Account.Manage
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
+        private readonly ApplicationDbContext _context;
+
 
         public IndexModel(
             UserManager<User> userManager,
-            SignInManager<User> signInManager)
+            SignInManager<User> signInManager,
+            ApplicationDbContext context)
+
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _context = context;
         }
 
         /// <summary>
@@ -61,6 +67,8 @@ namespace MapYourMeal.Areas.Identity.Pages.Account.Manage
             public string PhoneNumber { get; set; }
         }
 
+        public IList<Review> UserReviews { get; set;}
+
         private async Task LoadAsync(User user)
         {
             var userName = await _userManager.GetUserNameAsync(user);
@@ -72,6 +80,10 @@ namespace MapYourMeal.Areas.Identity.Pages.Account.Manage
             {
                 PhoneNumber = phoneNumber
             };
+
+            UserReviews = _context.Reviews
+            .Where(r => r.UserId == user.Id)
+            .ToList();
         }
 
         public async Task<IActionResult> OnGetAsync()
