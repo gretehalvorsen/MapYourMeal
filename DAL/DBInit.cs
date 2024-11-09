@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using MapYourMeal.Models;
 using System.Text.Json;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace MapYourMeal.DAL;
 
@@ -10,6 +12,7 @@ public static class DBInit
     {
         using var serviceScope = app.ApplicationServices.CreateScope();
         ApplicationDbContext context = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+        UserManager<User> userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<User>>();
         context.Database.EnsureDeleted();
         context.Database.EnsureCreated();
 
@@ -17,7 +20,8 @@ public static class DBInit
         {
             var jsonData = System.IO.File.ReadAllText("DAL/infoRestaurants.json");
             var restaurants = JsonSerializer.Deserialize<List<Restaurant>>(jsonData);
-            if (restaurants!=null){
+            if (restaurants!=null)
+            {
                 context.AddRange(restaurants);
                 context.SaveChanges();
             }
@@ -29,17 +33,24 @@ public static class DBInit
             {
                 new User
                 {
-                    UserName = "Bob",
+                    UserName = "bob@user.no",
                     Email = "bob@user.no"
                 },
 
                 new User
                 {
-                    UserName = "Lisa",
+                    UserName = "lisa@user.no",
                     Email = "lisa@user.no"
                 }
             };
-            context.AddRange(users);
+            foreach (var user in users)
+            {
+                var result = userManager.CreateAsync(user, "Password123!").Result; // replace "Password123!" with the desired password
+                if (!result.Succeeded)
+                {
+                    throw new Exception(string.Join("\n", result.Errors));
+                }
+            }
             context.SaveChanges();
         }
 
@@ -87,7 +98,7 @@ public static class DBInit
                     IsGlutenFree = true,
                     IsVegan = true,
                     IsDairyFree = true,
-                    CreatedDate = DateTime.Today.AddDays(-7).AddHours(14).AddMinutes(30).AddSeconds(47),  // 7 days ago at 2:30 PM,
+                    CreatedDate = DateTime.Today.AddDays(-7).AddHours(14).AddMinutes(30).AddSeconds(47),  
                     RestaurantId = 2,
                     UserId = user2?.Id
                 }
