@@ -4,6 +4,7 @@
 
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using MapYourMeal.DAL;
@@ -11,6 +12,7 @@ using MapYourMeal.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace MapYourMeal.Areas.Identity.Pages.Account.Manage
 {
@@ -20,54 +22,35 @@ namespace MapYourMeal.Areas.Identity.Pages.Account.Manage
         private readonly SignInManager<User> _signInManager;
         private readonly ApplicationDbContext _context;
 
-
         public IndexModel(
             UserManager<User> userManager,
             SignInManager<User> signInManager,
             ApplicationDbContext context)
-
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _context = context;
         }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         public string Username { get; set; }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         [TempData]
         public string StatusMessage { get; set; }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         [BindProperty]
         public InputModel Input { get; set; }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         public class InputModel
         {
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
         }
 
         public IList<Review> UserReviews { get; set;}
+
+        // New property for restaurant list
+        public IList<Restaurant> Restaurants { get; set; }
 
         private async Task LoadAsync(User user)
         {
@@ -84,6 +67,9 @@ namespace MapYourMeal.Areas.Identity.Pages.Account.Manage
             UserReviews = _context.Reviews
             .Where(r => r.UserId == user.Id)
             .ToList();
+
+            // Load all restaurants
+            Restaurants = await _context.Restaurants.ToListAsync();
         }
 
         public async Task<IActionResult> OnGetAsync()
@@ -125,6 +111,26 @@ namespace MapYourMeal.Areas.Identity.Pages.Account.Manage
 
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your profile has been updated";
+            return RedirectToPage();
+        }
+
+        // New method for deleting restaurant
+        public async Task<IActionResult> OnPostDeleteAsync(int id)
+        {
+            var restaurant = await _context.Restaurants.FindAsync(id);
+            if (restaurant != null)
+            {
+                _context.Restaurants.Remove(restaurant);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToPage();
+        }
+
+        // New method for updating restaurant - to be implemented
+        public async Task<IActionResult> OnPostUpdateAsync(int id)
+        {
+            // code to update the restaurant
+            // you might need to accept more parameters depending on what fields of the restaurant you want to update
             return RedirectToPage();
         }
     }

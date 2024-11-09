@@ -31,8 +31,19 @@
                 <p>@review.Note</p>
             </div>
         }
+        <h3>Restaurants</h3>
+        @foreach (var restaurant in Model.Restaurants)
+{
+    <div class="restaurant">
+        <p>@restaurant.RestaurantName</p>
+        <form method="post">
+            <input type="hidden" asp-for="@restaurant.RestaurantId" />
+            <input type="submit" value="Update" formaction="./Index?handler=Update" />
+            <input type="submit" value="Delete" formaction="./Index?handler=Delete" />
+        </form>
     </div>
-</div>
+        }
+    </div>
 </div>
 
 @section Scripts {

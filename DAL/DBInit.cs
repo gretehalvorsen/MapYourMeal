@@ -56,8 +56,8 @@ public static class DBInit
 
         if(!context.Reviews.Any())
         {
-            var user1 = context.Users.FirstOrDefault(u => u.UserName == "Bob");
-            var user2 = context.Users.FirstOrDefault(u => u.UserName == "Lisa");
+            var user1 = context.Users.FirstOrDefault(u => u.UserName == "bob@user.no");
+            var user2 = context.Users.FirstOrDefault(u => u.UserName == "lisa@user.no");
 
             var reviews = new List<Review>
             {
