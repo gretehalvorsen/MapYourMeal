@@ -41,16 +41,41 @@ public class ReviewController : Controller
     // POST: Reviews/Create
     [HttpPost]
     [Authorize]
-    public async Task<IActionResult> Create(Review review)
+    public async Task<IActionResult> Create(Review review, IFormFile? image)
     {
         if (ModelState.IsValid)
         {
+            // Saving the image to database
+            if (image != null && image.Length > 0)
+            {
+                using (var memoryStream = new MemoryStream())
+                {
+                    await image.CopyToAsync(memoryStream);
+                    review.ImageData = memoryStream.ToArray();
+                    review.ImageContentType = image.ContentType;
+                }
+            }
+            // Saving the review to the database
             bool returnOk = await _reviewRepository.Create(review);
             if (returnOk)
                 return RedirectToAction(nameof(Table));
         }
         _logger.LogWarning("[ReviewController] Review creation failed {@review}", review);
         return View(review);
+    }
+
+    public async Task<IActionResult> GetImage(int id)
+    {
+        var review = await _reviewRepository.GetItemById(id);
+
+        if (review != null && review.ImageData != null)
+        {
+            return File(review.ImageData, review.ImageContentType!);
+        }
+        else
+        {
+            return NotFound();
+        }
     }
 
     [HttpGet]
