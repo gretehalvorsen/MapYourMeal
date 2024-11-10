@@ -26,7 +26,8 @@
                 <td>@review.Rating</td>
                 <td>@review.Note</td>
                 <td>
-                    <img src="@review.ImageUrl" alt="Review Image" style="max-width: 80px; max-height: 80px;" />
+                    @*<img src="@review.ImageData" alt="Review Image" style="max-width: 80px; max-height: 80px;" />*@
+                    <img src="@Url.Action("GetImage", new { id = review.ReviewId })" alt="Review Image" style="max-width: 80px; max-height: 80px;" />
                 </td>
                 <td>@review.CreatedDate</td>
                 <td>
