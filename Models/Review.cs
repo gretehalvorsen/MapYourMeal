@@ -5,9 +5,11 @@ public class Review
     public int ReviewId { get; set; }
     public string? Note { get; set; }
     public int Rating { get; set; }
-    public string? ImageUrl { get; set; }
+    //public string? ImageUrl { get; set; }
     public string Dish { get; set; } = string.Empty;
     public DateTime CreatedDate { get; set; } = DateTime.Now;
+    public byte[]? ImageData { get; set; } 
+    public string? ImageContentType { get; set; }
 
     // requirements
     public bool IsGlutenFree { get; set; }
