@@ -8,11 +8,9 @@ namespace MapYourMeal.Models
         public double Latitude { get; set; }
         public double AverageRating { get; set; }
         public DateTime CreatedDate { get; set; } = DateTime.Now;
-        public byte[]? ImageData { get; set; }
+        public string ImageUrl { get; set; } = string.Empty; // Single image URL for search result (hardcoded images)
+        public byte[]? ImageData { get; set; } // For new user images
         public string? ImageContentType { get; set; }
-
-        // Single image URL for use in search results, summaries, etc.
-        public string? ImageUrl { get; set; } // Have for already 
 
         // List of images for use in detailed views
         public List<string>? Images { get; set; } = new List<string>();
