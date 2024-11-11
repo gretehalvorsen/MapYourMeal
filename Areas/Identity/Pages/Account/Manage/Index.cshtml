@@ -33,15 +33,23 @@
         }
         <h3>Restaurants</h3>
         @foreach (var restaurant in Model.Restaurants)
-{
-    <div class="restaurant">
-        <p>@restaurant.RestaurantName</p>
-        <form method="post">
-            <input type="hidden" asp-for="@restaurant.RestaurantId" />
-            <input type="submit" value="Update" formaction="./Index?handler=Update" />
-            <input type="submit" value="Delete" formaction="./Index?handler=Delete" />
-        </form>
-    </div>
+        {
+            <div class="row">
+                <div class="col-sm-9">
+                    <p>@restaurant.RestaurantId - @restaurant.RestaurantName</p>
+                </div>
+                <div class="col-sm-3">
+                    <form method="post" class="d-flex justify-content-between">
+                        <input type="hidden" asp-for="@restaurant.RestaurantId" />
+                        <button type="submit" formaction="./Index?handler=Update" class="btn btn-primary" style="margin-right: 10px;">
+                            <i class="fas fa-pencil-alt"></i>
+                        </button>
+                        <button type="submit" formaction="./Index?handler=Delete" class="btn btn-danger">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
         }
     </div>
 </div>
