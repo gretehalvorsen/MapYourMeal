@@ -10,12 +10,23 @@ namespace MapYourMeal.Controllers;
 public class RestaurantController : Controller
     {
         private readonly IRestaurantRepository _restaurantRepository;
+        private readonly ILogger<RestaurantController> _logger;
 
-        public RestaurantController(IRestaurantRepository restaurantRepository)
+         public RestaurantController(IRestaurantRepository restaurantRepository, ILogger<RestaurantController> logger)
         {
             _restaurantRepository = restaurantRepository;
+            _logger = logger;
         }
 
+        [HttpGet]
+        public IActionResult GetAllRestaurants()
+        {
+            _logger.LogError("[RestaurantRepository] restaurant list not found while executing _restaurantRepository.GetAll()");
+            var restaurants = _restaurantRepository.GetAll();
+            return Ok(restaurants);
+        }
+
+        // GET: Restaurant/Table
         public async Task<IActionResult> Table()
         {
             var restaurants = await _restaurantRepository.GetAll();
@@ -25,6 +36,17 @@ public class RestaurantController : Controller
             }
             var restaurantViewModel = new RestaurantViewModel(restaurants, "Table");
             return View(restaurantViewModel);
+        }
+
+        public async Task<IActionResult> Index(int restaurantId)
+        {
+            var restaurant = await _restaurantRepository.GetItemById(restaurantId);
+            if (restaurant == null)
+            {
+                _logger.LogError("[RestaurantController] Restaurant not found when updating the RestaurantId {restaurantId:0000}", restaurantId);
+                return NotFound();
+            }
+            return View(restaurant);
         }
 
         // GET: Restaurant/Create
@@ -42,9 +64,11 @@ public class RestaurantController : Controller
         {
             if (ModelState.IsValid)
             {
-                await _restaurantRepository.Create(restaurant);
-                return RedirectToAction(nameof(Table));
+                bool returnOk = await _restaurantRepository.Create(restaurant);
+                if (returnOk)
+                    return RedirectToAction("Index", "SearchResult");
             }
+            _logger.LogWarning("[RestaurantController] Restaurant creation failed {@restaurant}", restaurant);
             return View(restaurant);
         }
 
