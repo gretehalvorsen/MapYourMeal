@@ -53,4 +53,12 @@ public class RestaurantRepository : IRestaurantRepository
         await _db.SaveChangesAsync();
         return restaurant;
     }
+
+    public Restaurant GetItemAndReviewsById(int RestaurantId)
+    {
+        return _db.Restaurants
+        .Include(r => r.Reviews)
+        .FirstOrDefault(r => r.RestaurantId == RestaurantId) 
+        ?? throw new NullReferenceException();
+    }
 }
