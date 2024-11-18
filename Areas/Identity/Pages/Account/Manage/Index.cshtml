@@ -5,6 +5,7 @@
     ViewData["ActivePage"] = ManageNavPages.Index;
 }
 
+
 <h3>@ViewData["Title"]</h3>
 <partial name="_StatusMessage" for="StatusMessage" />
 <div class="row">
@@ -31,6 +32,7 @@
                 <p>@review.Note</p>
             </div>
         }
+        <div class="restaurant-list">
         <h3>Restaurants</h3>
         @foreach (var restaurant in Model.Restaurants)
         {
@@ -51,6 +53,7 @@
                 </div>
             </div>
         }
+</div>
     </div>
 </div>
 
