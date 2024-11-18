@@ -5,7 +5,7 @@
     "Address": "Grønland, 0188 Oslo, Norway",
     "City": "Oslo",
     "Webpage": "http://www.dattera.no/",
-    "ImageUrl": "images/Dattera_til_Hagen.png"
+    "ImageUrl": "images/POI/Dattera_til_Hagen.png"
     },
     { "RestaurantName": "Lorry",
     "Longitude": 10.728849,
@@ -13,7 +13,7 @@
     "Address": "Hegdehaugsveien, 0350 Oslo, Norway",
     "City": "Oslo",
     "Webpage": "https://www.lorry.no/",
-    "ImageUrl": "images/Dattera_til_Hagen.png"
+    "ImageUrl": "images/POI/Lorry.png"
     },
     { "RestaurantName": "Grand Café",
     "Longitude": 10.7393822,
@@ -21,7 +21,7 @@
     "Address": "Karl Johans gate, 0026 Oslo, Norway",
     "City": "Oslo",
     "Webpage": "https://grand.no/no/Restauranter--Barer/Grand-Cafe/",
-    "ImageUrl": "images/Grand_Cafe.png"
+    "ImageUrl": "images/POI/Grand_Cafe.png"
     },
     { "RestaurantName": "Asylet",
     "Longitude": 10.762362,
@@ -29,7 +29,7 @@
     "Address": "Grønland, 0188 Oslo, Norway",
     "City": "Oslo",
     "Webpage": "https://www.asylet.no/",
-    "ImageUrl": "images/Dattera_til_Hagen.png"
+    "ImageUrl": "images/POI/Asylet.png"
     },
     { "RestaurantName": "Theatercaféen",
     "Longitude": 10.7340202,
@@ -37,7 +37,7 @@
     "Address": "Klingenberggata, 0161 Oslo, Norway",
     "City": "Oslo",
     "Webpage": "https://www.theatercafeen.no",
-    "ImageUrl": "images/Dattera_til_Hagen.png"
+    "ImageUrl": "images/POI/Theatercafeen.png"
     },
     { "RestaurantName": "Statholdergaarden",
     "Longitude": 10.743218,
@@ -45,7 +45,7 @@
     "Address": "Kirkegata, 0153 Oslo, Norway",
     "City": "Oslo",
     "Webpage": "https://www.statholdergaarden.no/",
-    "ImageUrl": "images/Dattera_til_Hagen.png"
+    "ImageUrl": "images/POI/Statholdergaarden.png"
     },
     { "RestaurantName": "Maaemo",
     "Longitude": 10.7581789,
@@ -53,7 +53,7 @@
     "Address": "0191 Oslo, Norway",
     "City": "Oslo",
     "Webpage": "https://maaemo.no/",
-    "ImageUrl": "images/Dattera_til_Hagen.png"
+    "ImageUrl": "images/POI/Maaemo.png"
     },
     { "RestaurantName": "Olympen",
     "Longitude": 10.764388,
@@ -61,7 +61,7 @@
     "Address": "Grønlandsleiret, 0190 Oslo, Norway",
     "City": "Oslo",
     "Webpage": "https://www.olympen.no/",
-    "ImageUrl": "images/Dattera_til_Hagen.png"
+    "ImageUrl": "images/POI/Olympen.png"
     },
     { "RestaurantName": "Mathallen",
     "Longitude": 10.75202993636007,
@@ -69,7 +69,7 @@
     "Address": "Gerd Kjølaas' plass, 0178 Oslo, Norway",
     "City": "Oslo",
     "Webpage": "https://mathallenoslo.no",
-    "ImageUrl": "images/Dattera_til_Hagen.png"
+    "ImageUrl": "images/POI/Mathallen.png"
     },
     { "RestaurantName": "Baker Hansen",
     "Longitude": 10.68447,
@@ -77,7 +77,7 @@
     "Address": "Karenslyst allé, 0278 Oslo, Norway",
     "City": "Oslo",
     "Webpage": "https://www.bakerhansen.no/sjolyst/",
-    "ImageUrl": "images/Dattera_til_Hagen.png"
+    "ImageUrl": "images/POI/Baker_Hansen1.png"
     },
     { "RestaurantName": "Baker Hansen",
     "Longitude": 10.792643,
@@ -85,7 +85,7 @@
     "Address": "Grenseveien, 0579 Oslo, Norway",
     "City": "Oslo",
     "Webpage": "https://www.bakerhansen.no/hasletorg/",
-    "ImageUrl": "images/Dattera_til_Hagen.png"
+    "ImageUrl": "images/POI/Baker_Hansen2.png"
     },
     { "RestaurantName": "Baker Hansen",
     "Longitude": 10.726532,
@@ -93,7 +93,7 @@
     "Address": "Hegdehaugsveien, 0351 Oslo, Norway",
     "City": "Oslo",
     "Webpage": "https://www.bakerhansen.no/oscarsgate/",
-    "ImageUrl": "images/Dattera_til_Hagen.png"
+    "ImageUrl": "images/POI/Baker_Hansen3.png"
     },
     { "RestaurantName": "Baker Hansen",
     "Longitude": 10.739569,
@@ -101,7 +101,7 @@
     "Address": "Ullevålsveien, 0169 Oslo, Norway",
     "City": "Oslo",
     "Webpage": "https://www.bakerhansen.no/sthanshaugen/",
-    "ImageUrl": "images/Dattera_til_Hagen.png"
+    "ImageUrl": "images/POI/Baker_Hansen4.png"
     },
     { "RestaurantName": "Stortorvets Gjæstgiveri",
     "Longitude": 10.745070134493664,
@@ -109,7 +109,7 @@
     "Address": "Grensen, 0159 Oslo, Norway",
     "City": "Oslo",
     "Webpage": "https://www.stortorvet.no/",
-    "ImageUrl": "images/Dattera_til_Hagen.png"
+    "ImageUrl": "images/POI/Stortorvets_Gjaestgiveri.png"
     },
     { "RestaurantName": "Beer Palace",
     "Longitude": 10.726195,
@@ -117,7 +117,7 @@
     "Address": "Holmens gate, 0250 Oslo, Norway",
     "City": "Oslo",
     "Webpage": "https://beerpalace.no",
-    "ImageUrl": "images/Dattera_til_Hagen.png"
+    "ImageUrl": "images/POI/Beer_Palace.png"
     },
     { "RestaurantName": "Mahayana Asian Dining",
     "Longitude": 10.736849,
@@ -125,7 +125,7 @@
     "Address": "Stortingsgata, 0162 Oslo, Norway",
     "City": "Oslo",
     "Webpage": "https://mahayana.no/",
-    "ImageUrl": "images/Dattera_til_Hagen.png"
+    "ImageUrl": "images/POI/Mahayana_Asian_Dining.png"
     },
     { "RestaurantName": "Kampen Bistro",
     "Longitude": 10.781102,
@@ -133,7 +133,7 @@
     "Address": "Nittedalgata, 0654 Oslo, Norway",
     "City": "Oslo",
     "Webpage": "http://www.kampenbistro.no",
-    "ImageUrl": "images/Dattera_til_Hagen.png"
+    "ImageUrl": "images/POI/Kampen_Bistro.png"
     },
     { "RestaurantName": "Ni&Tyve",
     "Longitude": 10.727298249999999,
@@ -141,7 +141,7 @@
     "Address": "Parkveien, 0352 Oslo, Norway",
     "City": "Oslo",
     "Webpage": "http://niogtyve.no/",
-    "ImageUrl": "images/Dattera_til_Hagen.png"
+    "ImageUrl": "images/POI/NiOgTyve.png"
     },
     { "RestaurantName": "Villa Paradiso Grünerløkka",
     "Longitude": 10.757423,
@@ -149,7 +149,7 @@
     "Address": "Grüners gate, 0554 Oslo, Norway",
     "City": "Oslo",
     "Webpage": "https://www.villaparadiso.no/restauranter/grunerlokka",
-    "ImageUrl": "images/Dattera_til_Hagen.png"
+    "ImageUrl": "images/POI/Villa_Paradiso_Grunerlokka.png"
     },
     { "RestaurantName": "Kaffebrenneriet",
     "Longitude": 10.758756,
@@ -157,6 +157,6 @@
     "Address": "Grüners gate, 0554 Oslo, Norway",
     "City": "Oslo",
     "Webpage": "https://kaffebrenneriet.no/butikkene/thorvald-meyers-gate-55-olaf-ryes-plass",
-    "ImageUrl": "images/Dattera_til_Hagen.png"
+    "ImageUrl": "images/POI/Kaffebrenneriet.png"
     }
     ]
