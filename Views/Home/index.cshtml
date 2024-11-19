@@ -13,22 +13,11 @@
                 <div class="row mb-4 p-3" style=" border: 2px solid black;">
                     <!-- Restaurant Image -->
                     <div class="col-3">
-                        @if (restaurant.ImageData != null)
-                        {
-                            <!-- Use the GetImage action to fetch the image from the controller -->
-                            <img src="@Url.Action("GetImage", "Restaurant", new { id = restaurant.RestaurantId })" 
-                                alt="@restaurant.RestaurantName" 
-                                class="img-fluid rounded" 
-                                style="width: 100px; height: 100px;" />
-                        }
-                        else
-                        {
-                            <!-- Fallback to hardcoded image URL if available -->
-                            <img src="@restaurant.ImageUrl" 
-                                alt="@restaurant.RestaurantName" 
-                                class="img-fluid rounded" 
-                                style="width: 100px; height: 100px;" />
-                        }
+                        <!-- Use the GetImage action to fetch the image from the controller -->
+                        <img src="@Url.Action("GetImage", "Restaurant", new { id = restaurant.RestaurantId })" 
+                            alt="@restaurant.RestaurantName" 
+                            class="img-fluid rounded" 
+                            style="width: 100px; height: 100px;" />
                     </div>
 
                     <!-- Restaurant Details -->
