@@ -82,7 +82,7 @@ public class RestaurantController : Controller
             }
             bool returnOk = await _restaurantRepository.Create(restaurant);
             if (returnOk)
-                return RedirectToAction("Index", "SearchResult");
+                return RedirectToAction("Index", "Home");
         }
         _logger.LogWarning("[RestaurantController] Restaurant creation failed {@restaurant}", restaurant);
         return View(restaurant);
