@@ -34,6 +34,7 @@ namespace MapYourMeal.Controllers
                         Longitude = r.Longitude,
                         Latitude = r.Latitude,
                         ImageUrl = r.ImageUrl,
+                        ImageData = r.ImageData,
                         Address = r.Address,
                         City = r.City,
                         // Calculate average rating, or default to 0 if no reviews
