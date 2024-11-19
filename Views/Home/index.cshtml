@@ -1,40 +1,58 @@
-@model MapYourMeal.Models.Restaurant
+@model IEnumerable<MapYourMeal.Models.Restaurant>
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "MapYourMeal";
+    int index = 1;  // Manual index tracking
 }
 
-<!-- Search Section -->
-<section class="search-section">
-    <h1>MapYourMeal</h1>
-    <p>Discover the best food in your area tailored to your dietary restrictions with MapYourMeal;<br> your go-to guide
-        for finding diet-compatible dining options.</p>
+<div class="container mt-5">
+    <div class="row">
+        <div class="restaurant-list col-md-6">
+            @foreach (var restaurant in Model)
+            {
+                <div class="row mb-4 p-3" style=" border: 2px solid black;">
+                    <!-- Restaurant Image -->
+                    <div class="col-3">
+                        <img src="@restaurant.ImageUrl" alt="@restaurant.RestaurantName" class="img-fluid rounded" style="width: 100px; height: 100px;">
+                    </div>
 
+                    <!-- Restaurant Details -->
+                    <div class="col-6">
+                        <h5><strong>@index. @restaurant.RestaurantName</strong></h5>
+                        <div>
+                            @for (var i = 1; i <= 5; i++)
+                            {
+                                <!-- if (i <= restaurant.Reviews.Average(r => r.Rating))
+                                {
+                                    <span class="text-dark">★</span>
+                                }
+                                else
+                                {
+                                    <span class="text-muted">★</span>
+                                } -->
+                            }
+                        </div>
+                        <p>@restaurant.Address<br>@restaurant.City</p>
+                    </div>
 
-    <!-- Search Bar -->
-    <div class="d-flex justify-content-center">
-        <select class="form-select form-select-lg me-2" style="max-width: 200px;" aria-label="Looking for">
-            <option selected>I'm looking for...</option>
-            <option value="1">Pizza</option>
-            <option value="2">Pasta</option>
-            <option value="2">Gluten free</option>
-            <option value="2">Option</option>
-        </select>
-        <input type="text" class="form-control form-control-lg me-2" style="max-width: 300px;" placeholder="Oslo">
-        <a href="@Url.Action("Index", "SearchResult")" class="btn btn-success btn-lg">View Restaurants</a>
-        <!-- Diet Icons -->
+                    <!-- Save Button -->
+                    <div class="col-3 text-end">
+                        <a href="@Url.Action("Index", "Restaurant", new { restaurantId = restaurant.RestaurantId })" 
+                        class="btn btn-secondary" style="background-color: #2a5b80;">Vis mer</a>
+                    </div>
+                </div>
+                index++;
+            }
         </div>
-    <div class="diet-icons d-flex justify-content-center">
-        <div class="text-center mx-3">
-            <img src="@Url.Content("~/images/gluten_free.png")" alt="Gluten free">
-            <p>Gluten free</p>
+
+        <!-- Map Placeholder -->
+        <div class="col-md-6">
+            <div id="map"></div>
         </div>
-        <div class="text-center mx-3">
-            <img src="@Url.Content("~/images/vegan.png")" alt="Vegan">
-            <p>Vegan</p>
+
+        <div class="col-md-offset-2 col-md-10">
+            <a class="btn btn-success btn-lg" asp-area="" asp-controller="Restaurant" asp-action="Create">Register new restaurant</a>
         </div>
-        <div class="text-center mx-3">
-            <img src="@Url.Content("~/images/dairy_free.png")" alt="Dairy free">
-            <p>Dairy free</p>
-        </div>
+        
     </div>
+</div>
