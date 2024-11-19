@@ -121,7 +121,7 @@ public class RestaurantController : Controller
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Update(Restaurant restaurant)
         {
-            Console.WriteLine("PUT Update method called");
+            Console.WriteLine("POST Update method called");
             if (ModelState.IsValid)
             {
                 bool returnOk = await _restaurantRepository.Update(restaurant);
