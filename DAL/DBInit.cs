@@ -116,11 +116,12 @@ public static class DBInit
                 {
                     Note = "Den var grei",
                     Rating = 3,
-                    ImageUrl = "",
                     Dish = "Pizza",
                     IsGlutenFree = true,
                     IsVegan = true,
                     IsDairyFree = true,
+                    ImageData = System.IO.File.ReadAllBytes("wwwroot/images/Egon.png"),
+                    ImageType = "image/png",
                     CreatedDate = DateTime.Today.AddDays(-3).AddHours(16).AddMinutes(09).AddSeconds(32),
                     RestaurantId = 1,
                     UserId = user1?.Id
@@ -130,11 +131,12 @@ public static class DBInit
                 {
                     Note = "GOD!",
                     Rating = 5,
-                    ImageUrl = "",
                     Dish = "Pasta",
                     IsGlutenFree = true,
                     IsVegan = false,
                     IsDairyFree = false,
+                    ImageData = System.IO.File.ReadAllBytes("wwwroot/images/pizza2.png"),
+                    ImageType = "image/png",
                     CreatedDate = DateTime.Today.AddDays(-5).AddHours(10).AddMinutes(28).AddSeconds(02),
                     RestaurantId = 2,
                     UserId = user1?.Id
@@ -144,12 +146,13 @@ public static class DBInit
                 {
                     Note = "Meh",
                     Rating = 2,
-                    ImageUrl = "",
                     Dish = "Hamburger",
                     IsGlutenFree = true,
                     IsVegan = true,
                     IsDairyFree = true,
-                    CreatedDate = DateTime.Today.AddDays(-7).AddHours(14).AddMinutes(30).AddSeconds(47),  
+                    ImageData = System.IO.File.ReadAllBytes("wwwroot/images/Egon.png"),
+                    ImageType = "image/png",
+                    CreatedDate = DateTime.Today.AddDays(-7).AddHours(14).AddMinutes(30).AddSeconds(47),  // 7 days ago at 2:30 PM,
                     RestaurantId = 2,
                     UserId = user2?.Id
                 }

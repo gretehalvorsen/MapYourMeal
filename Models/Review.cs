@@ -14,6 +14,8 @@ public class Review
     
     public string Dish { get; set; } = string.Empty;
     public DateTime CreatedDate { get; set; } = DateTime.Now;
+    public byte[]? ImageData { get; set; } 
+    public string? ImageType { get; set; }
 
     // requirements
     public bool IsGlutenFree { get; set; }
