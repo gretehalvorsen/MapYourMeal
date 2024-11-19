@@ -69,13 +69,222 @@ public static class DBInit
 
         if(!context.Restaurants.Any())
         {
-            var jsonData = System.IO.File.ReadAllText("DAL/infoRestaurants.json");
+            /*var jsonData = System.IO.File.ReadAllText("DAL/infoRestaurants.json");
             var restaurants = JsonSerializer.Deserialize<List<Restaurant>>(jsonData);
             if (restaurants!=null)
             {
                 context.AddRange(restaurants);
                 context.SaveChanges();
-            }
+            }*/
+
+            var restaurants = new List<Restaurant>
+            {
+                new Restaurant
+                { 
+                    RestaurantName = "Dattera til Hagen",
+                    Longitude = 10.760130402815815,
+                    Latitude = 59.913304499999995,
+                    Address = "Grønland, 0188 Oslo, Norway",
+                    City = "Oslo",
+                    Webpage = "http://www.dattera.no/",
+                    ImageData = System.IO.File.ReadAllBytes("wwwroot/images/POI/Dattera_til_Hagen.png"),
+                    ImageType = "image/png",
+                },
+
+                new Restaurant
+                {
+                    RestaurantName = "Lorry",
+                    Longitude = 10.728849,
+                    Latitude = 59.9207598,
+                    Address = "Hegdehaugsveien, 0350 Oslo, Norway",
+                    City = "Oslo",
+                    Webpage = "https://www.lorry.no/",
+                    ImageData = System.IO.File.ReadAllBytes("wwwroot/images/POI/Lorry.png"),
+                    ImageType = "image/png",
+                },
+
+                new Restaurant
+                {
+                    RestaurantName = "Grand Café",
+                    Longitude = 10.7393822,
+                    Latitude = 59.9137595,
+                    Address = "Karl Johans gate, 0026 Oslo, Norway",
+                    City = "Oslo",
+                    Webpage = "https://grand.no/no/Restauranter--Barer/Grand-Cafe/",
+                    ImageData = System.IO.File.ReadAllBytes("wwwroot/images/POI/Grand_Cafe.png"),
+                    ImageType = "image/png",
+                },
+
+                new Restaurant
+                {
+                    RestaurantName = "Asylet",
+                    Longitude = 10.762362,
+                    Latitude = 59.912872,
+                    Address = "Grønland, 0188 Oslo, Norway",
+                    City = "Oslo",
+                    Webpage = "https://www.asylet.no",
+                    ImageData = System.IO.File.ReadAllBytes("wwwroot/images/POI/Asylet.png"),
+                    ImageType = "image/png",
+                },
+
+                new Restaurant
+                {
+                    RestaurantName = "Theatercaféen",
+                    Longitude = 10.7340202,
+                    Latitude = 59.9139731,
+                    Address = "Klingenberggata, 0161 Oslo, Norway",
+                    City = "Oslo",
+                    Webpage = "https://www.theatercafeen.no",
+                    ImageData = System.IO.File.ReadAllBytes("wwwroot/images/POI/Theatercafeen.png"),
+                    ImageType = "image/png",
+                },
+
+                new Restaurant
+                {
+                    RestaurantName = "Statholdergaarden",
+                    Longitude = 10.743218,
+                    Latitude = 59.909517,
+                    Address = "Kirkegata, 0153 Oslo, Norway",
+                    City = "Oslo",
+                    Webpage = "https://www.statholdergaarden.no",
+                    ImageData = System.IO.File.ReadAllBytes("wwwroot/images/POI/Statholdergaarden.png"),
+                    ImageType = "image/png",
+                },
+
+                new Restaurant
+                {
+                    RestaurantName = "Maaemo",
+                    Longitude = 10.7581789,
+                    Latitude = 59.907552,
+                    Address = "0191 Oslo, Norway",
+                    City = "Oslo",
+                    Webpage = "https://maaemo.no/",
+                    ImageData = System.IO.File.ReadAllBytes("wwwroot/images/POI/Maaemo.png"),
+                    ImageType = "image/png",
+                },
+
+                new Restaurant
+                {
+                    RestaurantName = "Olympen",
+                    Longitude = 10.764388,
+                    Latitude = 59.912256,
+                    Address = "Grønlandsleiret, 0190 Oslo, Norway",
+                    City = "Oslo",
+                    Webpage = "https://www.olympen.no/",
+                    ImageData = System.IO.File.ReadAllBytes("wwwroot/images/POI/Olympen.png"),
+                    ImageType = "image/png",
+                },
+
+                new Restaurant
+                {
+                    RestaurantName = "Mathallen",
+                    Longitude = 10.75202993636007,
+                    Latitude = 59.92211835,
+                    Address = "Gerd Kjølaas' plass, 0178 Oslo, Norway",
+                    City = "Oslo",
+                    Webpage = "https://mathallenoslo.no/",
+                    ImageData = System.IO.File.ReadAllBytes("wwwroot/images/POI/Olympen.png"),
+                    ImageType = "image/png",
+                },
+
+                new Restaurant
+                {
+                    RestaurantName = "Baker Hansen",
+                    Longitude = 10.68447,
+                    Latitude = 59.919816,
+                    Address = "Karenslyst allé, 0278 Oslo, Norway",
+                    City = "Oslo",
+                    Webpage = "https://www.bakerhansen.no/sjolyst/",
+                    ImageData = System.IO.File.ReadAllBytes("wwwroot/images/POI/Baker_Hansen3.png"),
+                    ImageType = "image/png",
+                },
+
+                new Restaurant
+                {
+                    RestaurantName = "Stortorvets Gjæstgiveri",
+                    Longitude = 10.745070134493664,
+                    Latitude = 59.9135515,
+                    Address = "Grensen, 0159 Oslo, Norway",
+                    City = "Oslo",
+                    Webpage = "https://www.stortorvet.no/",
+                    ImageData = System.IO.File.ReadAllBytes("wwwroot/images/POI/Stortorvets_Gjaestgiveri.png"),
+                    ImageType = "image/png",
+                },
+
+                new Restaurant
+                {
+                    RestaurantName = "Beer Palace",
+                    Longitude = 10.726195,
+                    Latitude = 59.910515,
+                    Address = "Holmens gate, 0250 Oslo, Norway",
+                    City = "Oslo",
+                    Webpage = "https://beerpalace.no/",
+                    ImageData = System.IO.File.ReadAllBytes("wwwroot/images/POI/Beer_Palace.png"),
+                    ImageType = "image/png",
+                },
+
+                new Restaurant
+                {
+                    RestaurantName = "Mahayana Asian Dining",
+                    Longitude = 10.736849,
+                    Latitude = 59.9133121,
+                    Address = "Stortingsgata, 0162 Oslo, Norway",
+                    City = "Oslo",
+                    Webpage = "https://mahayana.no/",
+                    ImageData = System.IO.File.ReadAllBytes("wwwroot/images/POI/Mahayana_Asian_Dining.png"),
+                    ImageType = "image/png",
+                },
+
+                new Restaurant
+                {
+                    RestaurantName = "Kampen Bistro",
+                    Longitude = 10.781102,
+                    Latitude = 59.913764,
+                    Address = "Nittedalgata, 0654 Oslo, Norway",
+                    City = "Oslo",
+                    Webpage = "http://www.kampenbistro.no/",
+                    ImageData = System.IO.File.ReadAllBytes("wwwroot/images/POI/Kampen_Bistro.png"),
+                    ImageType = "image/png",
+                },
+
+                new Restaurant
+                {
+                    RestaurantName = "Ni&Tyve",
+                    Longitude = 10.727298249999999,
+                    Latitude = 59.92042075,
+                    Address = "Parkveien, 0352 Oslo, Norway",
+                    City = "Oslo",
+                    Webpage = "http://niogtyve.no/",
+                    ImageData = System.IO.File.ReadAllBytes("wwwroot/images/POI/NiOgTyve.png"),
+                    ImageType = "image/png",
+                },
+
+                new Restaurant
+                {
+                    RestaurantName = "Villa Paradiso Grünerløkka",
+                    Longitude = 10.757423,
+                    Latitude = 59.923502,
+                    Address = "Grüners gate, 0554 Oslo, Norway",
+                    City = "Oslo",
+                    Webpage = "https://www.villaparadiso.no/restauranter/grunerlokka/",
+                    ImageData = System.IO.File.ReadAllBytes("wwwroot/images/POI/Villa_Paradiso_Grunerlokka.png"),
+                    ImageType = "image/png",
+                },
+
+                new Restaurant
+                {
+                    RestaurantName = "Kaffebrenneriet",
+                    Longitude = 10.758756,
+                    Latitude = 59.923489,
+                    Address = "Grüners gate, 0554 Oslo, Norway",
+                    City = "Oslo",
+                    Webpage = "https://kaffebrenneriet.no/butikkene/thorvald-meyers-gate-55-olaf-ryes-plass/",
+                    ImageData = System.IO.File.ReadAllBytes("wwwroot/images/POI/Kaffebrenneriet.png"),
+                    ImageType = "image/png",
+                }
+            };
+            context.AddRange(restaurants);
+            context.SaveChanges();
         }
 
         if(!context.Users.Any())
