@@ -46,7 +46,12 @@ async function initMap(){
     restaurants.forEach(restaurant => {
         L.marker([restaurant.latitude, restaurant.longitude])
             .addTo(map)
-            .bindPopup(`<b>${restaurant.restaurantName}</b><br>${restaurant.city}`);
+            .bindPopup(
+                `<div style="width: 100 px">
+                    <h4>${restaurant.restaurantName}</h4>
+                    <a href="Restaurant?restaurantId=${restaurant.restaurantId}" 
+                    class="btn btn-secondary" style="display: flex; background-color: #2a5b80; color: #fff; justify-content: center;">Vis mer</a>
+                </div>`);
     });
 }
 
