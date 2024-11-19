@@ -52,7 +52,7 @@ public class ReviewController : Controller
                 {
                     await image.CopyToAsync(memoryStream);
                     review.ImageData = memoryStream.ToArray();
-                    review.ImageContentType = image.ContentType;
+                    review.ImageType = image.ContentType;
                 }
             }
             // Saving the review to the database
@@ -67,10 +67,9 @@ public class ReviewController : Controller
     public async Task<IActionResult> GetImage(int id)
     {
         var review = await _reviewRepository.GetItemById(id);
-
         if (review != null && review.ImageData != null)
         {
-            return File(review.ImageData, review.ImageContentType!);
+            return File(review.ImageData, review.ImageType!);
         }
         else
         {

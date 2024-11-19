@@ -12,9 +12,20 @@ namespace MapYourMeal.Models
         public double Latitude { get; set; }
         public double AverageRating { get; set; }
         public DateTime CreatedDate { get; set; } = DateTime.Now;
-        public string ImageUrl { get; set; } = string.Empty; // Single image URL for search result (hardcoded images)
+        public string? ImageUrl { get; set; } // Single image URL for search result (hardcoded images)
         public byte[]? ImageData { get; set; } // For new user images
-        public string? ImageContentType { get; set; }
+        public string? ImageType { get; set; }
+        public string? DisplayImage
+        {
+            get
+            {
+                if (ImageData != null)
+                {
+                    return $"/RestaurantController/GetImage/{RestaurantId}";
+                }
+                return ImageUrl;
+            }
+        }
 
         // List of images for use in detailed views
         public List<string>? Images { get; set; } = new List<string>();
