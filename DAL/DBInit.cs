@@ -12,7 +12,6 @@ public static class DBInit
     {
         using var serviceScope = app.ApplicationServices.CreateScope();
         ApplicationDbContext context = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-        UserManager<User> userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<User>>();
         context.Database.EnsureDeleted();
         context.Database.EnsureCreated();
 
