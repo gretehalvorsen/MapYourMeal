@@ -5,6 +5,7 @@
     ViewData["ActivePage"] = ManageNavPages.Index;
 }
 
+
 <h3>@ViewData["Title"]</h3>
 <partial name="_StatusMessage" for="StatusMessage" />
 <div class="row">
@@ -22,6 +23,37 @@
             </div>
             <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Save</button>
         </form>
+    </div>
+    <div class="col-md-6">
+        <h3>Your Reviews</h3>
+        @foreach (var review in Model.UserReviews)
+        {
+            <div class="review">
+                <p>@review.Note</p>
+            </div>
+        }
+        <div class="restaurant-list">
+        <h3>Restaurants</h3>
+        @foreach (var restaurant in Model.Restaurants)
+        {
+            <div class="row">
+                <div class="col-sm-9">
+                    <p>@restaurant.RestaurantId - @restaurant.RestaurantName</p>
+                </div>
+                <div class="col-sm-3">
+                    <form method="post" class="d-flex justify-content-between">
+                        <input type="hidden" asp-for="@restaurant.RestaurantId" />
+                        <button type="submit" formaction="./Index?handler=Update" class="btn btn-primary" style="margin-right: 10px;">
+                            <i class="fas fa-pencil-alt"></i>
+                        </button>
+                        <button type="submit" formaction="./Index?handler=Delete" class="btn btn-danger">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        }
+</div>
     </div>
 </div>
 
