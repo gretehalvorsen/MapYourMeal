@@ -73,4 +73,12 @@ public class RestaurantRepository : IRestaurantRepository
             return false;
         }
     }
+
+    public Restaurant GetItemAndReviewsById(int RestaurantId)
+    {
+        return _db.Restaurants
+        .Include(r => r.Reviews)
+        .FirstOrDefault(r => r.RestaurantId == RestaurantId) 
+        ?? throw new NullReferenceException();
+    }
 }

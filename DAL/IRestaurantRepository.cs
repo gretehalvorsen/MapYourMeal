@@ -9,4 +9,5 @@ public interface IRestaurantRepository
     
     Task<bool> Update(Restaurant restaurant);
     Task<bool> Delete(int RestaurantId);
+    Restaurant GetItemAndReviewsById(int RestaurantId);
 }

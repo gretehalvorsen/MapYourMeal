@@ -40,9 +40,9 @@ public class RestaurantController : Controller
             return View(restaurantViewModel);
         }
 
-        public async Task<IActionResult> Index(int restaurantId)
+        public IActionResult Index(int restaurantId)
         {
-            var restaurant = await _restaurantRepository.GetItemById(restaurantId);
+            var restaurant = _restaurantRepository.GetItemAndReviewsById(restaurantId);
             if (restaurant == null)
             {
                 _logger.LogError("[RestaurantController] Restaurant not found when updating the RestaurantId {restaurantId:0000}", restaurantId);
