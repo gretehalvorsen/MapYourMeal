@@ -123,6 +123,18 @@ namespace MapYourMeal.Areas.Identity.Pages.Account
                 {
                     _logger.LogInformation("User created a new account with password.");
 
+                    // Assign the "user" role to the new user by default
+                    var roleResult = await _userManager.AddToRoleAsync(user, "User");
+
+                    if (!roleResult.Succeeded)
+                    {       // If role assignment failed, error messages are shown
+                            foreach (var error in roleResult.Errors)
+                            {
+                                 _logger.LogError("Role assignment failed for user {UserId}: {ErrorDescription}", user.Id, error.Description);
+                                ModelState.AddModelError(string.Empty, error.Description);
+                            }
+                    }
+
                     /*var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));

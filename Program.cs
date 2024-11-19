@@ -76,8 +76,16 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseDeveloperExceptionPage();
-    DBInit.Seed(app);
+    // Ensure the roles and users are seeded when the application starts
+    using (var scope = app.Services.CreateScope())
+    {
+        var services = scope.ServiceProvider;
+        var userManager = services.GetRequiredService<UserManager<User>>();
+        var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+        // Seed the database, including roles and users
+        await DBInit.Seed(app, userManager, roleManager);
+    }
+    
 }
 
 app.UseStaticFiles();

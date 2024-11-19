@@ -13,7 +13,7 @@ public class RestaurantController : Controller
         private readonly ILogger<RestaurantController> _logger;
 
         public RestaurantController(IRestaurantRepository restaurantRepository, ILogger<RestaurantController> logger)
-        {
+        {  
             _restaurantRepository = restaurantRepository;
             _logger = logger;
         }
@@ -75,7 +75,7 @@ public class RestaurantController : Controller
         }
 
         [HttpGet]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         //[Route("Restaurant/Update/{RestaurantId}")]
         public async Task<IActionResult> Update(int RestaurantId) {
             Console.WriteLine($"Received RestaurantId: {RestaurantId}");
@@ -89,14 +89,15 @@ public class RestaurantController : Controller
             return View(restaurant);
         }
 
-        [HttpPut]
-        [Authorize]
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Update(Restaurant restaurant)
         {
             Console.WriteLine("PUT Update method called");
             if (ModelState.IsValid)
             {
-                await _restaurantRepository.Update(restaurant);
+                bool returnOk = await _restaurantRepository.Update(restaurant);
+                if(returnOk)
                 return RedirectToAction(nameof(Table));
             }
             _logger.LogWarning("[RestaurantController] Restaurant update failed {@restaurant}", restaurant);
@@ -104,7 +105,7 @@ public class RestaurantController : Controller
         }
 
         [HttpGet]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int RestaurantId)
         {
             var restaurant = await _restaurantRepository.GetItemById(RestaurantId);
@@ -118,11 +119,11 @@ public class RestaurantController : Controller
 
         // POST: Restaurant/Delete
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int RestaurantId)
         {
-            var restaurant = await _restaurantRepository.Delete(RestaurantId);
-            if(restaurant == null)
+            bool returnOk = await _restaurantRepository.Delete(RestaurantId);
+            if(!returnOk)
             {
                 _logger.LogError("[RestaurantController] Restaurant deletion failed for the RestaurantId {RestaurantId:0000}", RestaurantId);
                 return BadRequest("Restaurant deletion failed");
