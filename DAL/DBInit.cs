@@ -56,7 +56,7 @@ public static class DBInit
                     IsVegan = true,
                     IsDairyFree = true,
                     ImageData = System.IO.File.ReadAllBytes("wwwroot/images/Egon.png"),
-                    ImageContentType = "image/png",
+                    ImageType = "image/png",
                     CreatedDate = DateTime.Today.AddDays(-3).AddHours(16).AddMinutes(09).AddSeconds(32),
                     RestaurantId = 1,
                     UserId = 1
@@ -71,7 +71,7 @@ public static class DBInit
                     IsVegan = false,
                     IsDairyFree = false,
                     ImageData = System.IO.File.ReadAllBytes("wwwroot/images/pizza2.png"),
-                    ImageContentType = "image/png",
+                    ImageType = "image/png",
                     CreatedDate = DateTime.Today.AddDays(-5).AddHours(10).AddMinutes(28).AddSeconds(02),
                     RestaurantId = 2,
                     UserId = 1
@@ -86,7 +86,7 @@ public static class DBInit
                     IsVegan = true,
                     IsDairyFree = true,
                     ImageData = System.IO.File.ReadAllBytes("wwwroot/images/Egon.png"),
-                    ImageContentType = "image/png",
+                    ImageType = "image/png",
                     CreatedDate = DateTime.Today.AddDays(-7).AddHours(14).AddMinutes(30).AddSeconds(47),  // 7 days ago at 2:30 PM,
                     RestaurantId = 2,
                     UserId = 2
