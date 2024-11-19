@@ -25,7 +25,7 @@ namespace MapYourMeal.Controllers
             {
     
                 // Fetch restaurants and calculate average rating directly in the query
-                var searchResult = _context.Restaurants
+                var restaurantList = _context.Restaurants
                     .Include(r => r.Reviews)
                     .Select(r => new Restaurant
                     {
@@ -41,14 +41,14 @@ namespace MapYourMeal.Controllers
                         Reviews = r.Reviews
                     })
                     .ToList();
-                if (searchResult == null || !searchResult.Any())
+                if (restaurantList == null || !restaurantList.Any())
                 {
                     _logger.LogWarning("[HomeController] No restaurants found in search results.");
                     return NotFound("No restaurants found.");
                 }
 
-                _logger.LogInformation("[HomeController] Search completed successfully with {Count} restaurants found.", searchResult.Count);
-                return View(searchResult);
+                _logger.LogInformation("[HomeController] Search completed successfully with {Count} restaurants found.", restaurantList.Count);
+                return View(restaurantList);
             }
             catch (Exception ex)
             {
