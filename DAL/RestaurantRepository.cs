@@ -5,20 +5,38 @@ namespace MapYourMeal.DAL;
 public class RestaurantRepository : IRestaurantRepository
 {
     private readonly ApplicationDbContext _db;
+    private readonly ILogger<RestaurantRepository> _logger;
 
-    public RestaurantRepository(ApplicationDbContext db)
+    public RestaurantRepository(ApplicationDbContext db, ILogger<RestaurantRepository> logger)
     {
         _db = db;
+        _logger = logger;
     }
 
-    public async Task<IEnumerable<Restaurant>> GetAll()
+    public async Task<IEnumerable<Restaurant>?> GetAll()
     {
-        return await _db.Restaurants.ToListAsync();
+        try
+        {
+            return await _db.Restaurants.ToListAsync();
+        }
+        catch (Exception e)
+        {
+            _logger.LogWarning("[RestaurantRepository] restaurant ToListAsync() failed when GetAll(), error message: {e}", e.Message);
+            return null;
+        }
     }
 
     public async Task<Restaurant?> GetItemById(int RestaurantId)
     {
-        return await _db.Restaurants.FindAsync(RestaurantId); // Kontroller at id eksisterer i databasen
+        try
+        {
+            return await _db.Restaurants.FindAsync(RestaurantId); // Kontroller at id eksisterer i databasen
+        }
+        catch (Exception e)
+        {
+            _logger.LogWarning("[RestaurantRepository] restaurant FindAsync() failed when GetItemById() for RestaurantId {RestaurantID:0000}, error message: {e}", RestaurantId, e.Message);
+            return null;
+        }
     }
 
     public async Task<bool> Create(Restaurant restaurant)
