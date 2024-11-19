@@ -127,7 +127,7 @@ namespace MapYourMeal.Areas.Identity.Pages.Account.Manage
         }
 
         // New method for updating restaurant - to be implemented
-        public async Task<IActionResult> OnPostUpdateAsync(int id)
+        public IActionResult OnPostUpdateAsync(int id)
         {
             // code to update the restaurant
             // you might need to accept more parameters depending on what fields of the restaurant you want to update
