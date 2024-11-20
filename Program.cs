@@ -4,6 +4,7 @@ using MapYourMeal.Models;
 using Serilog;
 using Serilog.Events;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("ApplicationDbContextConnection") ?? throw new InvalidOperationException("Connection string 'ApplicationDbContextConnection' not found.");
@@ -37,7 +38,7 @@ builder.Services.AddIdentity<User, IdentityRole>(options =>
     options.User.RequireUniqueEmail = true;
 
     //Sign-in settings
-    options.SignIn.RequireConfirmedAccount = false; // set to true if you want email confirmation
+    options.SignIn.RequireConfirmedAccount = false; // Set to true to enable email confirmation
 })
 .AddEntityFrameworkStores<ApplicationDbContext>()
 .AddDefaultTokenProviders();
@@ -45,6 +46,13 @@ builder.Services.AddIdentity<User, IdentityRole>(options =>
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.LoginPath = "/Identity/Account/Login"; // Ensure this path is valid
+    options.LogoutPath = "/Identity/Account/Logout";
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+    options.SlidingExpiration = true;
+    options.Cookie.Name = ".AdventureWorks.Identity";
+    options.Cookie.HttpOnly = true;
+    options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest; 
+    options.Cookie.SameSite = SameSiteMode.Lax; // 
 }
 );
 builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
@@ -55,7 +63,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddSession(options =>
 {
     options.Cookie.Name = ".AdventureWorks.Session";
-    options.IdleTimeout = TimeSpan.FromSeconds(1800); // 30  mins
+    options.IdleTimeout = TimeSpan.FromSeconds(1200); // 20  mins
     options.Cookie.IsEssential = true;
 }
 );
@@ -88,9 +96,47 @@ if (app.Environment.IsDevelopment())
     
 }
 
+
+
+
 app.UseStaticFiles();
-app.UseSession();
-app.UseAuthentication();
+app.UseSession(); // Must come before app.UseAuthentication()
+
+// Middleware for debugging cookies and session
+app.Use(async (context, next) =>
+{
+    if (context.Session.IsAvailable)
+    {
+        Console.WriteLine("Session is available.");
+    }
+    else
+    {
+        Console.WriteLine("Session is NOT available.");
+    }
+
+    // Check session keys and values
+    foreach (var key in context.Session.Keys)
+    {
+        Console.WriteLine($"Session Key: {key}, Value: {context.Session.GetString(key)}");
+    }
+
+    await next();
+});
+
+// Ensure that cookies and session are cleared on app startup
+app.Use(async (context, next) =>
+{
+    // Clear the session and any authentication cookies
+    context.Session.Clear(); // Clear session data
+    await context.SignOutAsync(IdentityConstants.ApplicationScheme); // Sign out user from Identity
+
+    // Continue the request pipeline
+    await next();
+});
+
+
+
+app.UseAuthentication(); // Must come before app.UseAuthorization();
 app.UseAuthorization();
 app.MapDefaultControllerRoute();
 app.MapRazorPages();
