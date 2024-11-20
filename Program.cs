@@ -47,6 +47,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 {
     options.LoginPath = "/Identity/Account/Login"; // Ensure this path is valid
     options.LogoutPath = "/Identity/Account/Logout";
+    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
     options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
     options.SlidingExpiration = true;
     options.Cookie.Name = ".AdventureWorks.Identity";
@@ -57,6 +58,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 );
 builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
 builder.Services.AddScoped<IRestaurantRepository, RestaurantRepository>();
+
 
 builder.Services.AddRazorPages();
 //builder.Services.AddSession();
@@ -123,16 +125,8 @@ app.Use(async (context, next) =>
     await next();
 });
 
-// Ensure that cookies and session are cleared on app startup
-app.Use(async (context, next) =>
-{
-    // Clear the session and any authentication cookies
-    context.Session.Clear(); // Clear session data
-    await context.SignOutAsync(IdentityConstants.ApplicationScheme); // Sign out user from Identity
 
-    // Continue the request pipeline
-    await next();
-});
+
 
 
 
