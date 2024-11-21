@@ -1,6 +1,8 @@
 @model MapYourMeal.Models.Review
 
-<h2>Create New Review</h2>
+<h2>Create New Review for @(Model.Restaurant?.RestaurantName ?? "Unknown Restaurant")</h2>
+<p>@(Model.Restaurant?.Address ?? "Unknown Address")<br>
+@(Model.Restaurant?.City ?? "Unknown City")</p>
 
 <!--<a href="/"> Eksempel form, ikke ferdig </a> -->
 
@@ -46,14 +48,12 @@
     </div>
     <div class="form-group">
         <label asp-for="UserId">User Id</label>
-        <input asp-for="UserId" class="form-control" />
+        <input asp-for="UserId" class="form-control" readonly />
         <span asp-validation-for="UserId" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="RestaurantId">Restaurant Id</label>
-        <input asp-for="RestaurantId" class="form-control" />
+        <input asp-for="RestaurantId" class="form-control" readonly />
         <span asp-validation-for="RestaurantId" class="text-danger"></span>
     </div>
-    <button type="submit" class="btn btn-primary">Create</button>
-    <a asp-action="Table" class="btn btn-secondary">Back to Table View</a>
 </form>

@@ -4,6 +4,8 @@ using MapYourMeal.Models;
 using MapYourMeal.DAL;
 using Microsoft.EntityFrameworkCore;
 using MapYourMeal.ViewModels;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.General;
 
 namespace MapYourMeal.Controllers;
 
@@ -13,11 +15,14 @@ public class ReviewController : Controller
     private readonly IRestaurantRepository _restaurantRepository;
     private readonly ILogger<ReviewController> _logger;
 
-    public ReviewController(IReviewRepository reviewRepository, IRestaurantRepository restaurantRepository, ILogger<ReviewController> logger)
+    private readonly UserManager<User> _userManager;
+
+   public ReviewController(IReviewRepository reviewRepository, IRestaurantRepository restaurantRepository, ILogger<ReviewController> logger, UserManager<User> userManager)
     {
         _reviewRepository = reviewRepository;
         _restaurantRepository = restaurantRepository;
         _logger = logger;
+        _userManager = userManager;
     }
 
     [HttpGet]
@@ -58,7 +63,8 @@ public class ReviewController : Controller
             var review = new Review
             {
                 RestaurantId = restaurantId,
-                Restaurant = restaurant // Add this property to your Review model if it doesn't exist
+                Restaurant = restaurant, // Add this property to your Review model if it doesn't exist
+                UserId = _userManager.GetUserId(User)
             };
             return View(review);
         }
