@@ -46,7 +46,7 @@ public class RestaurantController : Controller
 
     public IActionResult Index(int restaurantId)
     {
-        var restaurant = _restaurantRepository.GetItemAndReviewsById(restaurantId);
+        var restaurant = _restaurantRepository.GetItemAndReviewsAndUsersById(restaurantId); // Updated method to 
         if (restaurant == null)
         {
             _logger.LogError("[RestaurantController] Restaurant not found when updating the RestaurantId {restaurantId:0000}", restaurantId);

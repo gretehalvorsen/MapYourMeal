@@ -40,9 +40,15 @@ header.navbar {
 
 .restaurant-list {
   max-height: 400px; 
-  overflow-y: autp;
+  overflow-y: auto;
   overflow-x: hidden;
   
+}
+
+.review-list {
+  max-height: 400px; 
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 #map {

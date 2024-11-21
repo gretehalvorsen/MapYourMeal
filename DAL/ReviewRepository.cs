@@ -28,6 +28,22 @@ public class ReviewRepository : IReviewRepository
         
     }
 
+    public async Task<IEnumerable<Review>?> GetAllWithUser()
+        {
+            try
+            {
+                return await _db.Reviews
+                    .Include(r => r.User)
+                    .ToListAsync();
+            }
+            catch (Exception e)
+            {
+                _logger.LogError("[ReviewRepository] reviews with users ToListAsync() failed when GetAllWithUser(), error message: {e}", e.Message);
+                return null;
+            }
+        }
+
+
     /*public async Task<Review?> GetItemById(int id)
     {
     var review = await _db.Reviews.FindAsync(id);
