@@ -10,11 +10,13 @@ namespace MapYourMeal.Controllers;
 public class ReviewController : Controller
 {
     private readonly IReviewRepository _reviewRepository;
+    private readonly IRestaurantRepository _restaurantRepository;
     private readonly ILogger<ReviewController> _logger;
 
-    public ReviewController(IReviewRepository reviewRepository, ILogger<ReviewController> logger)
+    public ReviewController(IReviewRepository reviewRepository, IRestaurantRepository restaurantRepository, ILogger<ReviewController> logger)
     {
         _reviewRepository = reviewRepository;
+        _restaurantRepository = restaurantRepository;
         _logger = logger;
     }
 
@@ -48,9 +50,22 @@ public class ReviewController : Controller
     // GET: Reviews/Create
     [HttpGet]
     [Authorize]
-    public IActionResult Create()
+    public async Task<IActionResult> Create(int restaurantId)
     {
-        return View();
+        var restaurant = await _restaurantRepository.GetItemById(restaurantId);
+        if (restaurant != null)
+        {
+            var review = new Review
+            {
+                RestaurantId = restaurantId,
+                Restaurant = restaurant // Add this property to your Review model if it doesn't exist
+            };
+            return View(review);
+        }
+         else
+        {
+            return NotFound(); 
+        }
     }
 
     // POST: Reviews/Create
