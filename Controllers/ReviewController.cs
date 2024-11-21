@@ -4,19 +4,41 @@ using MapYourMeal.Models;
 using MapYourMeal.DAL;
 using Microsoft.EntityFrameworkCore;
 using MapYourMeal.ViewModels;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.General;
 
 namespace MapYourMeal.Controllers;
 
 public class ReviewController : Controller
 {
     private readonly IReviewRepository _reviewRepository;
+    private readonly IRestaurantRepository _restaurantRepository;
     private readonly ILogger<ReviewController> _logger;
 
-    public ReviewController(IReviewRepository reviewRepository, ILogger<ReviewController> logger)
+    private readonly UserManager<User> _userManager;
+
+   public ReviewController(IReviewRepository reviewRepository, IRestaurantRepository restaurantRepository, ILogger<ReviewController> logger, UserManager<User> userManager)
     {
         _reviewRepository = reviewRepository;
+        _restaurantRepository = restaurantRepository;
         _logger = logger;
+        _userManager = userManager;
     }
+
+    [HttpGet]
+        public async Task<IActionResult> GetAllReviews()
+        {            
+            var reviews = await _reviewRepository.GetAllWithUser();
+            if(reviews == null)
+            {
+                _logger.LogError("[ReviewRepository] review list not found while executing _reviewRepository.GetAllWithUser()");
+                return NotFound("Review list not found");
+            }
+            return Ok(reviews);
+        }
+
+    
+
 
     public async Task<IActionResult> Table()
     {
@@ -33,9 +55,23 @@ public class ReviewController : Controller
     // GET: Reviews/Create
     [HttpGet]
     [Authorize]
-    public IActionResult Create()
+    public async Task<IActionResult> Create(int restaurantId)
     {
-        return View();
+        var restaurant = await _restaurantRepository.GetItemById(restaurantId);
+        if (restaurant != null)
+        {
+            var review = new Review
+            {
+                RestaurantId = restaurantId,
+                Restaurant = restaurant, // Add this property to your Review model if it doesn't exist
+                UserId = _userManager.GetUserId(User)
+            };
+            return View(review);
+        }
+         else
+        {
+            return NotFound(); 
+        }
     }
 
     // POST: Reviews/Create
@@ -48,6 +84,12 @@ public class ReviewController : Controller
             // Saving the image to database
             if (image != null && image.Length > 0)
             {
+                var allowedTypes = new[] { "image/jpeg", "image/png" };
+                if(!allowedTypes.Contains(image.ContentType))
+                {
+                    ModelState.AddModelError("Image", "Only JPEG and PNG formats are supported.");
+                    return View(review);
+                }
                 using (var memoryStream = new MemoryStream())
                 {
                     await image.CopyToAsync(memoryStream);

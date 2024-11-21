@@ -33,9 +33,9 @@ namespace MapYourMeal.Controllers
                         RestaurantName = r.RestaurantName,
                         Longitude = r.Longitude,
                         Latitude = r.Latitude,
-                        ImageUrl = r.ImageUrl,
                         ImageData = r.ImageData,
                         Address = r.Address,
+                        PostalCode = r.PostalCode,
                         City = r.City,
                         // Calculate average rating, or default to 0 if no reviews
                         AverageRating = r.Reviews.Any() ? r.Reviews.Average(rev => rev.Rating) : 0,

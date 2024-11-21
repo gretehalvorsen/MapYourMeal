@@ -46,7 +46,7 @@ public class RestaurantController : Controller
 
     public IActionResult Index(int restaurantId)
     {
-        var restaurant = _restaurantRepository.GetItemAndReviewsById(restaurantId);
+        var restaurant = _restaurantRepository.GetItemAndReviewsAndUsersById(restaurantId); // Updated method to 
         if (restaurant == null)
         {
             _logger.LogError("[RestaurantController] Restaurant not found when updating the RestaurantId {restaurantId:0000}", restaurantId);
@@ -73,6 +73,12 @@ public class RestaurantController : Controller
             // Saving the image to database
             if (image != null && image.Length > 0)
             {
+                var allowedTypes = new[] { "image/jpeg", "image/png" };
+                if(!allowedTypes.Contains(image.ContentType))
+                {
+                    ModelState.AddModelError("Image", "Only JPEG and PNG formats are supported.");
+                    return View(restaurant);
+                }
                 using (var memoryStream = new MemoryStream())
                 {
                     await image.CopyToAsync(memoryStream);
