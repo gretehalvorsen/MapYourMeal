@@ -12,7 +12,7 @@ public static class DBInit
     {
         using var serviceScope = app.ApplicationServices.CreateScope();
         ApplicationDbContext context = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-        //context.Database.EnsureDeleted();
+        context.Database.EnsureDeleted();
         context.Database.EnsureCreated();
 
         // Seed roles if they don't exist
