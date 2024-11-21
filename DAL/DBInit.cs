@@ -331,7 +331,7 @@ public static class DBInit
 
                 new Review
                 {
-                    Note = "GOD!",
+                    Note = "Good glutenfree Pasta!",
                     Rating = 5,
                     Dish = "Pasta",
                     IsGlutenFree = true,
@@ -346,15 +346,71 @@ public static class DBInit
 
                 new Review
                 {
-                    Note = "Meh",
+                    Note = "Dry Burger",
                     Rating = 2,
                     Dish = "Hamburger",
-                    IsGlutenFree = true,
-                    IsVegan = true,
-                    IsDairyFree = true,
-                    ImageData = System.IO.File.ReadAllBytes("wwwroot/images/Egon.png"),
+                    IsGlutenFree = false,
+                    IsVegan = false,
+                    IsDairyFree = false,
+                    ImageData = System.IO.File.ReadAllBytes("wwwroot/images/hamburger.png"),
                     ImageType = "image/png",
                     CreatedDate = DateTime.Today.AddDays(-7).AddHours(14).AddMinutes(30).AddSeconds(47),  // 7 days ago at 2:30 PM,
+                    RestaurantId = 2,
+                    UserId = user2?.Id
+                },
+                new Review
+                {
+                    Note = "Good selection of beer",
+                    Rating = 9,
+                    Dish = "Beer",
+                    IsGlutenFree = false,
+                    IsVegan = true,
+                    IsDairyFree = true,
+                    ImageData = System.IO.File.ReadAllBytes("wwwroot/images/beer.png"),
+                    ImageType = "image/png",
+                    CreatedDate = DateTime.Today.AddDays(-10).AddHours(10).AddMinutes(30).AddSeconds(47), 
+                    RestaurantId = 2,
+                    UserId = user2?.Id
+                },
+                new Review
+                {
+                    Note = "Nice traditional christmas food",
+                    Rating = 7,
+                    Dish = "Traditional food",
+                    IsGlutenFree = false,
+                    IsVegan = false,
+                    IsDairyFree = false,
+                    ImageData = System.IO.File.ReadAllBytes("wwwroot/images/julemat.png"),
+                    ImageType = "image/png",
+                    CreatedDate = DateTime.Today.AddDays(-20).AddHours(4).AddMinutes(10).AddSeconds(47),
+                    RestaurantId = 2,
+                    UserId = user2?.Id
+                },
+                new Review
+                {
+                    Note = "Fairly good tapas",
+                    Rating = 6,
+                    Dish = "Tapas",
+                    IsGlutenFree = false,
+                    IsVegan = false,
+                    IsDairyFree = true,
+                    ImageData = System.IO.File.ReadAllBytes("wwwroot/images/shrimps.png"),
+                    ImageType = "image/png",
+                    CreatedDate = DateTime.Today.AddDays(-2).AddHours(5).AddMinutes(50).AddSeconds(47), 
+                    RestaurantId = 2,
+                    UserId = user2?.Id
+                },
+                new Review
+                {
+                    Note = "Very cosy Gastro Pub",
+                    Rating = 8,
+                    Dish = "Hamburger",
+                    IsGlutenFree = false,
+                    IsVegan = false,
+                    IsDairyFree = true,
+                    ImageData = System.IO.File.ReadAllBytes("wwwroot/images/restaurant.png"),
+                    ImageType = "image/png",
+                    CreatedDate = DateTime.Today.AddDays(-12).AddHours(9).AddMinutes(10).AddSeconds(47), 
                     RestaurantId = 2,
                     UserId = user2?.Id
                 }

@@ -1,46 +1,83 @@
-@model MapYourMeal.Models.Restaurant 
+@model MapYourMeal.Models.Restaurant
 
 <div class="container mt-4">
+
+    <!-- Image Carousel -->
+    @if (Model.Reviews != null && Model.Reviews.Any())
+    {
+        <div id="reviewCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                @for (int i = 0; i < Model.Reviews.Count; i += 3)
+                {
+                    <div class="carousel-item @(i == 0 ? "active" : "")">
+                        <div class="row">
+                            @for (int j = i; j < i + 3 && j < Model.Reviews.Count; j++)
+                            {
+                                var review = Model.Reviews[j];
+                                <div class="col-4">
+                                    <img src="@Url.Action("GetImage", "Review", new { id = review.ReviewId })" class="d-block w-100"
+                                        alt="Review Image" style="max-height: 20vh; object-fit: cover; margin: 5px;">
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#reviewCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#reviewCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    }
+
     <div class="row">
         <!-- Restaurant Details and Reviews -->
         <div class="col-md-6">
             <!-- Display restaurant details -->
             <h1 class="fw-bold">@Model.RestaurantName</h1>
             <p>@Model.Address, @Model.PostalCode, @Model.City</p>
-            
-            <!-- If there are reviews, display them -->
+
+            <!-- Scrollable Reviews Section -->
             <h3>Reviews</h3>
-            @if (Model.Reviews != null && Model.Reviews.Any())
-            {
-                @foreach (var review in Model.Reviews)
+            <div style="max-height: 50vh; overflow-y: auto; border: 1px solid #ddd; padding: 10px; border-radius: 5px;">
+                @if (Model.Reviews != null && Model.Reviews.Any())
                 {
-                    <div class="review-list mb-4 p-3 border rounded">
-                        <p><strong>Note: </strong>"@review.Note"<br>
-                        <strong>Dish: </strong>@review.Dish <br>
-                        <strong>Dietary label: </strong>@(review.IsGlutenFree ? "|Glutenfree " : "")@(review.IsDairyFree ? "|Dairyfree " : "")@(review.IsVegan ? "|Vegan " : "") <br>
-                        <strong>Rating:</strong> @review.Rating <br>
-                        <strong>Written by: </strong>@(review.User?.UserName ?? "Unknown user") <br>
-                        <strong>Date: </strong>@review.CreatedDate.ToString("MMMM dd, yyyy") <br> </p>
-                        <img src="@Url.Action("GetImage", "Review", new { id = review.ReviewId })" alt="Review Image" style="max-width: 80px; max-height: 80px;" />
-                    </div>
+                    @foreach (var review in Model.Reviews)
+                    {
+                        <div class="mb-4 p-3 border rounded">
+                            <p><strong>Note: </strong>"@review.Note"<br>
+                                <strong>Dish: </strong>@review.Dish <br>
+                                <strong>Dietary label: </strong>@(review.IsGlutenFree ? "|Glutenfree " : "")@(review.IsDairyFree
+                        ? "|Dairyfree " : "")@(review.IsVegan ? "|Vegan " : "") <br>
+                                <strong>Rating:</strong> @review.Rating <br>
+                                <strong>Written by: </strong>@(review.User?.UserName ?? "Unknown user") <br>
+                                <strong>Date: </strong>@review.CreatedDate.ToString("MMMM dd, yyyy") <br>
+                            </p>
+                            <img src="@Url.Action("GetImage", "Review", new { id = review.ReviewId })" alt="Review Image"
+                                style="max-width: 80px; max-height: 80px;" />
+                        </div>
+                    }
                 }
-            }
-            else
-            {
-                <p>No reviews available.</p>
-            }
+                else
+                {
+                    <p>No reviews available.</p>
+                }
+            </div>
 
             <!-- Register new review Button -->
             <div class="text-end">
-                <a href="@Url.Action("Create", "Review", new { restaurantId = Model.RestaurantId })" 
-                class="btn btn-secondary" 
-                style="background-color: #2a5b80;">Register new review</a>
+                <a href="@Url.Action("Create", "Review", new { restaurantId = Model.RestaurantId })"
+                    class="btn btn-secondary" style="background-color: #2a5b80;">Register new review</a>
             </div>
         </div>
 
         <!-- Map -->
         <div class="col-md-6">
-            <div id="map" style="height: 50vh; width: 100%;"></div>
+            <div id="map" style="height: 70vh; width: 100%;"></div>
         </div>
     </div>
 </div>
