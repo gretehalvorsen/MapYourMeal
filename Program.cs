@@ -52,7 +52,7 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.SlidingExpiration = true;
     options.Cookie.Name = ".AdventureWorks.Identity";
     options.Cookie.HttpOnly = true;
-    options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest; 
+    options.Cookie.SecurePolicy = CookieSecurePolicy.None;//.SameAsRequest; 
     options.Cookie.SameSite = SameSiteMode.Lax; // 
 }
 );
