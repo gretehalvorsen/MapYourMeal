@@ -2,34 +2,34 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 #nullable disable
 
-using System;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text.Encodings.Web;
-using System.Threading.Tasks;
 using MapYourMeal.DAL;
 using MapYourMeal.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-
 namespace MapYourMeal.Areas.Identity.Pages.Account.Manage
 {
+   
     public class IndexModel : PageModel
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly ApplicationDbContext _context;
+        private readonly ILogger<IndexModel> _logger; 
 
         public IndexModel(
             UserManager<User> userManager,
             SignInManager<User> signInManager,
-            ApplicationDbContext context)
+            ApplicationDbContext context,
+            ILogger<IndexModel> logger)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _context = context;
+            _logger = logger;
         }
 
         public string Username { get; set; }
@@ -72,13 +72,29 @@ namespace MapYourMeal.Areas.Identity.Pages.Account.Manage
             Restaurants = await _context.Restaurants.ToListAsync();
         }
 
+       
         public async Task<IActionResult> OnGetAsync()
         {
+            var userId = _userManager.GetUserId(User);
+            
+             _logger.LogInformation("Current User ID: {UserId}", userId);
+
+            // Check if the user is authenticated before proceeding
+            if (!User.Identity.IsAuthenticated)
+            {
+                _logger.LogWarning("User not authenticated. Redirecting to login page.");
+                // Redirect to the login page if the user is not logged in
+                return RedirectToPage("/Account/Login");
+            }
+
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
+                _logger.LogError("User not found. Unable to load user with ID '{UserId}'.", _userManager.GetUserId(User));
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
+
+            _logger.LogInformation("User found: {UserId}, loading user data.", user.Id);
 
             await LoadAsync(user);
             return Page();
@@ -89,11 +105,13 @@ namespace MapYourMeal.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
+                 _logger.LogError("User NOT found. Unable to load user with ID '{UserId}'.", _userManager.GetUserId(User));
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
             if (!ModelState.IsValid)
             {
+                _logger.LogWarning("Model state is invalid for user {UserId}. Reloading the page.", user.Id);
                 await LoadAsync(user);
                 return Page();
             }
@@ -101,17 +119,22 @@ namespace MapYourMeal.Areas.Identity.Pages.Account.Manage
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
             if (Input.PhoneNumber != phoneNumber)
             {
+                _logger.LogInformation("Phone number changed for user {UserId}. Updating phone number.", user.Id);
                 var setPhoneResult = await _userManager.SetPhoneNumberAsync(user, Input.PhoneNumber);
                 if (!setPhoneResult.Succeeded)
                 {
+                    _logger.LogError("Unexpected error when trying to set phone number for user {UserId}.", user.Id);
                     StatusMessage = "Unexpected error when trying to set phone number.";
                     return RedirectToPage();
                 }
             }
 
             await _signInManager.RefreshSignInAsync(user);
+            _logger.LogInformation("User {UserId} profile updated successfully.", user.Id);
+
             StatusMessage = "Your profile has been updated";
             return RedirectToPage();
+            
         }
 
         // New method for deleting restaurant
@@ -120,8 +143,13 @@ namespace MapYourMeal.Areas.Identity.Pages.Account.Manage
             var restaurant = await _context.Restaurants.FindAsync(id);
             if (restaurant != null)
             {
+                _logger.LogInformation("Deleting restaurant with ID {RestaurantId}.", id);
                 _context.Restaurants.Remove(restaurant);
                 await _context.SaveChangesAsync();
+            }
+            else
+            {
+                _logger.LogWarning("Restaurant with ID {RestaurantId} not found.", id);
             }
             return RedirectToPage();
         }
@@ -130,6 +158,7 @@ namespace MapYourMeal.Areas.Identity.Pages.Account.Manage
         public IActionResult OnPostUpdateAsync(int id)
         {
             // code to update the restaurant
+            _logger.LogInformation("Updating restaurant with ID {RestaurantId}.", id);
             // you might need to accept more parameters depending on what fields of the restaurant you want to update
             return RedirectToPage();
         }

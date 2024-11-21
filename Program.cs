@@ -48,11 +48,11 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.LoginPath = "/Identity/Account/Login"; // Ensure this path is valid
     options.LogoutPath = "/Identity/Account/Logout";
     options.AccessDeniedPath = "/Identity/Account/AccessDenied";
-    options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
     options.SlidingExpiration = true;
     options.Cookie.Name = ".AdventureWorks.Identity";
     options.Cookie.HttpOnly = true;
-    options.Cookie.SecurePolicy = CookieSecurePolicy.None;//.SameAsRequest; 
+    options.Cookie.SecurePolicy = CookieSecurePolicy.Always; 
     options.Cookie.SameSite = SameSiteMode.Lax; // 
 }
 );

@@ -12,7 +12,7 @@ public static class DBInit
     {
         using var serviceScope = app.ApplicationServices.CreateScope();
         ApplicationDbContext context = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-        context.Database.EnsureDeleted();
+        //context.Database.EnsureDeleted();
         context.Database.EnsureCreated();
 
         // Seed roles if they don't exist
@@ -45,6 +45,7 @@ public static class DBInit
             var resultBob = await userManager.CreateAsync(bobUser, "BobUser@1234"); //Set the password for Bob
             if (resultBob.Succeeded)
             {
+                Console.WriteLine($"Bob user created with ID: {bobUser.Id}");
                 Console.WriteLine("Bob user successfully created");
                 await userManager.AddToRoleAsync(bobUser, "User");  // Assign User role to Bob
             }
@@ -287,32 +288,6 @@ public static class DBInit
             context.SaveChanges();
         }
 
-        if(!context.Users.Any())
-        {
-            var users = new List<User>
-            {
-                new User
-                {
-                    UserName = "bob@user.no",
-                    Email = "bob@user.no"
-                },
-
-                new User
-                {
-                    UserName = "lisa@user.no",
-                    Email = "lisa@user.no"
-                }
-            };
-            foreach (var user in users)
-            {
-                var result = userManager.CreateAsync(user, "Password123!").Result; // replace "Password123!" with the desired password
-                if (!result.Succeeded)
-                {
-                    throw new Exception(string.Join("\n", result.Errors));
-                }
-            }
-            context.SaveChanges();
-        }
 
         if(!context.Reviews.Any())
         {
