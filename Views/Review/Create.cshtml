@@ -2,7 +2,7 @@
 
 <h2>Create New Review for @(Model.Restaurant?.RestaurantName ?? "Unknown Restaurant")</h2>
 <p>@(Model.Restaurant?.Address ?? "Unknown Address")<br>
-@(Model.Restaurant?.City ?? "Unknown City")</p>
+@(Model.Restaurant?.PostalCode ?? "Unknown Postal Code"), @(Model.Restaurant?.City ?? "Unknown City")</p>
 
 <!--<a href="/"> Eksempel form, ikke ferdig </a> -->
 
@@ -57,12 +57,12 @@
         <span asp-validation-for="RestaurantId" class="text-danger"></span>
         
     <!-- Blue button for Create Review -->
-<div class="text-end">
-    <button type="submit" class="btn btn-primary btn-lg" style="background-color: #2a5b80; color: white;">Create</button>
-</div>
+    <div class="text-end">
+        <button type="submit" class="btn btn-primary btn-lg" style="background-color: #2a5b80; color: white;">Create</button>
+    </div>
 
-<!-- Green button for View Restaurants -->
-<div class="text-end mt-2">
-    <a href="@Url.Action("Index", "Home")" class="btn btn-success btn-lg">View Restaurants</a>
-</div>
+    <!-- Green button for View Restaurants -->
+    <div class="text-end mt-2">
+        <a href="@Url.Action("Index", "Home")" class="btn btn-success btn-lg">View Restaurants</a>
+    </div>
 </form>
