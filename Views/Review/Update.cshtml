@@ -18,11 +18,6 @@
         <span asp-validation-for="Rating" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="ImageData">Image</label>
-        <input asp-for="ImageData" class="form-control" />
-        <span asp-validation-for="ImageData" class="text-danger"></span>
-    </div>
-    <div class="form-group">
         <label asp-for="Dish">Dish type</label><span class="text-danger">*</span>
         <input asp-for="Dish" class="form-control" />
         <span asp-validation-for="Dish" class="text-danger"></span>
@@ -43,6 +38,12 @@
         <span asp-validation-for="IsDairyFree" class="text-danger"></span>
     </div>
     <div class="form-group">
+        <label asp-for="ImageData">Image</label>
+        <input asp-for="ImageData" type="file" name="image" accept="images/*" />
+        <span asp-validation-for="ImageData" class="text-danger"></span>
+        <img src="@Url.Action("GetImage", new { id = Model.ReviewId })" alt="Review Image" style="max-width: 80px; max-height: 80px;" />
+    </div>
+    @*<div class="form-group">
         <label asp-for="UserId">User Id</label>
         <input asp-for="UserId" class="form-control" />
         <span asp-validation-for="UserId" class="text-danger"></span>
@@ -51,7 +52,7 @@
         <label asp-for="RestaurantId">Restaurant Id</label>
         <input asp-for="RestaurantId" class="form-control" />
         <span asp-validation-for="RestaurantId" class="text-danger"></span>
-    </div>
+    </div>*@
     <button type="submit" class="btn btn-primary">Save Changes</button>
     <a asp-action="Table" class="btn btn-secondary">Cancel</a>
 </form>

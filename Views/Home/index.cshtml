@@ -27,7 +27,7 @@
                     <!-- Restaurant Details -->
                     <div class="col-6">
                         <h5><strong>@index. @restaurant.RestaurantName</strong></h5>
-                        <div>
+                        @*<div>
                             @for (var i = 1; i <= 5; i++)
                             {
                                 <!-- if (i <= restaurant.Reviews.Average(r => r.Rating))
@@ -39,8 +39,8 @@
                                     <span class="text-muted">★</span>
                                 } -->
                             }
-                        </div>
-                        <p>@restaurant.Address<br>@restaurant.City</p>
+                        </div>*@
+                        <p>@restaurant.Address, @restaurant.PostalCode, @restaurant.City</p>
                     </div>
 
                     <!-- More info about Restaurant Button -->
