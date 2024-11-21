@@ -55,5 +55,14 @@
         <label asp-for="RestaurantId">Restaurant Id</label>
         <input asp-for="RestaurantId" class="form-control" readonly />
         <span asp-validation-for="RestaurantId" class="text-danger"></span>
-    </div>
+        
+    <!-- Blue button for Create Review -->
+<div class="text-end">
+    <button type="submit" class="btn btn-primary btn-lg" style="background-color: #2a5b80; color: white;">Create</button>
+</div>
+
+<!-- Green button for View Restaurants -->
+<div class="text-end mt-2">
+    <a href="@Url.Action("Index", "Home")" class="btn btn-success btn-lg">View Restaurants</a>
+</div>
 </form>
