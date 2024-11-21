@@ -18,6 +18,21 @@ public class ReviewController : Controller
         _logger = logger;
     }
 
+    [HttpGet]
+        public async Task<IActionResult> GetAllReviews()
+        {            
+            var reviews = await _reviewRepository.GetAllWithUser();
+            if(reviews == null)
+            {
+                _logger.LogError("[ReviewRepository] review list not found while executing _reviewRepository.GetAllWithUser()");
+                return NotFound("Review list not found");
+            }
+            return Ok(reviews);
+        }
+
+    
+
+
     public async Task<IActionResult> Table()
     {
         var reviews = await _reviewRepository.GetAll();

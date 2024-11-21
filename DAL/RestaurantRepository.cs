@@ -90,11 +90,21 @@ public class RestaurantRepository : IRestaurantRepository
         }
     }
 
-    public Restaurant GetItemAndReviewsById(int RestaurantId)
+    public Restaurant GetItemAndReviewsAndUsersById(int RestaurantId) // Updated method name
     {
         return _db.Restaurants
-        .Include(r => r.Reviews)
-        .FirstOrDefault(r => r.RestaurantId == RestaurantId) 
-        ?? throw new NullReferenceException();
+            .Include(r => r.Reviews)
+                .ThenInclude(review => review.User) // Include User data
+            .FirstOrDefault(r => r.RestaurantId == RestaurantId) 
+            ?? throw new NullReferenceException();
     }
+
+    public Restaurant GetItemAndReviewsById(int RestaurantId)
+        {
+            return _db.Restaurants
+                .Include(r => r.Reviews)
+                    .ThenInclude(review => review.User) // Include User data
+                .FirstOrDefault(r => r.RestaurantId == RestaurantId) 
+                ?? throw new NullReferenceException();
+        }
 }
