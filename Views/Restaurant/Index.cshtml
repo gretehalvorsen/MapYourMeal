@@ -9,16 +9,19 @@
             <p>@Model.Address, @Model.PostalCode, @Model.City</p>
             
             <!-- If there are reviews, display them -->
-            <h3>Anmeldelser</h3>
+            <h3>Reviews</h3>
             @if (Model.Reviews != null && Model.Reviews.Any())
             {
                 @foreach (var review in Model.Reviews)
                 {
                     <div class="review-list mb-4 p-3 border rounded">
-                        <p>@review.Note</p>
-                        <span>Rating: @review.Rating</span>
-                        <p><strong>Written by: </strong>@(review.User?.UserName ?? "Unknown user")</p>
-                        <p><strong>Date: </strong>@review.CreatedDate.ToString("MMMM dd, yyyy")</p>
+                        <p><strong>Note: </strong>"@review.Note"<br>
+                        <strong>Dish: </strong>@review.Dish <br>
+                        <strong>Dietary label: </strong>@(review.IsGlutenFree ? "|Glutenfree " : "")@(review.IsDairyFree ? "|Dairyfree " : "")@(review.IsVegan ? "|Vegan " : "") <br>
+                        <strong>Rating:</strong> @review.Rating <br>
+                        <strong>Written by: </strong>@(review.User?.UserName ?? "Unknown user") <br>
+                        <strong>Date: </strong>@review.CreatedDate.ToString("MMMM dd, yyyy") <br> </p>
+                        <img src="@Url.Action("GetImage", "Review", new { id = review.ReviewId })" alt="Review Image" style="max-width: 80px; max-height: 80px;" />
                     </div>
                 }
             }
