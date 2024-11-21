@@ -4,6 +4,10 @@
     ViewData["Title"] = "MapYourMeal";
     int index = 1;  // Manual index tracking
 }
+<section class="mapYourMealInfo">
+    <h1>MapYourMeal</h1>
+    <p>Discover the best food in your area tailored to your dietary restrictions with MapYourMeal;<br> your go-to guide
+        for finding diet-compatible dining options.</p>
 
 <div class="container mt-5">
     <div class="row">
@@ -39,7 +43,7 @@
                         <p>@restaurant.Address<br>@restaurant.City</p>
                     </div>
 
-                    <!-- Save Button -->
+                    <!-- More info about Restaurant Button -->
                     <div class="col-3 text-end">
                         <a href="@Url.Action("Index", "Restaurant", new { restaurantId = restaurant.RestaurantId })" 
                         class="btn btn-secondary" style="background-color: #2a5b80;">Show more</a>
@@ -48,15 +52,16 @@
                 index++;
             }
         </div>
-
-        <!-- Map Placeholder -->
-        <div class="col-md-6">
+        
+        <!-- Map + registrer new restaurant button-->
+        <div class="col-md-6 position-relative">
+            <a class="btn btn-success btn-lg position-absolute" 
+                style="z-index: 999; top: 10px; right: 0px;" 
+                asp-area="" asp-controller="Restaurant" asp-action="Create">Register new restaurant</a>
             <div id="map"></div>
         </div>
 
-        <div class="col-md-offset-2 col-md-10">
-            <a class="btn btn-success btn-lg" asp-area="" asp-controller="Restaurant" asp-action="Create">Register new restaurant</a>
-        </div>
+        
         
     </div>
 </div>
