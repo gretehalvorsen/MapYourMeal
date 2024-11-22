@@ -70,6 +70,8 @@ namespace MapYourMeal.Areas.Identity.Pages.Account.Manage
 
             // Load all restaurants
             Restaurants = await _context.Restaurants.ToListAsync();
+            var allReviews = await _context.Reviews.ToListAsync(); //testing
+            ViewData["AllReviews"] = allReviews;
         }
 
        
