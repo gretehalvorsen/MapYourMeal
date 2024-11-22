@@ -19,7 +19,7 @@ header.navbar {
   flex-direction: column;
 }
 
-.mapYourMealInfo h1 {
+.mapYourMealInfo h1, h2 {
   text-align: center;
   font-size: clamp(2.5rem, 6vw, 4rem); 
 }
@@ -72,9 +72,24 @@ img {
   width: 100%; 
   height: 70vh;
 }
+
+#createRestaurantMap {
+  width: 100%;
+  height: 80vh;
+  padding-top: 50vh;
+}
+
 .restaurant-img {
   width: 100%;
   height: auto;
+}
+
+.footer {
+  padding: 20px;
+  text-align: center;
+  margin-top: auto;
+  flex-shrink: 0;
+  background-color: #92b6da;
 }
 
 @media (max-width: 770px) {

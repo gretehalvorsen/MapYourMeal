@@ -4,10 +4,20 @@
     ViewData["Title"] = "Create";
 }
 
+<section class="mapYourMealInfo">
+    <h2>Welcome to the MapYourMeal Community</h2>
+    <p>Do you have a favorite restaurant that caters to your unique dietary needs?<br>
+        We'd love to hear about it! 
+        By registering a restaurant, you're not only sharing your best-kept secrets but,<br>
+        also helping others discover new dining options that fit their dietary restrictions. <br><br>
+        Join us in our mission to make dining out easier and more enjoyable for everyone.<br>
+        Register a restaurant today and let's broaden our horizons together!<br>
+        Every meal you share helps our community grow</p>
+
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-6">
-            <h2>Create new Restaurant</h2>
+            <h3>Create new Restaurant</h3>
             <form asp-action="Create" method="post" enctype="multipart/form-data">
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group">
