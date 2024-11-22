@@ -42,7 +42,7 @@ header.navbar {
   position: relative;
 }
 
-.btn.btn-secondary {
+.btn.restaurant-show-more {
   white-space: nowrap;
   min-width: 20px;
   position: absolute;

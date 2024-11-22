@@ -13,6 +13,7 @@ $(function(){
 });
 
 async function initCreateMap(){
+    //Initializing the map and adding the map layer
     var createRestaurantMap = L.map('createRestaurantMap');
     createRestaurantMap.setView([59.91, 10.75], 13);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -20,6 +21,7 @@ async function initCreateMap(){
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(createRestaurantMap);
 
+    //Fetching all the restaurants from the database and pinning them on the map
     var restaurants = await fetchRestaurants();
     restaurants.forEach(restaurant => {
         L.marker([restaurant.latitude, restaurant.longitude])
@@ -32,6 +34,7 @@ async function initCreateMap(){
                 </div>`);
     });
 
+    //Enabling the user to pin a new restaurant.
     var marker;
     createRestaurantMap.on('click', function(e) {
         var lat = e.latlng.lat;
@@ -46,6 +49,7 @@ async function initCreateMap(){
 }
 
 async function initMap(){
+    //Initializing the map and adding the map layer
     var map = L.map('map');
     map.setView([59.91, 10.75], 13);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -53,6 +57,7 @@ async function initMap(){
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
+    //Fetching all the restaurants from the database and pinning them on the map
     var restaurants = await fetchRestaurants();
     restaurants.forEach(restaurant => {
         L.marker([restaurant.latitude, restaurant.longitude])
@@ -66,6 +71,7 @@ async function initMap(){
     });
 }
 
+//Definition of method to fetch restaurants from the database using endpoint /Restaurant/GetAllRestaurants.
 async function fetchRestaurants() {
     try{
         const response = await fetch('/Restaurant/GetAllRestaurants');
