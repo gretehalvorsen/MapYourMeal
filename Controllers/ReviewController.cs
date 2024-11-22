@@ -37,9 +37,6 @@ public class ReviewController : Controller
             return Ok(reviews);
         }
 
-    
-
-
     public async Task<IActionResult> Table()
     {
         var reviews = await _reviewRepository.GetAll();
@@ -172,10 +169,7 @@ public class ReviewController : Controller
             _logger.LogError("[ReviewController] Review deletion failed for the ReviewId {ReviewId:0000}", ReviewId);
             return BadRequest("Review deletion failed");
         }
-        
-        
-        return RedirectToAction(nameof(Table));
+        return RedirectToAction("index","Home");
     }
-
 }
 
