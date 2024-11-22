@@ -1,0 +1,97 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Profile";
+    ViewData["ActivePage"] = ManageNavPages.Index;
+}
+
+
+<h3>@ViewData["Title"]</h3>
+<partial name="_StatusMessage" for="StatusMessage" />
+<div class="row">
+    <div class="col-md-6">
+        <form id="profile-form" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+            <div class="form-floating mb-3">
+                <input asp-for="Username" class="form-control" placeholder="Please choose your username." disabled />
+                <label asp-for="Username" class="form-label"></label>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.PhoneNumber" class="form-control" placeholder="Please enter your phone number."/>
+                <label asp-for="Input.PhoneNumber" class="form-label"></label>
+                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+            </div>
+            <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Save</button>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <h3>Your Reviews</h3>
+        <div style="max-height: 50vh; overflow-y: auto; border: 1px solid #ddd; padding: 10px; border-radius: 5px;">
+            @if (Model.UserReviews != null && Model.UserReviews.Any())
+            {
+                @foreach (var review in Model.UserReviews)
+                {
+                    <div class="mb-4 p-3 border rounded d-flex align-items-start justify-content-between">
+                        <div>
+                            <p>
+                                <strong>Note: </strong>"@review.Note"<br>
+                                <strong>Dish: </strong>@review.Dish <br>
+                                <strong>Dietary label: </strong>@(review.IsGlutenFree ? "|Glutenfree " : "")@(review.IsDairyFree ? "|Dairyfree " : "")@(review.IsVegan ? "|Vegan " : "") <br>
+                                <strong>Rating:</strong> @review.Rating <br>
+                                <strong>Written by: </strong>@(review.User?.UserName ?? "Unknown user") <br>
+                                <strong>Date: </strong>@review.CreatedDate.ToString("MMMM dd, yyyy") <br>
+                            </p>
+                       </div>
+                    <div class="ms-3 d-flex flex-column">
+                        <form method="get" class="mb-2" action="/Review/Update">
+                            <input type="hidden" name= "ReviewId" value="@review.ReviewId" />
+                                <button type="submit" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-edit"></i> Edit
+                                </button>
+                        </form>
+                            <form method="get" action="/Review/Delete">
+    <input type="hidden" name="ReviewId" value="@review.ReviewId" />
+    <button type="submit" class="btn btn-sm btn-danger">
+        <i class="fas fa-trash"></i> Delete
+    </button>
+</form>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p>No reviews available.</p>
+        }
+    </div>
+</div>
+  
+
+        <div class="restaurant-list">
+        <h3>Restaurants</h3>
+        @foreach (var restaurant in Model.Restaurants)
+        {
+            <div class="row">
+                <div class="col-sm-9">
+                    <p>@restaurant.RestaurantId - @restaurant.RestaurantName</p>
+                </div>
+                <div class="col-sm-3">
+                    <form method="post" class="d-flex justify-content-between">
+                        <input type="hidden" asp-for="@restaurant.RestaurantId" />
+                        <button type="submit" formaction="./Index?handler=Update" class="btn btn-primary" style="margin-right: 10px;">
+                            <i class="fas fa-pencil-alt"></i>
+                        </button>
+                        <button type="submit" formaction="./Index?handler=Delete" class="btn btn-danger">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        }
+</div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

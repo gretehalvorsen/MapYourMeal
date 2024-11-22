@@ -37,9 +37,6 @@ public class ReviewController : Controller
             return Ok(reviews);
         }
 
-    
-
-
     public async Task<IActionResult> Table()
     {
         var reviews = await _reviewRepository.GetAll();
@@ -100,7 +97,7 @@ public class ReviewController : Controller
             // Saving the review to the database
             bool returnOk = await _reviewRepository.Create(review);
             if (returnOk)
-                return RedirectToAction(nameof(Table));
+                return RedirectToAction("Index","Restaurant", new { restaurantId = review.RestaurantId });
         }
         _logger.LogWarning("[ReviewController] Review creation failed {@review}", review);
         return View(review);
@@ -142,7 +139,7 @@ public class ReviewController : Controller
         {
             bool returnOk = await _reviewRepository.Update(review);
             if(returnOk)
-                return RedirectToAction(nameof(Table));
+                return RedirectToPage("/Account/Manage/Index", new { area = "Identity" });
         }
         _logger.LogWarning("[ReviewController] Review update failed {@review}", review);
         return View(review);
@@ -172,10 +169,7 @@ public class ReviewController : Controller
             _logger.LogError("[ReviewController] Review deletion failed for the ReviewId {ReviewId:0000}", ReviewId);
             return BadRequest("Review deletion failed");
         }
-        
-        
-        return RedirectToAction(nameof(Table));
+        return RedirectToPage("/Account/Manage/Index", new { area = "Identity" });
     }
-
 }
 

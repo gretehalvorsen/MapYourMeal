@@ -14,10 +14,13 @@
                             @for (int j = i; j < i + 3 && j < Model.Reviews.Count; j++)
                             {
                                 var review = Model.Reviews[j];
-                                <div class="col-4">
-                                    <img src="@Url.Action("GetImage", "Review", new { id = review.ReviewId })" class="d-block w-100"
+                                @if (Model.Reviews[j].ImageData != null)
+                                {
+                                    <div class="col-4">
+                                        <img src="@Url.Action("GetImage", "Review", new { id = review.ReviewId })" class="review-carousel d-block w-100"
                                         alt="Review Image" style="max-height: 20vh; object-fit: cover; margin: 5px;">
-                                </div>
+                                    </div>
+                                }
                             }
                         </div>
                     </div>
@@ -57,8 +60,11 @@
                                 <strong>Written by: </strong>@(review.User?.UserName ?? "Unknown user") <br>
                                 <strong>Date: </strong>@review.CreatedDate.ToString("MMMM dd, yyyy") <br>
                             </p>
-                            <img src="@Url.Action("GetImage", "Review", new { id = review.ReviewId })" alt="Review Image"
+                            @if (review.ImageData != null)
+                            {
+                                <img src="@Url.Action("GetImage", "Review", new { id = review.ReviewId })" alt="Review Image"
                                 style="max-width: 80px; max-height: 80px;" />
+                            }
                         </div>
                     }
                 }
