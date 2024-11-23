@@ -182,12 +182,25 @@ public class RestaurantController : Controller
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int RestaurantId)
         {
+            var restaurant = await _restaurantRepository.GetItemById(RestaurantId);
+            if (restaurant == null)
+            {
+                _logger.LogError("[RestaurantController] Restaurant not found for the RestaurantId {RestaurantId:0000}", RestaurantId);
+                return NotFound("Restaurant not found for the provided ID.");
+            }
+
+            // Ensure cascading delete is handled automatically by EntityFramework
             bool returnOk = await _restaurantRepository.Delete(RestaurantId);
-            if(!returnOk)
+
+            if (!returnOk)
             {
                 _logger.LogError("[RestaurantController] Restaurant deletion failed for the RestaurantId {RestaurantId:0000}", RestaurantId);
-                return BadRequest("Restaurant deletion failed");
+                return BadRequest("Restaurant deletion failed.");
             }
+
+            _logger.LogInformation("[RestaurantController] Restaurant with ID {RestaurantId:0000} deleted successfully.", RestaurantId);
+
+            // Redirecting to the admin page after successful deletion
             return RedirectToPage("/Account/Manage/Admin", new { area = "Identity" });
         }
     }

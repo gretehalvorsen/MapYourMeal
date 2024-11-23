@@ -9,4 +9,17 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
     public new DbSet<User> Users { get; set; }
     public DbSet<Review> Reviews { get; set; }
     public DbSet<Restaurant> Restaurants { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    base.OnModelCreating(modelBuilder);
+
+    // Ensure cascade delete is configured between Restaurant and Review
+    modelBuilder.Entity<Review>()
+        .HasOne(r => r.Restaurant)
+        .WithMany(r => r.Reviews)
+        .HasForeignKey(r => r.RestaurantId)
+        .OnDelete(DeleteBehavior.Cascade); // Automatically delete reviews when a restaurant is deleted
+}
+
 }

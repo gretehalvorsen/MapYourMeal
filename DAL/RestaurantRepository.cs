@@ -69,26 +69,34 @@ public class RestaurantRepository : IRestaurantRepository
     
     }
 
-    public async Task<bool> Delete(int RestaurantId)
+    public async Task<bool> Delete(int restaurantId)
     {
         try
         {
-        var restaurant = await _db.Restaurants.FindAsync(RestaurantId);
-        if (restaurant == null)
-        {
-            _logger.LogError("[RestaurantRepository] restaurant not found for the RestaurantId {RestaurantId: 0000}", RestaurantId);
-            return false;
+        // Find the restaurant including its reviews (if cascade delete is set up, reviews will be deleted automatically)
+            var restaurant = await _db.Restaurants
+                                    .Include(r => r.Reviews) // Explicitly include reviews (although cascade delete should handle this)
+                                    .FirstOrDefaultAsync(r => r.RestaurantId == restaurantId);
+            
+            if (restaurant == null)
+            {
+                _logger.LogError("[RestaurantRepository] Restaurant not found for the RestaurantId {RestaurantId:0000}", restaurantId);
+                return false;
+            }
+
+            _db.Restaurants.Remove(restaurant); // Remove the restaurant (reviews will be deleted because of cascade delete)
+            await _db.SaveChangesAsync(); // Save the changes to the database
+
+            _logger.LogInformation("[RestaurantRepository] Restaurant with ID {RestaurantId:0000} deleted successfully.", restaurantId);
+            return true;
         }
-        _db.Restaurants.Remove(restaurant);
-        await _db.SaveChangesAsync();
-        return true;
-        }
-        catch(Exception e)
+        catch (Exception e)
         {
-            _logger.LogError("[RestaurantRepository] restaurant deletion failed for the RestaurantId {RestaurantId: 0000}, error message: {e}", RestaurantId, e.Message);
+            _logger.LogError("[RestaurantRepository] Restaurant deletion failed for the RestaurantId {RestaurantId:0000}, error message: {ErrorMessage}", restaurantId, e.Message);
             return false;
         }
     }
+
 
     public Restaurant GetItemAndReviewsAndUsersById(int RestaurantId) // Updated method name
     {
