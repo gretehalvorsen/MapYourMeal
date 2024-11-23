@@ -132,11 +132,26 @@ public class ReviewController : Controller
 
     [HttpPost]
     [Authorize]
-    public async Task<IActionResult> Update(Review review)
+    public async Task<IActionResult> Update(Review review, IFormFile? image)
     {
-        //Console.WriteLine("POST Update method called");
         if (ModelState.IsValid)
         {
+            // Saving the image to database
+            if (image != null && image.Length > 0)
+            {
+                var allowedTypes = new[] { "image/jpeg", "image/png" };
+                if(!allowedTypes.Contains(image.ContentType))
+                {
+                    ModelState.AddModelError("Image", "Only JPEG and PNG formats are supported.");
+                    return View(review);
+                }
+                using (var memoryStream = new MemoryStream())
+                {
+                    await image.CopyToAsync(memoryStream);
+                    review.ImageData = memoryStream.ToArray();
+                    review.ImageType = image.ContentType;
+                }
+            }
             bool returnOk = await _reviewRepository.Update(review);
             if(returnOk)
                 return RedirectToPage("/Account/Manage/Index", new { area = "Identity" });

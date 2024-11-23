@@ -25,7 +25,6 @@ public class ReviewRepository : IReviewRepository
             _logger.LogError("[ReviewRepository] reviews ToListAsync() failed when GetAll(), error message: {e}", e.Message);
             return null;
         }
-        
     }
 
     public async Task<IEnumerable<Review>?> GetAllWithUser()
@@ -42,18 +41,6 @@ public class ReviewRepository : IReviewRepository
                 return null;
             }
         }
-
-
-    /*public async Task<Review?> GetItemById(int id)
-    {
-    var review = await _db.Reviews.FindAsync(id);
-    if (review == null)
-    {
-        // sjekke ID-en
-        Console.WriteLine($"Review with ID {id} not found.");
-    }
-    return review;
-}*/
 
     public async Task<Review?> GetItemById(int ReviewId)
     {
@@ -74,9 +61,9 @@ public class ReviewRepository : IReviewRepository
     {
         try
         {
-        _db.Reviews.Add(review);
-        await _db.SaveChangesAsync();
-        return true;
+            _db.Reviews.Add(review);
+            await _db.SaveChangesAsync();
+            return true;
         }
         catch (Exception e)
         {
@@ -89,9 +76,9 @@ public class ReviewRepository : IReviewRepository
     {
         try
         {
-        _db.Reviews.Update(review);
-        await _db.SaveChangesAsync();
-        return true;
+            _db.Reviews.Update(review);
+            await _db.SaveChangesAsync();
+            return true;
         }
         catch (Exception e)
         {
@@ -119,7 +106,5 @@ public class ReviewRepository : IReviewRepository
             _logger.LogError("[ReviewRepository] review deletion failed for the ReviewId {ReviewId: 0000}, error message: {e}", ReviewId, e.Message);
             return false;
         }
-
-   
     }
 }
