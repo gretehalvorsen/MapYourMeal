@@ -125,14 +125,40 @@ public class RestaurantController : Controller
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Update(Restaurant restaurant)
+        public async Task<IActionResult> Update(Restaurant restaurant, IFormFile? image)
         {
             Console.WriteLine("POST Update method called");
             if (ModelState.IsValid)
             {
+                // Saving the image from form to database
+            if (image != null && image.Length > 0)
+            {
+                var allowedTypes = new[] { "image/jpeg", "image/png" };
+                if(!allowedTypes.Contains(image.ContentType))
+                {
+                    ModelState.AddModelError("Image", "Only JPEG and PNG formats are supported.");
+                    return View(restaurant);
+                }
+                using (var memoryStream = new MemoryStream())
+                {
+                    await image.CopyToAsync(memoryStream);
+                    restaurant.ImageData = memoryStream.ToArray();
+                    restaurant.ImageType = image.ContentType;
+                }
+            }
+            else
+            {
+                //Keep the old image from the database. 
+                var existingRestaurant = await _restaurantRepository.GetItemById(restaurant.RestaurantId);
+                if (existingRestaurant != null)
+                {
+                    restaurant.ImageData = existingRestaurant.ImageData;
+                    restaurant.ImageType = existingRestaurant.ImageType;
+                }
+            }
                 bool returnOk = await _restaurantRepository.Update(restaurant);
                 if(returnOk)
-                return RedirectToAction(nameof(Table));
+                    return RedirectToPage("/Account/Manage/Admin", new { area = "Identity" });
             }
             _logger.LogWarning("[RestaurantController] Restaurant update failed {@restaurant}", restaurant);
             return View(restaurant);
@@ -162,6 +188,6 @@ public class RestaurantController : Controller
                 _logger.LogError("[RestaurantController] Restaurant deletion failed for the RestaurantId {RestaurantId:0000}", RestaurantId);
                 return BadRequest("Restaurant deletion failed");
             }
-            return RedirectToAction(nameof(Table));
+            return RedirectToPage("/Account/Manage/Admin", new { area = "Identity" });
         }
     }

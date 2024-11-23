@@ -30,7 +30,7 @@ public class RestaurantRepository : IRestaurantRepository
     {
         try
         {
-            return await _db.Restaurants.FindAsync(RestaurantId); // Kontroller at id eksisterer i databasen
+            return await _db.Restaurants.AsNoTracking().FirstOrDefaultAsync(r => r.RestaurantId == RestaurantId); // Kontroller at id eksisterer i databasen
         }
         catch (Exception e)
         {

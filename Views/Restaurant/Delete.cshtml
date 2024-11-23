@@ -28,6 +28,6 @@
     
     <form asp-action="DeleteConfirmed" asp-route-RestaurantId="@Model.RestaurantId" method="post">
         <button type="submit" class="btn btn-primary">Delete</button>
-        <a asp-action="Table" class="btn btn-secondary">Cancel</a>
+        <a asp-area="Identity" asp-page="/Account/Manage/Admin" class="btn btn-secondary">Cancel</a>
     </form>
 </div>
