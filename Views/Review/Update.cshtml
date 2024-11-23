@@ -40,7 +40,6 @@
     <div class="form-group">
         <label asp-for="ImageData">Image</label>
         <input asp-for="ImageData" type="file" name="image" accept="images/*" />
-        
         <span asp-validation-for="ImageData" class="text-danger"></span>
         <img src="@Url.Action("GetImage", new { id = Model.ReviewId })" alt="Review Image" style="max-width: 80px; max-height: 80px;" />
     </div>

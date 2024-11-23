@@ -46,7 +46,7 @@ public class ReviewRepository : IReviewRepository
     {
         try
         {
-            return await _db.Reviews.FindAsync(ReviewId); // Kontroller at id eksisterer i databasen
+            return await _db.Reviews.AsNoTracking().FirstOrDefaultAsync(r => r.ReviewId == ReviewId); // Kontroller at id eksisterer i databasen
         }
         catch (Exception e)
         {
@@ -61,6 +61,10 @@ public class ReviewRepository : IReviewRepository
     {
         try
         {
+            if (review.ImageData == null)
+            {
+
+            }
             _db.Reviews.Add(review);
             await _db.SaveChangesAsync();
             return true;

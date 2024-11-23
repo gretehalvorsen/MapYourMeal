@@ -136,7 +136,7 @@ public class ReviewController : Controller
     {
         if (ModelState.IsValid)
         {
-            // Saving the image to database
+            // Saving the image from form to database
             if (image != null && image.Length > 0)
             {
                 var allowedTypes = new[] { "image/jpeg", "image/png" };
@@ -150,6 +150,16 @@ public class ReviewController : Controller
                     await image.CopyToAsync(memoryStream);
                     review.ImageData = memoryStream.ToArray();
                     review.ImageType = image.ContentType;
+                }
+            }
+            else
+            {
+                //Keep the old image from the database. 
+                var existingReview = await _reviewRepository.GetItemById(review.ReviewId);
+                if (existingReview != null)
+                {
+                    review.ImageData = existingReview.ImageData;
+                    review.ImageType = existingReview.ImageType;
                 }
             }
             bool returnOk = await _reviewRepository.Update(review);
