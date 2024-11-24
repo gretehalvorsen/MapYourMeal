@@ -25,6 +25,13 @@
     
     <form asp-action="DeleteConfirmed" asp-route-ReviewId="@Model.ReviewId" method="post">
         <button type="submit" class="btn btn-primary" style="background-color: #2a5b80;">Delete</button>
-        <a asp-area="Identity" asp-page="/Account/Manage/Index" class="btn btn-secondary">Cancel</a>
+        @if(User.IsInRole("Admin"))
+            {
+                <a asp-area="Identity" asp-page="/Account/Manage/Admin" class="btn btn-secondary">Cancel</a>
+            }
+            else
+            {
+                <a asp-area="Identity" asp-page="/Account/Manage/Index" class="btn btn-secondary">Cancel</a>
+            }
     </form>
 </div>

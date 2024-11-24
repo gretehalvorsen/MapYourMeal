@@ -164,7 +164,16 @@ public class ReviewController : Controller
             }
             bool returnOk = await _reviewRepository.Update(review);
             if(returnOk)
-                return RedirectToPage("/Account/Manage/Index", new { area = "Identity" });
+            {
+                if(User.IsInRole("Admin"))
+                    {
+                        return RedirectToPage("/Account/Manage/Admin", new { area = "Identity" });
+                    }
+                    else
+                    {
+                        return RedirectToPage("/Account/Manage/Index", new { area = "Identity" });
+                    }
+            }
         }
         _logger.LogWarning("[ReviewController] Review update failed {@review}", review);
         return View(review);
@@ -194,7 +203,14 @@ public class ReviewController : Controller
             _logger.LogError("[ReviewController] Review deletion failed for the ReviewId {ReviewId:0000}", ReviewId);
             return BadRequest("Review deletion failed");
         }
-        return RedirectToPage("/Account/Manage/Index", new { area = "Identity" });
+        if(User.IsInRole("Admin"))
+        {
+            return RedirectToPage("/Account/Manage/Admin", new { area = "Identity" });
+        }
+        else
+        {
+            return RedirectToPage("/Account/Manage/Index", new { area = "Identity" });
+        }
     }
 }
 
