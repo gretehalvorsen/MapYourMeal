@@ -85,7 +85,7 @@ public class ReviewController : Controller
                 if(!allowedTypes.Contains(image.ContentType))
                 {
                     ModelState.AddModelError("Image", "Only JPEG and PNG formats are supported.");
-                    return View(review);
+                    return RedirectToAction("Create", new { restaurantId = review.RestaurantId });
                 }
                 using (var memoryStream = new MemoryStream())
                 {
@@ -100,7 +100,7 @@ public class ReviewController : Controller
                 return RedirectToAction("Index","Restaurant", new { restaurantId = review.RestaurantId });
         }
         _logger.LogWarning("[ReviewController] Review creation failed {@review}", review);
-        return View(review);
+        return RedirectToAction("Create", new { restaurantId = review.RestaurantId });
     }
 
     public async Task<IActionResult> GetImage(int id)
