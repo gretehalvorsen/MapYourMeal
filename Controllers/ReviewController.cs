@@ -25,17 +25,23 @@ public class ReviewController : Controller
         _userManager = userManager;
     }
 
+    public bool ValidateImageType(IFormFile image)
+    {
+        var allowedTypes = new[] { "image/jpeg", "image/png" };
+        return allowedTypes.Contains(image.ContentType);
+    }
+
     [HttpGet]
-        public async Task<IActionResult> GetAllReviews()
-        {            
-            var reviews = await _reviewRepository.GetAllWithUser();
-            if(reviews == null)
-            {
-                _logger.LogError("[ReviewRepository] review list not found while executing _reviewRepository.GetAllWithUser()");
-                return NotFound("Review list not found");
-            }
-            return Ok(reviews);
+    public async Task<IActionResult> GetAllReviews()
+    {            
+        var reviews = await _reviewRepository.GetAllWithUser();
+        if(reviews == null)
+        {
+            _logger.LogError("[ReviewRepository] review list not found while executing _reviewRepository.GetAllWithUser()");
+            return NotFound("Review list not found");
         }
+        return Ok(reviews);
+    }
 
     public async Task<IActionResult> Table()
     {
@@ -78,11 +84,10 @@ public class ReviewController : Controller
     {
         if (ModelState.IsValid)
         {
-            // Saving the image to database
             if (image != null && image.Length > 0)
             {
-                var allowedTypes = new[] { "image/jpeg", "image/png" };
-                if(!allowedTypes.Contains(image.ContentType))
+                // Saving the image to database if it's the correct file type
+                if (!ValidateImageType(image))
                 {
                     ModelState.AddModelError("Image", "Only JPEG and PNG formats are supported.");
                     return RedirectToAction("Create", new { restaurantId = review.RestaurantId });
@@ -139,8 +144,7 @@ public class ReviewController : Controller
             // Saving the image from form to database
             if (image != null && image.Length > 0)
             {
-                var allowedTypes = new[] { "image/jpeg", "image/png" };
-                if(!allowedTypes.Contains(image.ContentType))
+                if (!ValidateImageType(image))
                 {
                     ModelState.AddModelError("Image", "Only JPEG and PNG formats are supported.");
                     return View(review);
@@ -213,4 +217,3 @@ public class ReviewController : Controller
         }
     }
 }
-
