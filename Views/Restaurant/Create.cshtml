@@ -5,7 +5,7 @@
 }
 
 <section class="mapYourMealInfo">
-    <h2>Welcome to the MapYourMeal Community</h2>
+    <h1>Welcome to the MapYourMeal Community</h1>
     <p>Do you have a favorite restaurant that caters to your unique dietary needs? We'd love to hear about it! <br>
         Click on the map to register a restaurant! By registering a restaurant, you're not only sharing your best-kept secrets but, <br>
         also helping others discover new dining options that fit their dietary restrictions. <br><br>
@@ -13,6 +13,7 @@
         Every meal you share helps our community grow</p>
 
 <div class="container mt-5">
+    <p><i>Properties marked with <span class="text-danger">*</span> is required</i></p>
     <div class="row">
         <div class="col-md-6">
             <h3>Create new Restaurant</h3>
@@ -34,17 +35,17 @@
                     <span asp-validation-for="Latitude" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Address">Address</label>
+                    <label asp-for="Address">Address</label><span class="text-danger">*</span>
                     <input asp-for="Address" class="form-control" />
                     <span asp-validation-for="Address" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="PostalCode">Postal Code</label>
+                    <label asp-for="PostalCode">Postal Code</label><span class="text-danger">*</span>
                     <input asp-for="PostalCode" class="form-control" />
                     <span asp-validation-for="PostalCode" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="City">City</label>
+                    <label asp-for="City">City</label><span class="text-danger">*</span>
                     <input asp-for="City" class="form-control" />
                     <span asp-validation-for="City" class="text-danger"></span>
                 </div>
@@ -69,7 +70,7 @@
         <div class="col-md-6">
             <div class="map-placeholder" id="createRestaurantMap"></div>
             <div>
-                <a href="@Url.Action("Index", "Home")" class="btn btn-success btn-lg">Show all restaurants</a>
+                <a href="@Url.Action("Index", "Home")" class="btn btn-success btn-lg">Back to restaurants</a>
             </div>
         </div>
     </div>

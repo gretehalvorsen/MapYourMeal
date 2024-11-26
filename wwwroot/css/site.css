@@ -6,8 +6,8 @@ html, body {
   ;
 }
 
-header.navbar {
-  background-color: #92b6da;
+.navbar {
+  background-color: #a8c7e6;
   padding: 20px;
   flex-shrink: 0; /* Ensure the navbar doesn't shrink */
 }
@@ -19,9 +19,9 @@ header.navbar {
   flex-direction: column;
 }
 
-.mapYourMealInfo h1, h2 {
+.mapYourMealInfo h1 {
   text-align: center;
-  font-size: clamp(2.5rem, 6vw, 4rem); 
+  font-size: clamp(1.5rem, 4vw, 3rem); 
 }
 
 .mapYourMealInfo h1,
@@ -89,7 +89,7 @@ img {
   text-align: center;
   margin-top: auto;
   flex-shrink: 0;
-  background-color: #92b6da;
+  background-color: #a8c7e6;
 }
 
 @media (max-width: 770px) {

@@ -9,10 +9,12 @@ namespace MapYourMeal.Models
         [Display(Name = "Restaurant name")]
         public string RestaurantName { get; set; } = string.Empty;
         [Required]
-        [Range(-90, 90, ErrorMessage = "Longitude must be between -90 and 90.")]
+        [Range(-180, 180, ErrorMessage = "Longitude must be between -90 and 90.")]
+        [RegularExpression(@"[0-9 .]", ErrorMessage = "Longitude must use period . and not comma ,")]
         public double Longitude { get; set; }
         [Required]
-        [Range(-90, 90, ErrorMessage = "Latitude must be between -90 and 90.")]
+        [Range(-180, 180, ErrorMessage = "Latitude must be between -90 and 90.")]
+        [RegularExpression(@"[0-9 .]", ErrorMessage = "Latitude must use period . and not comma ,")]
         public double Latitude { get; set; }
         public double AverageRating { get; set; }
         public DateTime CreatedDate { get; set; } = DateTime.Now;
@@ -22,9 +24,12 @@ namespace MapYourMeal.Models
         // List of images for use in detailed views
         public List<string>? Images { get; set; } = new List<string>();
 
-        public string? Address { get; set; } = string.Empty;
-        public string? PostalCode { get; set; } = string.Empty;
-        public string? City { get; set; } = string.Empty;
+        [Required]
+        public string Address { get; set; } = string.Empty;
+        [Required]
+        public string PostalCode { get; set; } = string.Empty;
+        [Required]
+        public string City { get; set; } = string.Empty;
         public string? Webpage { get; set; } = string.Empty;
         public string? Phone { get; set; } = string.Empty;
 
