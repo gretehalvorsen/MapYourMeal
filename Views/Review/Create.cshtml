@@ -8,7 +8,7 @@
 
 
 <form asp-action="Create" method="post" enctype="multipart/form-data">
-    <p>Properties marked with <span class="text-danger">*</span> is required</p>
+    <p><i>Properties marked with <span class="text-danger">*</span> is required</i></p>
     <div asp-validation-summary="All" class="text-danger"></div>
     <div class="form-group">
         <label asp-for="Dish">Dish (What did you eat?)</label><span class="text-danger">*</span>
@@ -16,7 +16,7 @@
         <span asp-validation-for="Dish" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Rating">Rating (0-10)</label><span class="text-danger">*</span>
+        <label asp-for="Rating">Rating (1-10)</label><span class="text-danger">*</span>
         <input asp-for="Rating" class="form-control" />
         <span asp-validation-for="Rating" class="text-danger"></span>
     </div>
@@ -46,14 +46,15 @@
         <span asp-validation-for="ImageData" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="UserId">User Id</label>
-        <input asp-for="UserId" class="form-control" readonly />
+        <!--<label type="hidden" asp-for="UserId">User Id</label>-->
+        <input asp-for="UserId" type="hidden" class="form-control" readonly />
         <span asp-validation-for="UserId" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="RestaurantId">Restaurant Id</label>
-        <input asp-for="RestaurantId" class="form-control" readonly />
+        <!--<label asp-for="RestaurantId">Restaurant Id</label>-->
+        <input asp-for="RestaurantId" type="hidden" class="form-control" readonly />
         <span asp-validation-for="RestaurantId" class="text-danger"></span>
+    </div>
         
     <!-- Blue button for Create Review -->
     <div class="text-end">
