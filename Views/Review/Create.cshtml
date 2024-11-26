@@ -17,7 +17,7 @@
     </div>
     <div class="form-group">
         <label asp-for="Rating">Rating (1-10)</label><span class="text-danger">*</span>
-        <input asp-for="Rating" class="form-control" />
+        <input asp-for="Rating" class="form-control" type="number" min="1" max="10" />
         <span asp-validation-for="Rating" class="text-danger"></span>
     </div>
     <div class="form-group">
@@ -56,13 +56,11 @@
         <span asp-validation-for="RestaurantId" class="text-danger"></span>
     </div>
         
-    <!-- Blue button for Create Review -->
+    <!-- Create and cancel button -->
     <div class="text-end">
-        <button type="submit" class="btn btn-primary btn-lg" style="background-color: #2a5b80; color: white;">Create</button>
+        <button type="submit" class="btn btn-success btn-lg">Create</button>
+        <button type="button" class="btn btn-danger btn-lg" onclick="window.history.back();">Cancel</button>
     </div>
 
-    <!-- Green button for View Restaurants -->
-    <div class="text-end mt-2">
-        <a href="@Url.Action("Index", "Home")" class="btn btn-success btn-lg">View Restaurants</a>
-    </div>
+
 </form>
