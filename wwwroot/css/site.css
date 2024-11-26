@@ -19,9 +19,9 @@ header.navbar {
   flex-direction: column;
 }
 
-.mapYourMealInfo h1, h2 {
+.mapYourMealInfo h1 {
   text-align: center;
-  font-size: clamp(2.5rem, 6vw, 4rem); 
+  font-size: clamp(1.5rem, 4vw, 3rem); 
 }
 
 .mapYourMealInfo h1,
