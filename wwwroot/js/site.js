@@ -12,6 +12,32 @@ $(function(){
     }
 });
 
+//Green icon source: https://github.com/pointhi/leaflet-color-markers?tab=readme-ov-file
+var greenIcon = L.icon({
+    iconUrl: '/lib/leaflet/dist/images/marker-icon-green.png',
+    shadowUrl: '/lib/leaflet/dist/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+});
+
+//Definition of method to fetch restaurants from the database using endpoint /Restaurant/GetAllRestaurants.
+async function fetchRestaurants() {
+    try{
+        const response = await fetch('/Restaurant/GetAllRestaurants');
+        if (!response.ok) {
+            throw new Error('HTTP error! status ${response.status}');
+        }
+        const data = await response.json();
+        return data.result;
+    }
+    catch (error) {
+        console.error('An error occurred while fetching the restaurants:', error);
+        return []; 
+    }
+}
+
 async function initCreateMap(){
     //Initializing the map and adding the map layer
     var createRestaurantMap = L.map('createRestaurantMap');
@@ -47,7 +73,7 @@ async function initCreateMap(){
         if (marker) {
             createRestaurantMap.removeLayer(marker);
         }
-        marker = L.marker([lat, lng]).addTo(createRestaurantMap);
+        marker = L.marker([lat, lng], {icon: greenIcon}).addTo(createRestaurantMap);
         $('input[name="Longitude"]').val(lng);
         $('input[name="Latitude"]').val(lat);
     });
@@ -76,18 +102,30 @@ async function initMap(){
     });
 }
 
-//Definition of method to fetch restaurants from the database using endpoint /Restaurant/GetAllRestaurants.
-async function fetchRestaurants() {
-    try{
-        const response = await fetch('/Restaurant/GetAllRestaurants');
-        if (!response.ok) {
-            throw new Error('HTTP error! status ${response.status}');
+async function initRestaurantIdMap(shownRestaurant){
+    //Initializing the map and adding the map layer
+    var map = L.map('restaurantidmap');
+    map.setView([59.91, 10.75], 13);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    //Fetching all the restaurants from the database and pinning them on the map
+    var restaurants = await fetchRestaurants();
+    restaurants.forEach(restaurant => {
+        var markerOptions = {};
+        console.log(shownRestaurant);
+        if (restaurant.restaurantId == shownRestaurant) {
+            markerOptions.icon = greenIcon;
         }
-        const data = await response.json();
-        return data.result;
-    }
-    catch (error) {
-        console.error('An error occurred while fetching the restaurants:', error);
-        return []; 
-    }
+        L.marker([restaurant.latitude, restaurant.longitude], markerOptions)
+            .addTo(map)
+            .bindPopup(
+                `<div style="width: 100 px">
+                    <h4>${restaurant.restaurantName}</h4>
+                    <a href="Restaurant?restaurantId=${restaurant.restaurantId}" 
+                    class="btn btn-secondary" style="display: flex; background-color: #2a5b80; color: #fff; justify-content: center;">Vis mer</a>
+                </div>`);
+    });
 }
