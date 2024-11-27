@@ -11,7 +11,7 @@
     <!-- Review Management Section -->
     <div class="col-md-6">
         <h3>Manage Reviews</h3>
-        <div style="max-height: 50vh; overflow-y: auto; border: 1px solid #ddd; padding: 10px; border-radius: 5px;">
+        <div style="max-height: 60vh; overflow-y: auto; border: 1px solid #ddd; padding: 10px; border-radius: 5px;">
             @if (ViewData["AllReviews"] != null)
             {
                 var allReviews = ViewData["AllReviews"] as List<Review>;
@@ -66,7 +66,7 @@
     <!-- Restaurant List Section (With Scrollable Area) -->
     <div class="col-md-6">
         <h3>Manage Restaurants</h3>
-        <div style="max-height: 50vh; overflow-y: auto; overflow-x: hidden; border: 1px solid #ddd; padding: 10px; border-radius: 5px;">
+        <div style="max-height: 60vh; overflow-y: auto; overflow-x: hidden; border: 1px solid #ddd; padding: 10px; border-radius: 5px;">
             @foreach (var restaurant in Model.Restaurants)
             {
                 <div class="mb-4 p-3 border rounded d-flex align-items-start justify-content-between" style="border-color: #ddd;">
