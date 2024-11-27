@@ -66,10 +66,6 @@ async function initCreateMap(){
         var lat = e.latlng.lat;
         var lng = e.latlng.lng;
 
-        // Ensure the decimal separator is a period mark: .
-        lat = lat.replace(',', '.');
-        lng = lng.replace(',', '.');
-
         if (marker) {
             createRestaurantMap.removeLayer(marker);
         }
