@@ -31,21 +31,6 @@ public class RestaurantController : Controller
         return Ok(restaurants);
     }
 
-    // GET: Restaurant/Table
-    [HttpGet]
-    public async Task<IActionResult> Table()
-    {
-        var restaurants = await _restaurantRepository.GetAll();
-        if(restaurants == null)
-        {
-            _logger.LogError("[RestaurantRepository] restaurant list not found while executing _restaurantRepository.GetAll()");
-            return NotFound("Restaurant list not found");
-        }
-        _logger.LogInformation("[RestaurantController] Fetched restaurant table view data. Count: {Count}.", restaurants.Count());
-        var restaurantViewModel = new RestaurantViewModel(restaurants, "Table");
-        return View(restaurantViewModel);
-    }
-
     public IActionResult Index(int restaurantId)
     {
         var restaurant = _restaurantRepository.GetItemAndReviewsAndUsersById(restaurantId); // Updated method to 
