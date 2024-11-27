@@ -40,6 +40,7 @@ public class ReviewController : Controller
             _logger.LogError("[ReviewRepository] review list not found while executing _reviewRepository.GetAllWithUser()");
             return NotFound("Review list not found");
         }
+        _logger.LogInformation("[ReviewController] Retrieved {Count} reviews.", reviews.Count());
         return Ok(reviews);
     }
 
@@ -52,6 +53,8 @@ public class ReviewController : Controller
             return NotFound("Review list not found");
         }
         var reviewsViewModel = new ReviewsViewModel(reviews, "Table");
+        _logger.LogInformation("[ReviewController] Displaying reviews in table view.");
+
         return View(reviewsViewModel);
     }
 
@@ -61,20 +64,20 @@ public class ReviewController : Controller
     public async Task<IActionResult> Create(int restaurantId)
     {
         var restaurant = await _restaurantRepository.GetItemById(restaurantId);
-        if (restaurant != null)
+        if(restaurant == null)
         {
+            _logger.LogWarning("[ReviewController] Restaurant with ID {RestaurantId} not found.", restaurantId);
+            return NotFound("Restaurant not found");
+        }            
             var review = new Review
             {
                 RestaurantId = restaurantId,
                 Restaurant = restaurant, // Add this property to your Review model if it doesn't exist
                 UserId = _userManager.GetUserId(User)
             };
+            _logger.LogInformation("[ReviewController] Preparing to create review for restaurant {RestaurantId} by user {UserId}.", restaurantId, _userManager.GetUserId(User));
             return View(review);
-        }
-         else
-        {
-            return NotFound(); 
-        }
+                     
     }
 
     // POST: Reviews/Create
@@ -89,6 +92,7 @@ public class ReviewController : Controller
                 // Saving the image to database if it's the correct file type
                 if (!ValidateImageType(image))
                 {
+                    _logger.LogWarning("[ReviewController] Invalid image type {ImageType} provided by user {UserId}.", image.ContentType, _userManager.GetUserId(User));
                     ModelState.AddModelError("Image", "Only JPEG and PNG formats are supported.");
                     return RedirectToAction("Create", new { restaurantId = review.RestaurantId });
                 }
@@ -102,9 +106,12 @@ public class ReviewController : Controller
             // Saving the review to the database
             bool returnOk = await _reviewRepository.Create(review);
             if (returnOk)
+            {
+                 _logger.LogInformation("[ReviewController] Review created successfully for restaurant {RestaurantId} by user {UserId}.", review.RestaurantId, _userManager.GetUserId(User));
                 return RedirectToAction("Index","Restaurant", new { restaurantId = review.RestaurantId });
+            }
         }
-        _logger.LogWarning("[ReviewController] Review creation failed {@review}", review);
+        _logger.LogWarning("[ReviewController] Failed to create review for restaurant {RestaurantId}. {@Review}", review.RestaurantId, review);
         return RedirectToAction("Create", new { restaurantId = review.RestaurantId });
     }
 
@@ -113,10 +120,11 @@ public class ReviewController : Controller
         var review = await _reviewRepository.GetItemById(id);
         if (review != null && review.ImageData != null)
         {
+            _logger.LogInformation("[ReviewController] Image retrieved for review {ReviewId}.", id);
             return File(review.ImageData, review.ImageType!);
         }
         else
-        {
+        {    _logger.LogWarning("[ReviewController] Image not found for review {ReviewId}.", id);
             return NotFound();
         }
     }
@@ -125,13 +133,14 @@ public class ReviewController : Controller
     [Authorize]
     //[Route("Review/Update/{ReviewId}")]
     public async Task<IActionResult> Update(int ReviewId) {
-        //Console.WriteLine($"Received ReviewId: {ReviewId}");
+        
         var review = await _reviewRepository.GetItemById(ReviewId);
         if(review == null)
         {
             _logger.LogError("[ReviewController] Review not found when updating the ReviewId {ReviewId:0000}", ReviewId);
             return BadRequest("Review not found for the ReviewId");
         }
+        _logger.LogInformation("[ReviewController] Loading update view for review {ReviewId}.", ReviewId);
         return View(review);
     }
 
@@ -146,6 +155,7 @@ public class ReviewController : Controller
             {
                 if (!ValidateImageType(image))
                 {
+                    _logger.LogWarning("[ReviewController] Invalid image type {ImageType} for review {ReviewId}.", image.ContentType, review.ReviewId);
                     ModelState.AddModelError("Image", "Only JPEG and PNG formats are supported.");
                     return View(review);
                 }
@@ -171,15 +181,17 @@ public class ReviewController : Controller
             {
                 if(User.IsInRole("Admin"))
                     {
+                        _logger.LogInformation("[ReviewController] Review {ReviewId} updated successfully by admin.", review.ReviewId);
                         return RedirectToPage("/Account/Manage/Admin", new { area = "Identity" });
                     }
                     else
                     {
+                        _logger.LogInformation("[ReviewController] Review {ReviewId} updated successfully by user.", review.ReviewId);
                         return RedirectToPage("/Account/Manage/Index", new { area = "Identity" });
                     }
             }
         }
-        _logger.LogWarning("[ReviewController] Review update failed {@review}", review);
+        _logger.LogWarning("[ReviewController] Failed to update review {ReviewId}. {@Review}", review.ReviewId, review);
         return View(review);
     }
 
@@ -190,9 +202,10 @@ public class ReviewController : Controller
         var review = await _reviewRepository.GetItemById(ReviewId);
         if(review== null)
         {
-            _logger.LogError("[ReviewController] Review not found for the ReviewId {ReviewId:0000}", ReviewId);
-            return BadRequest("Review not found for the ReviewId");
+             _logger.LogError("[ReviewController] Review with ID {ReviewId} not found for deletion.", ReviewId);
+            return NotFound("Review not found for the ReviewId");
         }
+         _logger.LogInformation("[ReviewController] Preparing to delete review {ReviewId}.", ReviewId);
         return View(review);
     }
 
@@ -204,15 +217,17 @@ public class ReviewController : Controller
         bool returnOk = await _reviewRepository.Delete(ReviewId);
         if(!returnOk)
         {
-            _logger.LogError("[ReviewController] Review deletion failed for the ReviewId {ReviewId:0000}", ReviewId);
+            _logger.LogError("[ReviewController] Failed to delete review {ReviewId}.", ReviewId);
             return BadRequest("Review deletion failed");
         }
         if(User.IsInRole("Admin"))
         {
+             _logger.LogInformation("[ReviewController] Review {ReviewId} deleted successfully.", ReviewId);
             return RedirectToPage("/Account/Manage/Admin", new { area = "Identity" });
         }
         else
         {
+             _logger.LogInformation("[ReviewController] User is not admin. Deletion not authorized for Review {ReviewId}.", ReviewId);
             return RedirectToPage("/Account/Manage/Index", new { area = "Identity" });
         }
     }
