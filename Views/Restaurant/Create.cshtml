@@ -64,14 +64,14 @@
                     <input asp-for="ImageData" type="file" name="image" accept="images/*" />
                     <span asp-validation-for="ImageData" class="text-danger"></span>
                 </div>
-                <button type="submit" class="btn btn-success btn-lg">Create</button>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success btn-lg">Create</button>
+                    <a href="@Url.Action("Index", "Home")" class="btn btn-danger btn-lg">Cancel</a>
+                </div>
             </form>
         </div>
         <div class="col-md-6">
             <div class="map-placeholder" id="createRestaurantMap"></div>
-            <div>
-                <a href="@Url.Action("Index", "Home")" class="btn btn-success btn-lg">Back to restaurants</a>
-            </div>
         </div>
     </div>
 </div>

@@ -21,3 +21,5 @@ Logs/
 
 # Ignore SQLite database files
 Application.db*
+*.db-wal
+*.db-shm

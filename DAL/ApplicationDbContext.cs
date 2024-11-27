@@ -19,7 +19,7 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
         .HasOne(r => r.Restaurant)
         .WithMany(r => r.Reviews)
         .HasForeignKey(r => r.RestaurantId)
-        .OnDelete(DeleteBehavior.Cascade); // Automatically delete reviews when a restaurant is deleted
+        .OnDelete(DeleteBehavior.Cascade); // Automatically delete all reviews when its restaurant is deleted
 }
 
 }

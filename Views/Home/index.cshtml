@@ -10,7 +10,7 @@
     <div class="container mt-5">
         <div class="row">
             <div class="restaurant-list col-lg-6">
-                @foreach (var restaurant in Model)
+                @foreach (Restaurant restaurant in Model)
                 {
                     <div class="row mb-4 p-3 align-items-start" style=" border: 2px solid black;">
                         <!-- Restaurant Image -->
@@ -23,20 +23,20 @@
                         <!-- Restaurant Details -->
                         <div class="col-6 col-lg-5">
                             <h5><strong>@index. @restaurant.RestaurantName</strong></h5>
+                            <p>@restaurant.Address, @restaurant.PostalCode, @restaurant.City</p>
                             <div>
-                                @for (var i = 1; i <= 5; i++)
-                                {
-                                    <!-- if (i <= restaurant.Reviews.Average(r => r.Rating))
-                                                                                    {
-                                                                                        <span class="text-dark">★</span>
-                                                                                    }
-                                                                                    else
-                                                                                    {
-                                                                                        <span class="text-muted">★</span>
-                                                                                    } -->
+                                @{
+                                    if (restaurant.Reviews.Any())
+                                    {
+                                        double averageRating = restaurant.Reviews.Average(r => r.Rating);
+                                        <span><strong>Rating: </strong>@Math.Round(averageRating, 1)/10</span>
+                                    }
+                                    else
+                                    {
+                                        <span><strong>Rating: </strong>No reviews</span>
+                                    }
                                 }
                             </div>
-                            <p>@restaurant.Address, @restaurant.PostalCode, @restaurant.City</p>
                         </div>
 
                         <!-- More info about Restaurant Button -->
