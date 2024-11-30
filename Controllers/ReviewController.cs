@@ -44,20 +44,6 @@ public class ReviewController : Controller
         return Ok(reviews);
     }
 
-    public async Task<IActionResult> Table()
-    {
-        var reviews = await _reviewRepository.GetAll();
-        if(reviews == null)
-        {
-            _logger.LogError("[ReviewRepository] review list not found while executing _reviewRepository.GetAll()");
-            return NotFound("Review list not found");
-        }
-        var reviewsViewModel = new ReviewsViewModel(reviews, "Table");
-        _logger.LogInformation("[ReviewController] Displaying reviews in table view.");
-
-        return View(reviewsViewModel);
-    }
-
     // GET: Reviews/Create
     [HttpGet]
     [Authorize]
